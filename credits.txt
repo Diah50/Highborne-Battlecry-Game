@@ -1,4 +1,4 @@
-Diahborne (Henry Ha) - Lead Artist/Lead Designer
+Diahborne (Henry Ha)(Diahborne#2948) - Lead Artist/Lead Designer
 TyshaunLyon (TyshaunLyon#1551) - Artist
 Null/Noctored (Null#1984) - Composer
 Logan Nieto (Iced_Tea_Goblin#7514) - Programmer
@@ -6,3 +6,4 @@ Gendo (Gendo#8679) - Sound Designer
 Bobit (bobit#9090) - Programmer
 ChefRogan (ChefRogan#5137) - Writer
 TheSpaniard (TheSpaniard*#2188) - Consultant
+Merol (Merol#2423) - Consultant
