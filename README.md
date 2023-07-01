@@ -3,9 +3,9 @@ A Warlords Battlecry Spiritual Successor with Traditional real-time strategy mec
 
 Features:
 * Persistent Hero System - where you can create your customizable hero and they will continue to grow stronger after each battle.
-* RTS component with base-building and unit training.
+* RTS component with base-building, unit training and technology researching.
 * RPG component with their own Inventories, Hero skills, perks, and spells that can be invested to make your hero interesting and fun.
-* 2 playable civilizations
+* 4 playable civilizations
 * Units can earn experience and can be put into your retinue, a mechanic that selects surviving units with best levels and allow them to be transfer to other battles.
 * Many types of units, buildings, technologies, and more.
 
