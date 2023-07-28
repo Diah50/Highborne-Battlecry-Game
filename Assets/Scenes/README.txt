@@ -1,0 +1,1 @@
+Scenes that are not in a folder should not be edited unless you're merging them manually
