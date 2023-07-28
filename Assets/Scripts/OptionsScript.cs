@@ -7,22 +7,26 @@ using UnityEngine.UI;
 
 public class OptionsScript : MonoBehaviour
 {
-    [SerializeField] private RectTransform options;
-    [SerializeField] private Button openoptions;
-    [SerializeField] private Button closeoptions;
+    public GameObject mainMenu;
+    public GameObject options;
+
+    public Button openOptions;
+    public Button closeOptions;
 
     void Start()
     {
         CloseSettings();
-        openoptions.onClick.AddListener(OpenSettings);
-        closeoptions.onClick.AddListener(CloseSettings);
+        openOptions.onClick.AddListener(OpenSettings);
+        closeOptions.onClick.AddListener(CloseSettings);
     }
     void OpenSettings()
     {
-        options.gameObject.SetActive(true);
+        options.SetActive(true);
+        mainMenu.SetActive(false);
     }
     void CloseSettings()
     {
-        options.gameObject.SetActive(false);
+        options.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }
