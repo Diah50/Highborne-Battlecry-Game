@@ -1,0 +1,1 @@
+Every new scene created should be put in here with the added feature as suffix i.e "GameScene - CanvasRework"
