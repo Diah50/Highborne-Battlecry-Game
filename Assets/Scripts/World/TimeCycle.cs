@@ -1,5 +1,4 @@
-/*
- * TimeCycle.cs - Highborne Universe
+/* TimeCycle.cs - Highborne Universe
  * 
  * Creation Date: 28/07/2023
  * Authors: C137
@@ -7,6 +6,7 @@
  * 
  * Changes: 
  *      [28/07/2023] - Initial implementation (C137)
+ *      [29/07/2023] - Improved day length calculations (C137)
  */
 using System;
 using System.Collections;
@@ -19,13 +19,13 @@ public class TimeCycle : MonoBehaviour
     /// <summary>
     /// Singleton reference
     /// </summary>
-    public static TimeCycle instance;
+    public static TimeCycle singleton;
 
     /// <summary>
-    /// Length of a day in hours
-    /// In 24 IRL hours, how many hours should pass IG
+    /// Length of a day in minutes
     /// </summary>
-    public float dayLength = 24; // 48h = one IRL day = 2 IG days
+    [InspectorName("Day Length(In Minutes)")]
+    public float dayLength = 2;
 
     /// <summary>
     /// Current time of day
@@ -74,26 +74,24 @@ public class TimeCycle : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
+        if (singleton != null)
         {
             Destroy(this);
             return;
         }
 
-        instance = this;
-
-        currentDateTime = startDateTime + TimeSpan.FromHours(startHour);
+        singleton = this;
 
         sunriseTime = TimeSpan.FromHours(sunriseHour);
         sunsetTime = TimeSpan.FromHours(sunsetHour);
-    }
 
+        Debug.Log(86400 / (dayLength * 60));
+    }
     void Update()
     {
-        float IGSecondsPerRealSeconds = (dayLength * 3600) / (24 * 3600);
+        float increment = /*Total seconds in a day*/ 86400 / (dayLength * 60) /*day length in minutes*/;
 
-        currentDateTime = currentDateTime.AddSeconds(Time.deltaTime * IGSecondsPerRealSeconds);
-
+        currentDateTime = currentDateTime.AddSeconds(increment * Time.deltaTime);
         Debug.Log(currentDateTime);
 
         RotateSun();
@@ -127,6 +125,7 @@ public class TimeCycle : MonoBehaviour
 
         clock.text = $"{GetFormattedTme(currentDateTime.Hour)}:{GetFormattedTme(currentDateTime.Minute)}";
 
+        //Formats the time by adding 0 in front of it when needed
         static string GetFormattedTme(float time)
         {
             return time < 10 ? $"0{time}" : time.ToString();
