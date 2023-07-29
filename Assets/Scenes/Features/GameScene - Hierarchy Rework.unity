@@ -5374,8 +5374,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1040565064}
   - {fileID: 696734910}
+  - {fileID: 1040565064}
   - {fileID: 1821904690}
   - {fileID: 1566484588}
   - {fileID: 1752166222}
@@ -18547,7 +18547,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c3389153d21964dab678f3c86c2673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayLength: 1440
+  dayLength: 1
   startHour: 12
   sun: {fileID: 1111860400}
   clock: {fileID: 765528672}
