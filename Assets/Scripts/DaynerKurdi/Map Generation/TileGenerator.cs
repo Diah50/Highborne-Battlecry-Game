@@ -9,7 +9,6 @@
  */
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Grid
@@ -30,14 +29,34 @@ public class Grid
     private float cellSize;
 
     /// <summary>
-    /// storing the cell index
+    /// total cell count in the grid
     /// </summary>
-    private int[,] cellArray;
+    private int cellCount;
+
+    /// <summary>
+    /// for storing the cell index
+    /// </summary>
+    private Tile[,] cellArray;
 
     /// <summary>
     /// used for moving the grid  
     /// </summary>
     private Vector3 gridOffset;
+
+    /// <summary>
+    /// Getter for Width
+    /// </summary>
+    public int Width { get { return width; } }
+
+    /// <summary>
+    /// Getter for Height
+    /// </summary>
+    public int Height { get { return height; } }
+
+    /// <summary>
+    /// Getter for total number of cells
+    /// </summary>
+    public int TotalCellCount { get { return cellCount; } }
 
     public Grid(int width, int height, float cellSize, Vector3 offset)
     {
@@ -46,7 +65,7 @@ public class Grid
         this.cellSize = cellSize;
         this.gridOffset = offset;
 
-        this.cellArray = new int[width, height];
+        this.cellArray = new Tile[width, height];
 
         string output = "";
 
@@ -56,7 +75,7 @@ public class Grid
         for (int y = 0; y < this.cellArray.GetLength(1); y++) 
         {
             // x secend
-            for (int x = 0; x < this.cellArray.GetLength(1); x++)
+            for (int x = 0; x < this.cellArray.GetLength(0); x++)
             {
                 if (x == 0)
                 {
@@ -71,7 +90,12 @@ public class Grid
                 //for testing
                 GameObject cell = new GameObject(cellCount.ToString());
                 cell.transform.position = GetCellCenter(x,y);
-                
+            
+                Tile tile = cell.AddComponent<Tile>();
+                tile.SetupTile(BiomeType.Grass, 0, new Vector2Int(x, y));
+
+                cellArray[x, y] = tile;
+
                 cellCount++;
             }
 
@@ -80,6 +104,8 @@ public class Grid
 
         Debug.DrawLine(this.GetCellBorders(0, this.width), this.GetCellBorders(this.width, this.height), Color.white, 100f);
         Debug.DrawLine(this.GetCellBorders(this.width, 0), this.GetCellBorders(this.width, this.height), Color.white, 100f);
+
+        this.cellCount = cellCount;
     }
 
     private Vector3 GetCellBorders(int x, int y)
@@ -93,11 +119,15 @@ public class Grid
     {
         return GetCellBorders(x,y) + new Vector3(cellSize, cellSize,0) * 0.5f;
     }
+
+    public Tile[,] GetCellArray()
+    {
+        return cellArray;
+    }
 }
 
 public class TileGenerator : MonoBehaviour
 {
-
     /// <summary>
     /// the initial gird size
     /// </summary>
@@ -121,10 +151,16 @@ public class TileGenerator : MonoBehaviour
     /// </summary>
     public Grid grid;
 
+    public Tile[,] tileArray;
+
     // Start is called before the first frame update
     void Start()
     {
         grid = new Grid(gridSize.x, gridSize.y, cellSize, GridOffSet );
+        tileArray = new Tile[grid.Width,grid.Height];
+
+        tileArray = grid.GetCellArray();
+
     }
 
     // Update is called once per frame
