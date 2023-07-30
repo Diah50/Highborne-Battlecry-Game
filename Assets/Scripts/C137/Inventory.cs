@@ -16,6 +16,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Contains information of the inventory slot
+/// </summary>
 public struct Slot
 {
     /// <summary>
@@ -69,6 +72,16 @@ public class Inventory
     }
 
     /// <summary>
+    /// Searches if the inventory contains the item
+    /// </summary>
+    /// <param name="item">The item to search for</param>
+    /// <returns></returns>
+    public bool HasItem(Item item)
+    {
+        return GetFirstSlot(item).HasValue;
+    }
+
+    /// <summary>
     /// The first empty slot in the inventory
     /// </summary>
     /// <returns></returns>
@@ -79,6 +92,18 @@ public class Inventory
             throw new Exception("Inventory does not have empty slots");
 
         return slots.FindIndex(slot => slot.item == null);
+    }
+
+    /// <summary>
+    /// Gets the first slot in which the item is found
+    /// </summary>
+    /// <param name="item">Item to search for</param>
+    /// <returns>Slot of the item, otherwise -1</returns>
+    public int? GetFirstSlot(Item item) 
+    { 
+        var correspondingSlot = slots.FindIndex(slot => slot.item == item);
+
+        return correspondingSlot == -1 ? null : correspondingSlot;
     }
 
     /// <summary>
@@ -130,6 +155,22 @@ public class Inventory
         }
 
         return new(true, 0);
+    }
+
+    /// <summary>
+    /// Removes the item at the given index
+    /// </summary>
+    /// <param name="index">Index to remove the item</param>
+    /// <param name="amount">Amount to remove, removes entire stack if set to 0</param>
+    public void RemoveAt(int index, int amount = 0)
+    {
+        if (slots[index].item == null)
+            return;
+
+        if (amount == 0)
+            slots[index] = new(null, 0);
+        else
+            slots[index] = new(slots[index].item, Mathf.Clamp(slots[index].stack - amount, 0, int.MaxValue));
     }
 
     /// <summary>
