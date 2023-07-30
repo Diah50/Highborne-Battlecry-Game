@@ -92,7 +92,7 @@ public class TimeCycle : MonoBehaviour
         float increment = /*Total seconds in a day*/ 86400 / (dayLength * 60) /*day length in minutes*/;
 
         currentDateTime = currentDateTime.AddSeconds(increment * Time.deltaTime);
-        Debug.Log(currentDateTime);
+        //Debug.Log(currentDateTime);
 
         RotateSun();
     }
