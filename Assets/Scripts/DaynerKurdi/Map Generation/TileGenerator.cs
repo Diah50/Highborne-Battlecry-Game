@@ -90,11 +90,15 @@ public class Grid
                 //for testing
                 GameObject cell = new GameObject(cellCount.ToString());
                 cell.transform.position = GetCellCenter(x,y);
+                //scaling the object so the sprite match the cell size. roughly 
+                cell.transform.localScale = new Vector3(4, 4, 1);
             
                 Tile tile = cell.AddComponent<Tile>();
                 tile.SetupTile(BiomeType.Grass, 0, new Vector2Int(x, y));
 
                 cellArray[x, y] = tile;
+                //assiging the sprite to the current tile
+                tile.AssignSprite(SpriteLoader.Instance.tileGrassSpriteArray[0]);
 
                 cellCount++;
             }

@@ -13913,7 +13913,7 @@ Transform:
   m_GameObject: {fileID: 1619847474}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 50.900627, y: 34.346306, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18397,6 +18397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2082069611}
   - component: {fileID: 2082069612}
+  - component: {fileID: 2082069613}
   m_Layer: 0
   m_Name: == Utility ==
   m_TagString: Untagged
@@ -18437,6 +18438,21 @@ MonoBehaviour:
   clock: {fileID: 765528672}
   sunriseHour: 7
   sunsetHour: 17
+--- !u!114 &2082069613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082069610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46397c5bab74d284ca61cef48a76e71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileGrassSpriteArray: []
+  tileDritSpriteArray: []
+  tileWaterSpriteArray: []
 --- !u!1 &2083317364
 GameObject:
   m_ObjectHideFlags: 0
