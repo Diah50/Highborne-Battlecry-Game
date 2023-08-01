@@ -17,7 +17,7 @@ public class SpriteLoader : MonoBehaviour
     /// <summary>
     /// The sprite loader instance
     /// </summary>
-    public static SpriteLoader instance;
+    public static SpriteLoader Instance;
 
     /// <summary>
     /// To store all the grass sprite
@@ -46,7 +46,7 @@ public class SpriteLoader : MonoBehaviour
             return;
         }
 
-        instance = this;
+        Instance = this;
 
         tileGrassSpriteArray = Resources.LoadAll<Sprite>("Tile/Grass");
 

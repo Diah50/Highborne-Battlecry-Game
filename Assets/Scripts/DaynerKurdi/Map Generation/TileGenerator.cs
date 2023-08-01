@@ -101,7 +101,7 @@ public class Grid
 
                 cellArray[x, y] = tile;
                 //assiging the sprite to the current tile
-                tile.AssignSprite(SpriteLoader.instance.tileGrassSpriteArray[0]);
+                tile.AssignSprite(SpriteLoader.Instance.tileGrassSpriteArray[0]);
 
                 cellCount++;
             }
