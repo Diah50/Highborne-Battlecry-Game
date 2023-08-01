@@ -9,11 +9,11 @@
  *  [29/07/2023] - Replaced "CameraMovement" script with cinemachine and added camera confines (Archetype)
  *  [30/07/2023] - Added edge scrolling + unit follow (Archetype)
  *  [01/08/2023] - Improve meta info + added documentation + code review (C137)
+ *  [01/08/2023] - Removed namespace for Singleton, small script update for organization, removed debug assets (Archetype)
  */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Archetype;
 using Cinemachine;
 
 public class CameraCenterMovement : Singleton<CameraCenterMovement>
@@ -50,13 +50,13 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
 
     void Update()
     {
+        //Raw axis inputs
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
 
-        ConfineCamera();
-
-        EdgeScroling();
+        //Edge scrolling inputs
+        EdgeScrollingInput();
 
         //Any cam input should make the cam stop following a unit
         if ((moveInput.x != 0 || moveInput.y != 0 || pushedUp || pushedDown || pushedRight || pushedLeft) && virtualCamera.Follow != transform)
@@ -66,7 +66,13 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
         }
     }
 
-    void ConfineCamera()
+    private void FixedUpdate()
+    {
+        //Uses inputs from Update to move
+        MoveCamera();
+    }
+
+    void MoveCamera()
     {
         rb2d.velocity = moveInput * moveSpeed;
 
@@ -79,12 +85,9 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
         {
             transform.position = new Vector3(transform.position.x, cam.transform.position.y, transform.position.z);
         }
-    }
 
-    private void FixedUpdate()
-    {
         //Takes which edge the mouse is pushing against, sums it up in case its a corner and then translates in that direction
-        Vector3 finalDirection = new Vector3 (0,0,0);
+        Vector3 finalDirection = new Vector3(0, 0, 0);
         if (pushedUp) finalDirection += Vector3.up;
         if (pushedDown) finalDirection -= Vector3.up;
         if (pushedRight) finalDirection += Vector3.right;
@@ -113,7 +116,7 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
         transform.position = new Vector3(0, 0, 0);
     }
 
-    void EdgeScroling()
+    void EdgeScrollingInput()
     {
         float mousePosX = Input.mousePosition.x;
         float mousePosY = Input.mousePosition.y;
@@ -124,14 +127,5 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
         pushedRight = mousePosX >= Screen.width - scrollDistance;
         pushedDown = mousePosY < scrollDistance;
         pushedUp = mousePosY >= Screen.height - scrollDistance;
-
-        if (mousePosY >= Screen.height - scrollDistance)
-        {
-            pushedUp = true;
-        }
-        else
-        {
-            pushedUp = false;
-        }
     }
 }
