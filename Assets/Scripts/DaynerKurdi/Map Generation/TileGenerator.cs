@@ -1,45 +1,48 @@
 /* TileGenerator.cs - Highborne Universe
  * 
  * Creation Date: 30/07/2023
- * Authors: DaynerKurdi
+ * Authors: DaynerKurdi, C137
  * Original : DaynerKurdi
  * 
  * Changes: 
  *      [30/07/2023] - Initial implementation (DaynerKurdi)
+ *      [01/08/2023] - Fixed spelling mistakes + Made "Grid" serializable (C137)
  */
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public class Grid
 {
     /// <summary>
-    /// the total number of cells on the postive X axie
+    /// The total number of cells on the positive X axis
     /// </summary>
     private int width;
 
     /// <summary>
-    /// the total number of cells on the postive Y axie
+    /// The total number of cells on the positive Y axis
     /// </summary>
     private int height;
 
     /// <summary>
-    /// the size of each cell on the grid
+    /// The size of each cell on the grid
     /// </summary>
     private float cellSize;
 
     /// <summary>
-    /// total cell count in the grid
+    /// Total cell count in the grid
     /// </summary>
     private int cellCount;
 
     /// <summary>
-    /// for storing the cell index
+    /// For storing the cell index
     /// </summary>
     private Tile[,] cellArray;
 
     /// <summary>
-    /// used for moving the grid  
+    /// Used for moving the grid  
     /// </summary>
     private Vector3 gridOffset;
 
@@ -74,7 +77,7 @@ public class Grid
         // y first
         for (int y = 0; y < this.cellArray.GetLength(1); y++) 
         {
-            // x secend
+            // x second
             for (int x = 0; x < this.cellArray.GetLength(0); x++)
             {
                 if (x == 0)
@@ -98,7 +101,7 @@ public class Grid
 
                 cellArray[x, y] = tile;
                 //assiging the sprite to the current tile
-                tile.AssignSprite(SpriteLoader.Instance.tileGrassSpriteArray[0]);
+                tile.AssignSprite(SpriteLoader.instance.tileGrassSpriteArray[0]);
 
                 cellCount++;
             }
@@ -133,25 +136,25 @@ public class Grid
 public class TileGenerator : MonoBehaviour
 {
     /// <summary>
-    /// the initial gird size
+    /// The initial gird size
     /// </summary>
     [SerializeField]
     private Vector2Int gridSize = new Vector2Int();
 
     /// <summary>
-    /// the size of each cell
+    /// The size of each cell
     /// </summary>
     [SerializeField]
     private float cellSize = 5f;
 
     /// <summary>
-    /// used to move the grid
+    /// Used to move the grid
     /// </summary>
     [SerializeField]
-    private Vector3 GridOffSet = Vector3.zero;
+    private Vector3 gridOffSet = Vector3.zero;
 
     /// <summary>
-    /// the grid object
+    /// The grid object
     /// </summary>
     public Grid grid;
 
@@ -160,7 +163,7 @@ public class TileGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Grid(gridSize.x, gridSize.y, cellSize, GridOffSet );
+        grid = new Grid(gridSize.x, gridSize.y, cellSize, gridOffSet );
         tileArray = new Tile[grid.Width,grid.Height];
 
         tileArray = grid.GetCellArray();

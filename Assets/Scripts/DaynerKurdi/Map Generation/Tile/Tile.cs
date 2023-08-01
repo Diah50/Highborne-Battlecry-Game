@@ -1,15 +1,27 @@
 /* Tile.cs - Highborne Universe
  * 
  * Creation Date: 30/07/2023
- * Authors: DaynerKurdi
+ * Authors: DaynerKurdi, C137
  * Original : DaynerKurdi
  * 
  * Changes: 
  *      [30/07/2023] - Initial implementation (DaynerKurdi)
+ *      [01/08/2023] - Moved BiomeType enum to this script (C137)
  */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+/// <summary>
+/// Global Enum for Biome
+/// </summary>
+public enum BiomeType
+{
+    Unknown = 0,
+    Grass = 1,
+    Dirt = 2,
+    Water = 3,
+}
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Tile : MonoBehaviour
@@ -20,32 +32,32 @@ public class Tile : MonoBehaviour
     private BiomeType type;
 
     /// <summary>
-    /// ref to the sprite image
+    /// Reference to the sprite image
     /// </summary>
     private Sprite sprite;
 
     /// <summary>
-    /// the cell index on the grid
+    /// The cell index on the grid
     /// </summary>
     private Vector2Int cellIndex;
 
     /// <summary>
-    /// to be used with A*
+    /// To be used with A*
     /// </summary>
     private int movmentCost = 0;
 
     /// <summary>
-    /// getter for type
+    /// Getter for type
     /// </summary>
     public BiomeType Type {  get { return type; } }
 
     /// <summary>
-    /// getter for sprite
+    /// Getter for sprite
     /// </summary>
     public Sprite Sprite { get { return sprite; } }
 
     /// <summary>
-    /// getter for movmentCost
+    /// Getter for movmentCost
     /// </summary>
     public int MovmentCost {get {return movmentCost;} }
 
