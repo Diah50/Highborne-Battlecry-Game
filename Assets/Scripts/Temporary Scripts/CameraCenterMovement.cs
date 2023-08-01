@@ -1,13 +1,14 @@
 /*
- * CameraControler
+ * CameraCenterMovement.cs - Highborne Universe
  * 
- * Initial setup done by Hellhound. Confining camera to bounds, adding border push and double clicking to follow units
- * 
- * Authors: Hellhound, Archetype
+ * Creation Date: 29/07/2023
+ * Authors: Hellhound, Archetype, C137
+ * Original: Hellhound
  * 
  * Changes: 
- *  [07/29/2023] -Archetype- replaced "CameraMovement" script with cinemachine and added camera confines
- *  [07/30/2023] -Archetype- added edge scroling, also added unit follow (needs to be tested on real units)
+ *  [29/07/2023] - Replaced "CameraMovement" script with cinemachine and added camera confines (Archetype)
+ *  [30/07/2023] - Added edge scrolling + unit follow (Archetype)
+ *  [01/08/2023] - Improve meta info + added documentation + code review (C137)
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -17,24 +18,47 @@ using Cinemachine;
 
 public class CameraCenterMovement : Singleton<CameraCenterMovement>
 {
+    /// <summary>
+    /// The movement speed of the camera
+    /// </summary>
     public float moveSpeed;
+    
+    /// <summary>
+    /// The rigidbody of the camera
+    /// </summary>
     public Rigidbody2D rb2d;
+
+    /// <summary>
+    /// The input direction 
+    /// </summary>
     public Vector2 moveInput;
+
+    /// <summary>
+    /// Reference to the actual camera
+    /// </summary>
     public GameObject cam;
+
+    /// <summary>
+    /// Reference to the cinemachine camera
+    /// </summary>
     public CinemachineVirtualCamera virtualCamera;
 
+    /// <summary>
+    /// Edge scrolling booleans
+    /// </summary>
     bool pushedUp, pushedDown, pushedLeft, pushedRight;
 
-    //controlls position of camera target (as seen in the virtual camera follow)
     void Update()
     {
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
 
+        ConfineCamera();
+
         EdgeScroling();
 
-        //any cam input should make the cam stop following a unit
+        //Any cam input should make the cam stop following a unit
         if ((moveInput.x != 0 || moveInput.y != 0 || pushedUp || pushedDown || pushedRight || pushedLeft) && virtualCamera.Follow != transform)
         {
             transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, transform.position.z);
@@ -42,7 +66,7 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
         }
     }
 
-    private void FixedUpdate()
+    void ConfineCamera()
     {
         rb2d.velocity = moveInput * moveSpeed;
 
@@ -55,8 +79,11 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
         {
             transform.position = new Vector3(transform.position.x, cam.transform.position.y, transform.position.z);
         }
+    }
 
-        //takes wich edge the mouse is pushing against, sums it up in case its a corner and then translates in that direction
+    private void FixedUpdate()
+    {
+        //Takes which edge the mouse is pushing against, sums it up in case its a corner and then translates in that direction
         Vector3 finalDirection = new Vector3 (0,0,0);
         if (pushedUp) finalDirection += Vector3.up;
         if (pushedDown) finalDirection -= Vector3.up;
@@ -82,7 +109,6 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
     */
     public void TakeFocus(Transform Ttransform)
     {
-        Debug.Log("doubleclick");
         virtualCamera.Follow = Ttransform;
         transform.position = new Vector3(0, 0, 0);
     }
@@ -93,32 +119,11 @@ public class CameraCenterMovement : Singleton<CameraCenterMovement>
         float mousePosY = Input.mousePosition.y;
         int scrollDistance = 30;
 
-        if (mousePosX < scrollDistance)
-        {
-            pushedLeft = true;
-        }
-        else
-        {
-            pushedLeft = false;
-        }
 
-        if (mousePosX >= Screen.width - scrollDistance)
-        {
-            pushedRight = true;
-        }
-        else
-        {
-            pushedRight = false;
-        }
-
-        if (mousePosY < scrollDistance)
-        {
-            pushedDown = true;
-        }
-        else
-        {
-            pushedDown = false;
-        }
+        pushedLeft = mousePosX < scrollDistance;
+        pushedRight = mousePosX >= Screen.width - scrollDistance;
+        pushedDown = mousePosY < scrollDistance;
+        pushedUp = mousePosY >= Screen.height - scrollDistance;
 
         if (mousePosY >= Screen.height - scrollDistance)
         {
