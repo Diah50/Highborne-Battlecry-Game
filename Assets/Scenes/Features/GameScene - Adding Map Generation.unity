@@ -941,7 +941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d688844d7be56d04cb1f9e26876173d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 4, y: 4}
+  gridSize: {x: 10, y: 6}
   cellSize: 5
   GridOffSet: {x: -10, y: -10, z: 0}
 --- !u!1 &92206606

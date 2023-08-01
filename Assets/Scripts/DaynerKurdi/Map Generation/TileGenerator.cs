@@ -164,12 +164,5 @@ public class TileGenerator : MonoBehaviour
         tileArray = new Tile[grid.Width,grid.Height];
 
         tileArray = grid.GetCellArray();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
