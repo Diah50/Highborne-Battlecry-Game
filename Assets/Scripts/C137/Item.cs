@@ -6,6 +6,7 @@
  * 
  * Changes: 
  *      [30/07/2023] - Initial implementation (C137)
+ *      [01/08/2023] - Made description a text area in the inspector (C137)
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ public class Item : ScriptableObject
     /// <summary>
     /// The description of the item
     /// </summary>
+    [TextArea]
     public string description;
 
     /// <summary>

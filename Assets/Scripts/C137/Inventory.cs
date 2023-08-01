@@ -6,6 +6,7 @@
  * 
  * Changes: 
  *      [30/07/2023] - Initial implementation (C137)
+ *      [01/08/2023] - Made "slots" an array rather than a list (C137) + Fixed adding of multiple items
  *      
  *  TODO:
  *      Optimize Tuple<bool, int> AddItem(Item item, int amount) function
@@ -19,6 +20,7 @@ using UnityEngine;
 /// <summary>
 /// Contains information of the inventory slot
 /// </summary>
+[Serializable]
 public struct Slot
 {
     /// <summary>
@@ -38,12 +40,13 @@ public struct Slot
     }
 }
 
+[Serializable]
 public class Inventory
 {
     /// <summary>
     /// Refers to the slots of the inventory
     /// </summary>
-    public List<Slot> slots;
+    public Slot[] slots;
 
     /// <summary>
     /// Initiate the inventory
@@ -51,7 +54,7 @@ public class Inventory
     /// <param name="slots">The value of each slot</param>
     public Inventory(Slot[] slots)
     {
-        this.slots = slots.ToList();
+        this.slots = slots;
     }
 
     /// <summary>
@@ -60,7 +63,7 @@ public class Inventory
     /// <param name="slots">The amount of slot the inventory has</param>
     public Inventory(int slots)
     {
-        this.slots = new List<Slot>(slots);
+        this.slots = new Slot[slots];
     }
 
     /// <summary>
@@ -91,7 +94,7 @@ public class Inventory
         if (!HasEmptySlot())
             throw new Exception("Inventory does not have empty slots");
 
-        return slots.FindIndex(slot => slot.item == null);
+        return Array.FindIndex(slots, slot => slot.item == null);
     }
 
     /// <summary>
@@ -101,7 +104,7 @@ public class Inventory
     /// <returns>Slot of the item, otherwise -1</returns>
     public int? GetFirstSlot(Item item) 
     { 
-        var correspondingSlot = slots.FindIndex(slot => slot.item == item);
+        var correspondingSlot = Array.FindIndex(slots, slot => slot.item == item);
 
         return correspondingSlot == -1 ? null : correspondingSlot;
     }
@@ -113,7 +116,7 @@ public class Inventory
     /// <returns></returns>
     public bool AddItem(Item item)
     {
-        for (int i = 0; i < slots.Count; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             Slot currentSlot = slots[i];
 
@@ -146,7 +149,8 @@ public class Inventory
     /// <returns>If all the items could be added, if not, how many were leftover</returns>
     public Tuple<bool, int> AddItem(Item item, int amount)
     {
-        for(int i = 0;i < amount; i++)
+        int initialAmount = amount;
+        for(int i = 0;i < initialAmount; i++)
         {
             if(AddItem(item))
                 amount--;
