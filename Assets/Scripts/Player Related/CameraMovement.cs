@@ -5,7 +5,10 @@
  * Authors: Hellhound, Archetype, C137
  * Original: Hellhound
  * 
+ * Edited By: C137, Archetype
+ * 
  * Changes: 
+ *  [29/07/2023] - Initial Implementation (Hellhound)
  *  [29/07/2023] - Replaced "CameraMovement" script with cinemachine and added camera confines (Archetype)
  *  [30/07/2023] - Added edge scrolling + unit follow (Archetype)
  *  [01/08/2023] - Improve meta info + added documentation + code review (C137)

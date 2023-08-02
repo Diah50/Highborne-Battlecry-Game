@@ -2,23 +2,21 @@
  * 
  * Creation Date: 31/07/2023
  * Authors: DaynerKurdi
- * Original : DaynerKurdi, C137
+ * Original: DaynerKurdi
+ * 
+ * Edited By: C137
  * 
  * Changes: 
  *      [31/07/2023] - Initial implementation (DaynerKurdi)
  *      [01/08/2023] - Variables renaming (C137)
+ *      [02/08/2023] - Use of new singleton system (C137)
  */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteLoader : MonoBehaviour
+public class SpriteLoader : Singleton<SpriteLoader>
 {
-    /// <summary>
-    /// The sprite loader instance
-    /// </summary>
-    public static SpriteLoader Instance;
-
     /// <summary>
     /// To store all the grass sprite
     /// </summary>
@@ -40,24 +38,10 @@ public class SpriteLoader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (Instance != null)
-        {
-            Destroy(this);
-            return;
-        }
-
-        Instance = this;
-
         tileGrassSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Grass");
 
         tileDritSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Dirt");
 
         tileWaterSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Water");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

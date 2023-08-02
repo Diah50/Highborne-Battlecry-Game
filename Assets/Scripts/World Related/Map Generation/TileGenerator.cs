@@ -2,11 +2,14 @@
  * 
  * Creation Date: 30/07/2023
  * Authors: DaynerKurdi, C137
- * Original : DaynerKurdi
+ * Original: DaynerKurdi
+ * 
+ * Edited By: C137
  * 
  * Changes: 
  *      [30/07/2023] - Initial implementation (DaynerKurdi)
  *      [01/08/2023] - Fixed spelling mistakes + Made "Grid" serializable (C137)
+ *      [02/08/2023] - Use of new singleton system (C137)
  */
 using System;
 using System.Collections;
@@ -90,18 +93,18 @@ public class Grid
                 //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x, y + 1), Color.white, 100f);
                 //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x + 1, y), Color.white, 100f);
 
-                //for testing
+                //For testing
                 GameObject cell = new GameObject(cellCount.ToString());
                 cell.transform.position = GetCellCenter(x,y);
-                //scaling the object so the sprite match the cell size. roughly 
+                //Scaling the object so the sprite match the cell size. roughly 
                 cell.transform.localScale = new Vector3(4, 4, 1);
             
                 Tile tile = cell.AddComponent<Tile>();
                 tile.SetupTile(BiomeType.Grass, 0, new Vector2Int(x, y));
 
                 cellArray[x, y] = tile;
-                //assiging the sprite to the current tile
-                tile.AssignSprite(SpriteLoader.Instance.tileGrassSpriteArray[0]);
+                //Assigning the sprite to the current tile
+                tile.AssignSprite(SpriteLoader.singleton.tileGrassSpriteArray[0]);
 
                 cellCount++;
             }
