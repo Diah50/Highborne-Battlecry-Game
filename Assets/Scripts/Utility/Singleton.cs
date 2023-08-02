@@ -1,3 +1,15 @@
+/* Singleton.cs - Highborne Universe
+ * 
+ * Creation Date: 28/07/2023
+ * Authors: Archetype, C137
+ * Original: Archetype
+ * 
+ * Edited By: C137
+ * 
+ * Changes: 
+ *      [29/07/2023] - Initial implementation (Archetype)
+ *      [01/08/2023] - Code cleanup + Error throwing (C137)
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,15 +22,18 @@ public class Singleton<T> : MonoBehaviour where T:Component
     {
         get
         {
-            if(instance==null)
+            if(instance == null)
             {
                 instance = FindObjectOfType<T>();
 
-                if(instance==null)
-                {
-                    GameObject gameObject = new GameObject("Controller");
-                    instance = gameObject.AddComponent<T>();
-                }
+                //If no instance is found, should cause an exception rather than making a new instance
+                throw new System.Exception("No instance of the singleton was found");
+
+                //if(instance == null)
+                //{
+                //    GameObject gameObject = new GameObject("Controller");
+                //    instance = gameObject.AddComponent<T>();
+                //}
             }
             return instance;
         }
@@ -26,7 +41,7 @@ public class Singleton<T> : MonoBehaviour where T:Component
 
     private void Awake()
     {
-        if(instance==null)
+        if(instance == null)
         {
             instance = this as T;
         }
