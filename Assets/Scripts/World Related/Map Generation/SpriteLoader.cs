@@ -48,11 +48,11 @@ public class SpriteLoader : MonoBehaviour
 
         Instance = this;
 
-        tileGrassSpriteArray = Resources.LoadAll<Sprite>("Tile/Grass");
+        tileGrassSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Grass");
 
-        tileDritSpriteArray = Resources.LoadAll<Sprite>("Tile/Dirt");
+        tileDritSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Dirt");
 
-        tileWaterSpriteArray = Resources.LoadAll<Sprite>("Tile/Water");
+        tileWaterSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Water");
     }
 
     // Update is called once per frame

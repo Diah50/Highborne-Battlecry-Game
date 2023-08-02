@@ -7,7 +7,7 @@
  * Changes: 
  *      [28/07/2023] - Initial implementation (C137)
  *      [29/07/2023] - Improved day length calculations (C137)
- *      [01/08/2023] - Removed unnecessary logging (C137)
+ *      [02/08/2023] - Removed unnecessary logging (C137)
  */
 using System;
 using System.Collections;

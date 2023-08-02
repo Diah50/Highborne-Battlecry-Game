@@ -87,8 +87,8 @@ public class Grid
 
                 output = output + "  " + x.ToString();
 
-                Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x, y + 1), Color.white, 100f);
-                Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x + 1, y), Color.white, 100f);
+                //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x, y + 1), Color.white, 100f);
+                //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x + 1, y), Color.white, 100f);
 
                 //for testing
                 GameObject cell = new GameObject(cellCount.ToString());
@@ -106,11 +106,11 @@ public class Grid
                 cellCount++;
             }
 
-            Debug.Log(output);
+           // Debug.Log(output);
         }
 
-        Debug.DrawLine(this.GetCellBorders(0, this.width), this.GetCellBorders(this.width, this.height), Color.white, 100f);
-        Debug.DrawLine(this.GetCellBorders(this.width, 0), this.GetCellBorders(this.width, this.height), Color.white, 100f);
+        //Debug.DrawLine(this.GetCellBorders(0, this.width), this.GetCellBorders(this.width, this.height), Color.white, 100f);
+        //Debug.DrawLine(this.GetCellBorders(this.width, 0), this.GetCellBorders(this.width, this.height), Color.white, 100f);
 
         this.cellCount = cellCount;
     }
