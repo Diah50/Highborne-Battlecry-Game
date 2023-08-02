@@ -7,6 +7,7 @@
  * Changes: 
  *      [28/07/2023] - Initial implementation (C137)
  *      [29/07/2023] - Improved day length calculations (C137)
+ *      [01/08/2023] - Removed unnecessary logging (C137)
  */
 using System;
 using System.Collections;
@@ -85,14 +86,12 @@ public class TimeCycle : MonoBehaviour
         sunriseTime = TimeSpan.FromHours(sunriseHour);
         sunsetTime = TimeSpan.FromHours(sunsetHour);
 
-        Debug.Log(86400 / (dayLength * 60));
     }
     void Update()
     {
-        float increment = /*Total seconds in a day*/ 86400 / (dayLength * 60) /*day length in minutes*/;
+        float increment = /*Total seconds in a day*/ 86400 / (dayLength * 60) /*day length in seconds*/;
 
         currentDateTime = currentDateTime.AddSeconds(increment * Time.deltaTime);
-        //Debug.Log(currentDateTime);
 
         RotateSun();
     }

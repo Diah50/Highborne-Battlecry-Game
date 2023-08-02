@@ -16,7 +16,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class CameraCenterMovement : Singleton<CameraCenterMovement>
+public class CameraMovement : Singleton<CameraMovement>
 {
     /// <summary>
     /// The movement speed of the camera
