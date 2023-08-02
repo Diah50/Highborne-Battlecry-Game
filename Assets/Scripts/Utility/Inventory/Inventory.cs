@@ -6,7 +6,8 @@
  * 
  * Changes: 
  *      [30/07/2023] - Initial implementation (C137)
- *      [01/08/2023] - Made "slots" an array rather than a list (C137) + Fixed adding of multiple items
+ *      [01/08/2023] - Made "slots" an array rather than a list + Fixed adding of multiple items (C137)
+ *      [02/08/2023] - Updated summarries (C137)
  *      
  *  TODO:
  *      Optimize Tuple<bool, int> AddItem(Item item, int amount) function
@@ -101,7 +102,7 @@ public class Inventory
     /// Gets the first slot in which the item is found
     /// </summary>
     /// <param name="item">Item to search for</param>
-    /// <returns>Slot of the item, otherwise -1</returns>
+    /// <returns>Slot of the item, otherwise null</returns>
     public int? GetFirstSlot(Item item) 
     { 
         var correspondingSlot = Array.FindIndex(slots, slot => slot.item == item);
