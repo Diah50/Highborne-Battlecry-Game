@@ -4,21 +4,21 @@
  * Authors: DaynerKurdi, C137
  * Original: DaynerKurdi
  * 
- * Edited By: C137
+ * Edited By: DaynerKurdi
  * 
  * Changes: 
  *      [30/07/2023] - Initial implementation (DaynerKurdi)
  *      [01/08/2023] - Fixed spelling mistakes + Made "Grid" serializable (C137)
  *      [02/08/2023] - Use of new singleton system (C137)
+ *      [04/08/2023] - add Perlin Noise functionality (DaynerKurdi)
  */
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
 public class Grid
 {
+    #region Variables 
     /// <summary>
     /// The total number of cells on the positive X axis
     /// </summary>
@@ -63,7 +63,7 @@ public class Grid
     /// Getter for total number of cells
     /// </summary>
     public int TotalCellCount { get { return cellCount; } }
-
+    #endregion
     public Grid(int width, int height, float cellSize, Vector3 offset)
     {
         this.width = width;
@@ -73,7 +73,7 @@ public class Grid
 
         this.cellArray = new Tile[width, height];
 
-        string output = "";
+       // string output = "";
 
         int cellCount = 0;
 
@@ -83,12 +83,12 @@ public class Grid
             // x second
             for (int x = 0; x < this.cellArray.GetLength(0); x++)
             {
-                if (x == 0)
-                {
-                    output = y.ToString();
-                }
+            //    if (x == 0)
+            //    {
+            //        output = y.ToString();
+            //    }
 
-                output = output + "  " + x.ToString();
+                //output = output + "  " + x.ToString();
 
                 //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x, y + 1), Color.white, 100f);
                 //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x + 1, y), Color.white, 100f);
@@ -100,12 +100,11 @@ public class Grid
                 cell.transform.localScale = new Vector3(4, 4, 1);
             
                 Tile tile = cell.AddComponent<Tile>();
-                tile.SetupTile(BiomeType.Grass, 0, new Vector2Int(x, y));
+
+                InitializeTile(tile, new Vector2Int(x, y));
 
                 cellArray[x, y] = tile;
-                //Assigning the sprite to the current tile
-                tile.AssignSprite(SpriteLoader.singleton.tileGrassSpriteArray[0]);
-
+               
                 cellCount++;
             }
 
@@ -134,10 +133,61 @@ public class Grid
     {
         return cellArray;
     }
+
+    private void InitializeTile(Tile tile, Vector2Int cellIndex)
+    {
+
+        int PerlinNoiseResult = PerlinNoiseGenerator.calculatNoise(cellIndex.x, cellIndex.y, width, height);
+
+
+        switch (PerlinNoiseResult)
+        {
+            //water
+            case 0:
+            case 1:
+            case 2:
+                {
+                    tile.SetupTile(BiomeType.Water, 0, cellIndex);
+                    //Assigning the sprite to the current tile
+                    tile.AssignSprite(SpriteLoader.singleton.tileWaterSpriteArray[5]);
+                }
+                break;
+           
+           //grass
+           case 3:
+           case 4:
+           case 5:
+           case 6:
+                {
+                    tile.SetupTile(BiomeType.Grass, 0, cellIndex);
+                    //Assigning the sprite to the current tile
+                    tile.AssignSprite(SpriteLoader.singleton.tileGrassSpriteArray[5]);
+                }
+                break;
+
+
+            //dirt
+            case 7:
+            case 8:
+            case 9:
+                {
+                    tile.SetupTile(BiomeType.Dirt, 0, cellIndex);
+                    //Assigning the sprite to the current tile
+                    tile.AssignSprite(SpriteLoader.singleton.tileDritSpriteArray[5]);
+
+                }
+                break;
+
+            default:
+                break;
+        }
+    }
 }
 
 public class TileGenerator : MonoBehaviour
 {
+    #region Gride & Tile
+    [Header("Grid & Tile Setting")]
     /// <summary>
     /// The initial gird size
     /// </summary>
@@ -161,14 +211,47 @@ public class TileGenerator : MonoBehaviour
     /// </summary>
     public Grid grid;
 
+    /// <summary>
+    /// The Grid's Tile Array
+    /// </summary>
     public Tile[,] tileArray;
+    #endregion
+
+    [Header("-------------------")]
+
+    #region Perlin Noise 
+    /// <summary>
+    /// The Seed for the Perlin Noise 
+    /// </summary>
+    [SerializeField]
+    private int PerlinNoiseSeed = 0;
+
+    /// <summary>
+    /// The scale of the Perlin Noise image, higher value = more randomness 
+    /// </summary>
+    [SerializeField]
+    private float PerlinNoiseScale = 1;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Grid(gridSize.x, gridSize.y, cellSize, gridOffSet );
-        tileArray = new Tile[grid.Width,grid.Height];
+        Initialize();
+    }
+
+    private void Initialize()
+    {
+        //setup Perlin Noise "dose not reset"
+        PerlinNoiseGenerator.Seed = PerlinNoiseSeed;
+        PerlinNoiseGenerator.Scale = PerlinNoiseScale;
+
+        grid = new Grid(gridSize.x, gridSize.y, cellSize, gridOffSet);
+
+        tileArray = new Tile[grid.Width, grid.Height];
 
         tileArray = grid.GetCellArray();
+
+        //PerlinNoiseGenerator test = new PerlinNoiseGenerator(555, 6);
+        //test.calculatNoise(8,50, grid.Width, grid.Height);
     }
 }
