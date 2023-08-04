@@ -941,9 +941,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d688844d7be56d04cb1f9e26876173d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridSize: {x: 10, y: 6}
+  gridSize: {x: 96, y: 96}
   cellSize: 5
-  GridOffSet: {x: -10, y: -10, z: 0}
+  gridOffSet: {x: 0, y: 0, z: 0}
+  PerlinNoiseSeed: 0
+  PerlinNoiseScale: 5
 --- !u!1 &92206606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1998,6 +2000,8 @@ MonoBehaviour:
   moveSpeed: 20
   rb2d: {fileID: 242416586}
   moveInput: {x: 0, y: 0}
+  cam: {fileID: 0}
+  virtualCamera: {fileID: 0}
 --- !u!50 &242416586
 Rigidbody2D:
   serializedVersion: 4
@@ -11636,9 +11640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93dacb181919dd41b9c76426fb41e61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 242416584}
-  offset: {x: 0, y: 0, z: 0}
-  damping: 0.1
 --- !u!1 &1389009888
 GameObject:
   m_ObjectHideFlags: 0
