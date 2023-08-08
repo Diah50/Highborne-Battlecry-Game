@@ -8,6 +8,7 @@
  * 
  * Changes: 
  *      [03/08/2023] - Initial implementation (Archetype)
+ *      [08/08/2023] - Bug fixing (Archetype)
  */
 using System;
 using System.Collections;
@@ -28,9 +29,14 @@ public class BuildingManager : Singleton<BuildingManager>
     GameObject lastBuild;
 
     /// <summary>
-    /// Tilemap
+    /// Temporary tilemap
     /// </summary>
-    public Tilemap tilemap;
+    public Tilemap tilemapTemp;
+
+    /// <summary>
+    /// Permanant tilemap
+    /// </summary>
+    public Tilemap tilemapPerm;
 
     /// <summary>
     /// List of chain built buildings
@@ -43,19 +49,16 @@ public class BuildingManager : Singleton<BuildingManager>
     Vector2[] vertices;
 
     /// <summary>
-    /// Basic white tile to occupy grid
+    /// Basic tiles to occupy grid
     /// </summary>
-    public TileBase whiteTile;
+    public TileBase redTile, greenTile, whiteTile;
 
     /// <summary>
     /// Script from building that is being selected
     /// </summary>
     BuildingBase buildingScript;
 
-    /// <summary>
-    /// Size of buildings in tiles
-    /// </summary>
-    public Vector3Int size { get; private set; }
+    public bool touchingAnotherBuilding;
 
     private void Update()
     {
@@ -67,7 +70,7 @@ public class BuildingManager : Singleton<BuildingManager>
         
         //Check if current building can be placed in current spot
         if (buildingScript != null)
-            if (CanBePlaced(buildingScript)) PlaceBuilds();
+            if (!touchingAnotherBuilding) PlaceBuilds();
 
         //When Shift is released the chain of buildings is solidified
         if (Input.GetKeyUp(KeyCode.LeftShift) && buildBluePrints.Count > 0)
@@ -77,6 +80,7 @@ public class BuildingManager : Singleton<BuildingManager>
                 gO.SendMessage("BecomeSolid", SendMessageOptions.DontRequireReceiver);
             }
             if (building != null) Destroy(building);
+            tilemapTemp.ClearAllTiles();
             building = null;
             buildBluePrints.Clear();
         }
@@ -94,16 +98,14 @@ public class BuildingManager : Singleton<BuildingManager>
         //Start build chain
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift))
         {
-            Vector3Int start = tilemap.WorldToCell(GetStartPosition());
-            TakeArea(start, buildingScript.size);
+            TakeAreaPerm(GetColliderVertexPositionsLocal().min, buildingScript.size);
             buildBluePrints.Add(building);
             building = null;
             SelectBuilding(lastBuild);
         }//Build single building
         else if (Input.GetMouseButtonDown(0))
         {
-            Vector3Int start = tilemap.WorldToCell(GetStartPosition());
-            TakeArea(start, buildingScript.size);
+            TakeAreaPerm(GetColliderVertexPositionsLocal().min, buildingScript.size);
             building.SendMessage("BecomeSolid", SendMessageOptions.DontRequireReceiver);
             building = null;
         }
@@ -116,9 +118,6 @@ public class BuildingManager : Singleton<BuildingManager>
         building = Instantiate(build);
         lastBuild = build;
         buildingScript = build.GetComponent<BuildingBase>();
-
-        GetColliderVertexPositionsLocal();
-        CalculateSizeInCells();
     }
 
     //Drag blueprint around with mouse
@@ -126,81 +125,34 @@ public class BuildingManager : Singleton<BuildingManager>
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 worldPoint = ray.GetPoint(-ray.origin.z / ray.direction.z);
-        Vector3Int position = tilemap.WorldToCell(worldPoint);
-
-        //TileBase tile = tilemap.GetTile(position);
+        Vector3Int position = tilemapTemp.WorldToCell(worldPoint);
         building.transform.position = position;
+
+        tilemapTemp.ClearAllTiles();
+        TakeArea(GetColliderVertexPositionsLocal().min, buildingScript.size);
     }
     
-    //Fetch verticies of blueprint
-    void GetColliderVertexPositionsLocal()
+    //Fetch Size of blueprint in cells
+    BoundsInt GetColliderVertexPositionsLocal()
     {
-        BoxCollider2D b = building.GetComponent<BoxCollider2D>();
-        vertices = new Vector2[4];
-        vertices[0] = b.bounds.center + new Vector3(-b.size.x, -b.size.y) * .5f;
-        vertices[1] = b.bounds.center + new Vector3(b.size.x, -b.size.y) * .5f;
-        vertices[2] = b.bounds.center + new Vector3(b.size.x, b.size.y) * .5f;
-        vertices[3] = b.bounds.center + new Vector3(-b.size.x, b.size.y) * .5f;
+        return new BoundsInt(new Vector3Int((int)building.transform.position.x,
+            (int)building.transform.position.y), buildingScript.size * tilemapTemp.size);
     }
 
-    //Calculate size using cells
-    void CalculateSizeInCells()
-    {
-        Vector3Int[] vert = new Vector3Int[vertices.Length];
-
-        for (int i = 0; i < vert.Length; i++)
-        {
-            Vector3 worldPos = transform.TransformPoint(vertices[i]);
-            vert[i] = tilemap.WorldToCell(worldPos);
-        }
-
-        size = new Vector3Int(Math.Abs((vert[0] - vert[1]).x), Math.Abs((vert[0] - vert[3]).y), 1);
-    }
-
-    Vector3 GetStartPosition()
-    {
-        return building.transform.TransformPoint(vertices[0]);
-    }
-
-    //Get all tiles under blueprint
-    static TileBase[] GetTilesBlock(BoundsInt area, Tilemap tilemap)
-    {
-        TileBase[] array = new TileBase[area.size.x * area.size.y * area.size.z];
-        int counter = 0;
-
-        foreach (var v in area.allPositionsWithin)
-        {
-            Vector3Int pos = new Vector3Int(v.x, v.y, 0);
-            array[counter] = tilemap.GetTile(pos);
-            counter++;
-        }
-
-        return array;
-    }
-
-    //Checks if current blueprint can be placed on current square
-    bool CanBePlaced(BuildingBase buildingBase)
-    {
-        BoundsInt area = new BoundsInt();
-        area.position = tilemap.WorldToCell(GetStartPosition());
-        area.size = buildingBase.size;
-
-        TileBase[] baseArray = GetTilesBlock(area, tilemap);
-
-        foreach (var b in baseArray)
-        {
-            if (b == whiteTile)
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
-    //Mark area under blueprint as occupied
+    //Mark area under blueprint
     void TakeArea(Vector3Int start, Vector3Int size)
     {
-        tilemap.BoxFill(start, whiteTile, start.x, start.y, start.x + size.x, start.y + size.y);
+        var x = new Vector3Int(start.x - (size.x/2), start.y - (size.y/2));
+        tilemapTemp.BoxFill(x, ((touchingAnotherBuilding) ? redTile : greenTile), 
+            x.x, x.y, x.x + size.x, x.y + size.y);
+    }
+
+    //Mark perm area under blueprint as occupied
+    void TakeAreaPerm(Vector3Int start, Vector3Int size)
+    {
+        tilemapTemp.ClearAllTiles();
+        var x = new Vector3Int(start.x - (size.x / 2), start.y - (size.y / 2));
+        tilemapPerm.BoxFill(x, (whiteTile), 
+            x.x, x.y, x.x + size.x, x.y + size.y);
     }
 }

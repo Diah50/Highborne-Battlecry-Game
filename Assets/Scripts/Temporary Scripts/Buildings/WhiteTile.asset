@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 0-2522_black-square-clipart-square-black-and-white-hd_0
+  m_Name: WhiteTile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 860112453, guid: b2ba2fb03fbd0404cb52db72c87cff6e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.015686275}
   m_Transform:
     e00: 1
     e01: 0
