@@ -44,11 +44,6 @@ public class BuildingManager : Singleton<BuildingManager>
     List<GameObject> buildBluePrints = new List<GameObject>();
 
     /// <summary>
-    /// Vertices of building
-    /// </summary>
-    Vector2[] vertices;
-
-    /// <summary>
     /// Basic tiles to occupy grid
     /// </summary>
     public TileBase redTile, greenTile, whiteTile;
@@ -58,7 +53,16 @@ public class BuildingManager : Singleton<BuildingManager>
     /// </summary>
     BuildingBase buildingScript;
 
+    /// <summary>
+    /// Whether or not the building blueprint is touching another exisiting building 
+    /// </summary>
     public bool touchingAnotherBuilding;
+
+    /// <summary>
+    /// Relavant variables if the building is a resource collector and touching the correct node
+    /// </summary>
+    public bool touchingCorrectResource, resourceBuilding;
+    public Transform resourcePoint;
 
     private void Update()
     {
@@ -70,15 +74,13 @@ public class BuildingManager : Singleton<BuildingManager>
         
         //Check if current building can be placed in current spot
         if (buildingScript != null)
-            if (!touchingAnotherBuilding) PlaceBuilds();
+            if ((!touchingAnotherBuilding) && (!resourceBuilding || 
+                (touchingCorrectResource && resourceBuilding && resourcePoint != null)))
+                PlaceBuilds();
 
         //When Shift is released the chain of buildings is solidified
         if (Input.GetKeyUp(KeyCode.LeftShift) && buildBluePrints.Count > 0)
         {
-            foreach (GameObject gO in buildBluePrints)
-            {
-                gO.SendMessage("BecomeSolid", SendMessageOptions.DontRequireReceiver);
-            }
             if (building != null) Destroy(building);
             tilemapTemp.ClearAllTiles();
             building = null;
@@ -89,6 +91,7 @@ public class BuildingManager : Singleton<BuildingManager>
         if (Input.GetMouseButtonDown(1))
         {
             if (building != null) Destroy(building);
+            tilemapTemp.ClearAllTiles();
             building = null;
         }
     }
@@ -100,6 +103,7 @@ public class BuildingManager : Singleton<BuildingManager>
         {
             TakeAreaPerm(GetColliderVertexPositionsLocal().min, buildingScript.size);
             buildBluePrints.Add(building);
+            building.SendMessage("BecomeSolid", SendMessageOptions.DontRequireReceiver);
             building = null;
             SelectBuilding(lastBuild);
         }//Build single building
@@ -125,7 +129,9 @@ public class BuildingManager : Singleton<BuildingManager>
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Vector3 worldPoint = ray.GetPoint(-ray.origin.z / ray.direction.z);
+        if (resourcePoint != null && resourceBuilding) worldPoint = resourcePoint.position;
         Vector3Int position = tilemapTemp.WorldToCell(worldPoint);
+
         building.transform.position = position;
 
         tilemapTemp.ClearAllTiles();
@@ -143,7 +149,8 @@ public class BuildingManager : Singleton<BuildingManager>
     void TakeArea(Vector3Int start, Vector3Int size)
     {
         var x = new Vector3Int(start.x - (size.x/2), start.y - (size.y/2));
-        tilemapTemp.BoxFill(x, ((touchingAnotherBuilding) ? redTile : greenTile), 
+        tilemapTemp.BoxFill(x, (((!touchingAnotherBuilding) && (!resourceBuilding ||
+                (touchingCorrectResource && resourceBuilding && resourcePoint != null))) ? greenTile : redTile), 
             x.x, x.y, x.x + size.x, x.y + size.y);
     }
 

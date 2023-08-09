@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - food
+  - wood
+  - metal
+  - crystal
+  - stone
+  - gold
   layers:
   - Default
   - TransparentFX
@@ -15,7 +21,7 @@ TagManager:
   - Camera
   - WorldBounds
   - Building
-  - 
+  - ResourceNode
   - 
   - 
   - 
