@@ -11,9 +11,12 @@
  *      [01/08/2023] - Fixed spelling mistakes + Made "Grid" serializable (C137)
  *      [02/08/2023] - Use of new singleton system (C137)
  *      [04/08/2023] - add Perlin Noise functionality (DaynerKurdi)
+ *      [07/08/2023] - add Perlin Noise functionality for Resource (DaynerKurdi)
  */
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Grid
@@ -64,7 +67,7 @@ public class Grid
     /// </summary>
     public int TotalCellCount { get { return cellCount; } }
     #endregion
-    public Grid(int width, int height, float cellSize, Vector3 offset)
+    public Grid(Transform parentForCell, int width, int height, float cellSize, Vector3 offset)
     {
         this.width = width;
         this.height = height;
@@ -98,6 +101,7 @@ public class Grid
                 cell.transform.position = GetCellCenter(x,y);
                 //Scaling the object so the sprite match the cell size. roughly 
                 cell.transform.localScale = new Vector3(4, 4, 1);
+                cell.transform.parent = parentForCell;
             
                 Tile tile = cell.AddComponent<Tile>();
 
@@ -187,7 +191,7 @@ public class Grid
 public class TileGenerator : MonoBehaviour
 {
     #region Gride & Tile
-    [Header("Grid & Tile Setting")]
+    [Header("Grid Setting")]
     /// <summary>
     /// The initial gird size
     /// </summary>
@@ -215,22 +219,43 @@ public class TileGenerator : MonoBehaviour
     /// The Grid's Tile Array
     /// </summary>
     public Tile[,] tileArray;
+
+    /// <summary>
+    /// The List used to store the Nature Reaources
+    /// </summary>
+    public List<StationeryEnity> NatureResourceList;
     #endregion
 
     [Header("-------------------")]
-
+    [Header("Tile's Perlin Noise Setting")]
     #region Perlin Noise 
+
     /// <summary>
     /// The Seed for the Perlin Noise 
     /// </summary>
     [SerializeField]
-    private int PerlinNoiseSeed = 0;
+    private int PerlinNoiseSeedForTile = 0;
 
     /// <summary>
     /// The scale of the Perlin Noise image, higher value = more randomness 
     /// </summary>
     [SerializeField]
-    private float PerlinNoiseScale = 1;
+    private float PerlinNoiseScaleForTile = 1;
+    
+    [Header("-------------------")]
+    [Header("Resource's Perlin Noise Setting")]
+
+    /// <summary>
+    /// The Seed for the Perlin Noise 
+    /// </summary>
+    [SerializeField]
+    private int PerlinNoiseSeedForResource = 0;
+
+    /// <summary>
+    /// The scale of the Perlin Noise image, higher value = more randomness 
+    /// </summary>
+    [SerializeField]
+    private int PerlinNoiseScaleForResource = 1;
     #endregion
 
     // Start is called before the first frame update
@@ -241,17 +266,102 @@ public class TileGenerator : MonoBehaviour
 
     private void Initialize()
     {
-        //setup Perlin Noise "dose not reset"
-        PerlinNoiseGenerator.Seed = PerlinNoiseSeed;
-        PerlinNoiseGenerator.Scale = PerlinNoiseScale;
 
-        grid = new Grid(gridSize.x, gridSize.y, cellSize, gridOffSet);
+        TitleGeneration();
+
+        ResourceGeneration();
+    }
+
+    private void TitleGeneration()
+    {
+        //setup Perlin Noise "dose not reset"
+        PerlinNoiseGenerator.Seed = PerlinNoiseSeedForTile;
+        PerlinNoiseGenerator.Scale = PerlinNoiseScaleForTile;
+
+        grid = new Grid(this.transform, gridSize.x, gridSize.y, cellSize, gridOffSet);
 
         tileArray = new Tile[grid.Width, grid.Height];
 
         tileArray = grid.GetCellArray();
+    }
 
-        //PerlinNoiseGenerator test = new PerlinNoiseGenerator(555, 6);
-        //test.calculatNoise(8,50, grid.Width, grid.Height);
+    private void ResourceGeneration()
+    {
+        PerlinNoiseGenerator.Seed = PerlinNoiseSeedForResource;
+        PerlinNoiseGenerator.Scale = PerlinNoiseScaleForResource;
+
+        NatureResourceList = new List<StationeryEnity>();
+
+        for (int y = 0; y < grid.Height; y++)
+        {
+            for (int x = 0; x < grid.Width; x++)
+            {
+                int noiseResult = PerlinNoiseGenerator.calculatNoise(x, y, grid.Width, grid.Height);
+                switch (noiseResult)
+                {
+
+                    case 1:
+                        {
+                            ResourceSelector(tileArray[x, y]);
+                        }
+                        break;
+
+                    case 9:
+                        {
+                            ResourceSelector(tileArray[x,y]);
+                        }
+                        break;
+                    default: 
+                        {
+                            
+                        }
+                        break;
+                }
+            }
+        }
+    }
+
+    private void ResourceSelector(Tile tile)
+    {
+        GameObject resource = new GameObject();
+        resource.transform.position = new Vector3(tile.transform.position.x , tile.transform.position.y , tile.transform.position.z - 1) ;
+        resource.transform.parent = tile.transform;
+        resource.transform.localScale = new Vector3(1, 1, 1);
+
+        StationeryEnity resScript = resource.AddComponent<StationeryEnity>();
+
+        resScript.SetupStationery(tile, StationeryType.Resource);
+
+        switch (resScript.BiomeType)
+        {
+            case BiomeType.Unknown:
+                {
+
+                }
+                break;
+            case BiomeType.Grass:
+                {
+                    resScript.gameObject.name = "Resource: Fertile Land";
+                    resScript.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[1]);
+                }
+                break;
+            case BiomeType.Dirt:
+                {
+                    resScript.gameObject.name = "Resource: Iron Deposit";
+                    resScript.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[4]);
+                }
+                break;
+            case BiomeType.Water:
+                {
+                    resScript.gameObject.name = "Resource: Fish Pond";
+                    resScript.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[2]);
+                }
+                break;
+            default:
+                {
+
+                }
+                break;
+        }
     }
 }
