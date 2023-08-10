@@ -9,6 +9,7 @@
  * Changes: 
  *      [03/08/2023] - Initial implementation (Archetype)
  *      [08/08/2023] - Bug fixing (Archetype)
+ *      [10/08/2023] - Made TakeAreaPerm() public so neutral buildings can acess it (Archetype)
  */
 using System;
 using System.Collections;
@@ -101,7 +102,7 @@ public class BuildingManager : Singleton<BuildingManager>
         //Start build chain
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift))
         {
-            TakeAreaPerm(GetColliderVertexPositionsLocal().min, buildingScript.size);
+            TakeAreaPerm(GetColliderVertexPositionsLocal(building, buildingScript).min, buildingScript.size);
             buildBluePrints.Add(building);
             building.SendMessage("BecomeSolid", SendMessageOptions.DontRequireReceiver);
             building = null;
@@ -109,7 +110,7 @@ public class BuildingManager : Singleton<BuildingManager>
         }//Build single building
         else if (Input.GetMouseButtonDown(0))
         {
-            TakeAreaPerm(GetColliderVertexPositionsLocal().min, buildingScript.size);
+            TakeAreaPerm(GetColliderVertexPositionsLocal(building, buildingScript).min, buildingScript.size);
             building.SendMessage("BecomeSolid", SendMessageOptions.DontRequireReceiver);
             building = null;
         }
@@ -135,14 +136,14 @@ public class BuildingManager : Singleton<BuildingManager>
         building.transform.position = position;
 
         tilemapTemp.ClearAllTiles();
-        TakeArea(GetColliderVertexPositionsLocal().min, buildingScript.size);
+        TakeArea(GetColliderVertexPositionsLocal(building, buildingScript).min, buildingScript.size);
     }
     
     //Fetch Size of blueprint in cells
-    BoundsInt GetColliderVertexPositionsLocal()
+    public BoundsInt GetColliderVertexPositionsLocal(GameObject obj, BuildingBase script)
     {
-        return new BoundsInt(new Vector3Int((int)building.transform.position.x,
-            (int)building.transform.position.y), buildingScript.size * tilemapTemp.size);
+        return new BoundsInt(new Vector3Int((int)obj.transform.position.x,
+            (int)obj.transform.position.y), script.size * tilemapTemp.size);
     }
 
     //Mark area under blueprint
@@ -155,7 +156,7 @@ public class BuildingManager : Singleton<BuildingManager>
     }
 
     //Mark perm area under blueprint as occupied
-    void TakeAreaPerm(Vector3Int start, Vector3Int size)
+    public void TakeAreaPerm(Vector3Int start, Vector3Int size)
     {
         tilemapTemp.ClearAllTiles();
         var x = new Vector3Int(start.x - (size.x / 2), start.y - (size.y / 2));

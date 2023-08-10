@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1585331838346340606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8371426350795234497}
+  m_Layer: 2
+  m_Name: Center(Where the mouse will be)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8371426350795234497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585331838346340606}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3934378318765900918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2648592321042882372
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3934378318765900918}
-  - component: {fileID: 1198670598131014254}
   - component: {fileID: -8945931721289814664}
   - component: {fileID: 977402820540866249}
+  - component: {fileID: -8129388908297597489}
   m_Layer: 2
   m_Name: BuildingTemplate
   m_TagString: Untagged
@@ -33,30 +64,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 260608522851823826}
+  - {fileID: 8371426350795234497}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1198670598131014254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2648592321042882372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 973a02483ad26e043abba0c09f5de0ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  size: {x: 2, y: 2, z: 1}
-  sprite: {fileID: 5504114089862587495}
-  buildPhase1: {fileID: 860112453, guid: b2ba2fb03fbd0404cb52db72c87cff6e, type: 3}
-  buildPhase2: {fileID: 21300000, guid: 77d88b124360e2c45bb8992461566028, type: 3}
-  buildPhase3: {fileID: 21300000, guid: fead6c99ff158fe4dbf8f6f9d27ea470, type: 3}
-  buildDone: {fileID: 21300000, guid: 84af353293e8eda4fa4aa04a7dbf3c27, type: 3}
-  built: 0
-  numOfWorkers: 0
-  maxNumOfWorkers: 0
-  whatIsProduced: gold
 --- !u!61 &-8945931721289814664
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -89,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.50585186, y: 0.50538236}
+  m_Offset: {x: 0.50585186, y: 0.9879979}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -100,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7494092, y: 2.75275}
+  m_Size: {x: 2.7494092, y: 1.7875187}
   m_EdgeRadius: 0
 --- !u!50 &977402820540866249
 Rigidbody2D:
@@ -129,6 +139,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &-8129388908297597489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2648592321042882372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be852461f133e6141a50425bf0b205c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 2, y: 1, z: 1}
+  playerBuild: 1
+  buildPhase1: {fileID: 860112453, guid: b2ba2fb03fbd0404cb52db72c87cff6e, type: 3}
+  buildPhase2: {fileID: 21300000, guid: 77d88b124360e2c45bb8992461566028, type: 3}
+  buildPhase3: {fileID: 21300000, guid: fead6c99ff158fe4dbf8f6f9d27ea470, type: 3}
+  buildDone: {fileID: 21300000, guid: 84af353293e8eda4fa4aa04a7dbf3c27, type: 3}
+  built: 0
 --- !u!1 &6580089476016548746
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,8 +184,8 @@ Transform:
   m_GameObject: {fileID: 6580089476016548746}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
-  m_LocalScale: {x: 2.72, y: 2.72, z: 2.72}
+  m_LocalPosition: {x: 0.5, y: 0.9767, z: 0}
+  m_LocalScale: {x: 2.72, y: 1.75984, z: 2.72}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3934378318765900918}

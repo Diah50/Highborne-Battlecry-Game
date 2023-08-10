@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectMouse : MonoBehaviour
+public class DetectIfMouseIsTouchingNode : MonoBehaviour
 {
     private void OnMouseEnter()
     {
