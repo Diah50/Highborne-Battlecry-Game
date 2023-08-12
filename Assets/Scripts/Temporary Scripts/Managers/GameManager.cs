@@ -15,5 +15,8 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    /// <summary>
+    /// Color for player team
+    /// </summary>
     public Color teamColor;
 }

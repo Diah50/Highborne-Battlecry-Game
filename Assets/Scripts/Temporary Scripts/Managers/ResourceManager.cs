@@ -60,17 +60,18 @@ public class ResourceManager : Singleton<ResourceManager>
     public int populationTotal, populationMax;
     [Space]
     /// <summary>
-    /// How frequently resources are gained
+    /// How frequently in seconds resources are gained
     /// </summary>
     public float tickSpeed = 1;
 
     /// <summary>
-    /// How much is gained for every worker per tick
+    /// How much is gained for every worker and node per tick
     /// </summary>
     int resourceMultiplyer = 1;
 
     private void Start()
     {
+        //Update resources every tickSpeed amount of seconds
         InvokeRepeating("UpdateResources", tickSpeed, tickSpeed);
     }
 

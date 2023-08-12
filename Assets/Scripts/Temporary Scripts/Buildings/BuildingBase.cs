@@ -9,11 +9,14 @@
  * Changes: 
  *      [03/08/2023] - Initial implementation (Archetype)
  *      [08/08/2023] - Bug fixing (Archetype)
- *      [10/08/2023] - Aded script paramaters for a neutral resource building that can be captured, also custom Editor (Archetype)
+ *      [10/08/2023] - Added script paramaters for a neutral resource building that can be captured, also custom Editor (Archetype)
+ *      [12/08/2023] - Added health to buildings, can be moved to new script if needed but currently is in its own region here for convenience (Archetype)
 */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -73,7 +76,7 @@ public class BuildingBase : MonoBehaviour
     /// <summary>
     /// Mark as true if this is a building that a player can build
     /// </summary>
-    [HideInInspector]public bool playerBuild;
+    [HideInInspector] public bool playerBuild;
 
     /// <summary>
     /// The different sprite's representing how finished the building is, buildDone should be placed as the default sprite
@@ -88,19 +91,46 @@ public class BuildingBase : MonoBehaviour
     /// <summary>
     /// How far along the building is from being finished out of 100
     /// </summary>
-    float buildPercent = 0;
+    float buildPercent = 1;
 
     /// <summary>
     /// Whether or not the building has finished construction
     /// </summary>
     public bool built;
 
+    #region Health
+    /// <summary>
+    /// Health bar slider that will be instantiated on Start via WorldCanvasManager
+    /// </summary>
+    Slider healthBar;
+
+    /// <summary>
+    /// Miximum amount of health points for the building
+    /// </summary>
+    public float maxHealth = 100;
+
+    /// <summary>
+    /// Current health points of the building
+    /// </summary>
+    float currentHealth;
+
+    /// <summary>
+    /// Healthbar image that represents amount of health points
+    /// </summary>
+    Image healthBarFillImage;
+
+    /// <summary>
+    /// Number on health bar that displays health points
+    /// </summary>
+    TextMeshProUGUI healthText;
+    #endregion
+
     public virtual void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
         sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
         
-        if (!playerBuild) BuildingManager.singleton.TakeAreaPerm
+        if (!playerBuild) BuildingManager.singleton.TakeAreaPerm 
                 (BuildingManager.singleton.GetColliderVertexPositionsLocal(transform.GetChild(1).gameObject, this).min, size);
     }
 
@@ -124,16 +154,31 @@ public class BuildingBase : MonoBehaviour
         sprite.color = new Color(1, 1, 1, 1);
         sprite.sprite = buildPhase1;
         gameObject.layer = LayerMask.NameToLayer("Building");
+
+        #region Health
+        //Instantiate health bar on canvas
+        healthBar = WorldCanvasManager.singleton.AskForHealthBar(gameObject);
+
+        //Define variables
+        healthBar.maxValue = maxHealth;
+        healthBarFillImage = healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>();
+        healthText = healthBar.gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        ChangeSlider();
+
+        //Hide health bar
+        healthBar.gameObject.SetActive(false);
+        #endregion
     }
 
     //Any builder working on this building should periodically trigger this
     public void ConstructBuild(float buildAmount)
     {
-        if (!playerBuild) return;
+        if (!playerBuild || built) return;
         buildPercent += buildAmount;
         if (buildPercent >= 100)
         {
-            if (!built) BuildDone();
+            buildPercent = 100;
+            BuildDone();
         }
         else if (buildPercent >= 67)
         {
@@ -143,6 +188,8 @@ public class BuildingBase : MonoBehaviour
         {
             sprite.sprite = buildPhase2;
         }
+
+        AddToHealth((maxHealth / 100) * buildAmount);
     }
 
     //Do things when the building finishes construction
@@ -150,5 +197,59 @@ public class BuildingBase : MonoBehaviour
     {
         sprite.sprite = buildDone;
         built = true;
+    }
+
+    #region Health
+    //Increase current health by amount
+    public void AddToHealth(float amount)
+    {
+        currentHealth += amount;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
+        ChangeSlider();
+    }
+
+    //Decrease current health by amount
+    public void ReduceHealth(float amount)
+    {
+        currentHealth -= amount;
+        if (currentHealth <= 0) Destroy(gameObject);
+        ChangeSlider();
+    }
+
+    //Update health bar fill amount, color and text
+    void ChangeSlider()
+    {
+        if (healthBar.IsActive())
+        {
+            healthBar.value = currentHealth;
+            healthBarFillImage.color = Color.Lerp(Color.red, Color.green, healthBar.value / 100);
+            healthText.text = currentHealth + "/" + maxHealth;
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        //Display health bar
+        healthBar.gameObject.SetActive(true);
+        ChangeSlider();
+    }
+
+    private void OnMouseExit()
+    {
+        //Hide health bar
+        healthBar.gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        //When this is destroyed also destroy health bar
+        if (healthBar != null) Destroy(healthBar.gameObject);
+    }
+    #endregion
+
+    //DEBUG DELETE AFTER TESTING
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) ConstructBuild(10);
     }
 }

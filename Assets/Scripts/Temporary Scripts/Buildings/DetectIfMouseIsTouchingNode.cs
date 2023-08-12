@@ -6,7 +6,7 @@ public class DetectIfMouseIsTouchingNode : MonoBehaviour
 {
     private void OnMouseEnter()
     {
-        BuildingManager.singleton.resourcePoint = transform;
+        Debug.Log("oh the pain the pain");
     }
 
     private void OnMouseExit()

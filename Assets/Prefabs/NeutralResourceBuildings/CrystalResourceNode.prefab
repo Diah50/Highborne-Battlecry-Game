@@ -22,10 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6815768989955907588, guid: d63d213c32123cb458bf70b6df76ddcf, type: 3}
       propertyPath: m_Name
-      value: ResourceNodeBase Variant
+      value: CrystalResourceNode
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1960052981271996964, guid: d63d213c32123cb458bf70b6df76ddcf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d63d213c32123cb458bf70b6df76ddcf, type: 3}

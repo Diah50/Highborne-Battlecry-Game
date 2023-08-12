@@ -65,6 +65,7 @@ Transform:
   m_Children:
   - {fileID: 260608522851823826}
   - {fileID: 8371426350795234497}
+  - {fileID: 9001791984977933169}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &-8945931721289814664
@@ -99,7 +100,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.50585186, y: 0.9879979}
+  m_Offset: {x: 0.50585186, y: 0.5009128}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -110,7 +111,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7494092, y: 1.7875187}
+  m_Size: {x: 2.7494092, y: 2.761689}
   m_EdgeRadius: 0
 --- !u!50 &977402820540866249
 Rigidbody2D:
@@ -151,13 +152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be852461f133e6141a50425bf0b205c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 2, y: 1, z: 1}
+  size: {x: 2, y: 2, z: 1}
   playerBuild: 1
-  buildPhase1: {fileID: 860112453, guid: b2ba2fb03fbd0404cb52db72c87cff6e, type: 3}
-  buildPhase2: {fileID: 21300000, guid: 77d88b124360e2c45bb8992461566028, type: 3}
-  buildPhase3: {fileID: 21300000, guid: fead6c99ff158fe4dbf8f6f9d27ea470, type: 3}
-  buildDone: {fileID: 21300000, guid: 84af353293e8eda4fa4aa04a7dbf3c27, type: 3}
+  buildPhase1: {fileID: -288693066, guid: 8addf802f544a084294f36e49c86a195, type: 3}
+  buildPhase2: {fileID: -1201093003, guid: 8addf802f544a084294f36e49c86a195, type: 3}
+  buildPhase3: {fileID: -1753142224, guid: 8addf802f544a084294f36e49c86a195, type: 3}
+  buildDone: {fileID: -706206588, guid: 8addf802f544a084294f36e49c86a195, type: 3}
   built: 0
+  maxHealth: 86
 --- !u!1 &6580089476016548746
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,8 +186,8 @@ Transform:
   m_GameObject: {fileID: 6580089476016548746}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.9767, z: 0}
-  m_LocalScale: {x: 2.72, y: 1.75984, z: 2.72}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 2.72, y: 2.72, z: 2.72}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3934378318765900918}
@@ -231,7 +233,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84af353293e8eda4fa4aa04a7dbf3c27, type: 3}
+  m_Sprite: {fileID: -706206588, guid: 8addf802f544a084294f36e49c86a195, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.6}
   m_FlipX: 0
   m_FlipY: 0
@@ -242,3 +244,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6733807184831596796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9001791984977933169}
+  m_Layer: 5
+  m_Name: HealthBarPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &9001791984977933169
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733807184831596796}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.017, y: 0.017, z: 0.017}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3934378318765900918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.5, y: -0.45}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}

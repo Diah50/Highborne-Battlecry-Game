@@ -10,6 +10,7 @@
  *      [03/08/2023] - Initial implementation (Archetype)
  *      [08/08/2023] - Bug fixing (Archetype)
  *      [10/08/2023] - Made TakeAreaPerm() public so neutral buildings can acess it (Archetype)
+ *      [12/08/2023] - TakeAreaPerm() is currently mostly deactivated but may be used if needed (Archetype)
  */
 using System;
 using System.Collections;
@@ -57,13 +58,14 @@ public class BuildingManager : Singleton<BuildingManager>
     /// <summary>
     /// Whether or not the building blueprint is touching another exisiting building 
     /// </summary>
-    public bool touchingAnotherBuilding;
+    [HideInInspector] public bool touchingAnotherBuilding;
 
     /// <summary>
     /// Relavant variables if the building is a resource collector and touching the correct node
     /// </summary>
-    public bool touchingCorrectResource, resourceBuilding;
-    public Transform resourcePoint;
+    public bool resourceBuilding;
+    [HideInInspector] public bool touchingCorrectResource;
+    [HideInInspector] public Transform resourcePoint;
 
     private void Update()
     {
@@ -72,13 +74,15 @@ public class BuildingManager : Singleton<BuildingManager>
             
         //Selected buildings follow mouse around
         MoveWithMouse();
-        
-        //Check if current building can be placed in current spot
-        if (buildingScript != null)
-            if ((!touchingAnotherBuilding) && (!resourceBuilding || 
-                (touchingCorrectResource && resourceBuilding && resourcePoint != null)))
-                PlaceBuilds();
 
+        //Check if current building can be placed in current spot
+        CheckIfTouching();
+
+        CheckInput();
+    }
+
+    void CheckInput()
+    {
         //When Shift is released the chain of buildings is solidified
         if (Input.GetKeyUp(KeyCode.LeftShift) && buildBluePrints.Count > 0)
         {
@@ -95,6 +99,14 @@ public class BuildingManager : Singleton<BuildingManager>
             tilemapTemp.ClearAllTiles();
             building = null;
         }
+    }
+
+    void CheckIfTouching()
+    {
+        if (buildingScript != null)
+            if ((!touchingAnotherBuilding) && (!resourceBuilding ||
+                (touchingCorrectResource && resourceBuilding && resourcePoint != null)))
+                PlaceBuilds();
     }
 
     void PlaceBuilds()
@@ -132,6 +144,7 @@ public class BuildingManager : Singleton<BuildingManager>
         Vector3 worldPoint = ray.GetPoint(-ray.origin.z / ray.direction.z);
         if (resourcePoint != null && resourceBuilding) worldPoint = resourcePoint.position;
         Vector3Int position = tilemapTemp.WorldToCell(worldPoint);
+        position.z = -1;
 
         building.transform.position = position;
 
@@ -159,8 +172,10 @@ public class BuildingManager : Singleton<BuildingManager>
     public void TakeAreaPerm(Vector3Int start, Vector3Int size)
     {
         tilemapTemp.ClearAllTiles();
+        /*
         var x = new Vector3Int(start.x - (size.x / 2), start.y - (size.y / 2));
         tilemapPerm.BoxFill(x, (whiteTile), 
             x.x, x.y, x.x + size.x, x.y + size.y);
+        */
     }
 }
