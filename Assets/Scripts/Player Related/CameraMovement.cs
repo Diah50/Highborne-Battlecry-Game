@@ -105,7 +105,7 @@ public class CameraMovement : Singleton<CameraMovement>
     private void OnMouseDown()
     {
         numOfClicks++;
-        if (numOfClicks >= 2) CameraCenterMovement.Instance.TakeFocus(transform);
+        if (numOfClicks >= 2) CameraMovement.singleton.TakeFocus(transform);
         Invoke("giveUpOnDoubleClick", .2f);
     }
     void giveUpOnDoubleClick()
