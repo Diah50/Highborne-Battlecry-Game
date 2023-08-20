@@ -1,11 +1,14 @@
 /* PerlinNoiseGenerator.cs - Highborne Universe
  * 
  * Creation Date: 04/08/2023
- * Authors: DaynerKurdi
- * Original : DaynerKurdi
+ * Authors: DaynerKurdi, C137
+ * Original: DaynerKurdi
+ * 
+ * Edited By: C137
  * 
  * Changes: 
  *      [04/08/2023] - Initial implementation (DaynerKurdi)
+ *      [18/08/2023] - Code review (C137)
  */
 
 using System.Collections;
@@ -21,19 +24,13 @@ public static class PerlinNoiseGenerator
     public static int Seed { get { return seed; } set { seed = value; } }
     public static float Scale { get { return scale; } set { scale = value; } }
 
-    public static int calculatNoise(int cellX, int cellY, int gridWidth, int gridHeight)
+    public static int CalculatNoise(int cellX, int cellY, int gridWidth, int gridHeight)
     {
-        int result = 0;
-
         float x = (float)cellX / gridWidth * scale; 
         float y = (float)cellY / gridHeight * scale;
 
         float resultNoise = Mathf.PerlinNoise(x + seed, y + seed);
 
-        result = (int)(resultNoise * 10);
-
-      //  Debug.Log(result + "    " + x + "   " + y);
-
-        return result;
+        return (int)(resultNoise * 10);
     }
 }

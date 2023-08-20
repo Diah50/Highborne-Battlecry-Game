@@ -10,8 +10,9 @@
  *      [30/07/2023] - Initial implementation (DaynerKurdi)
  *      [01/08/2023] - Fixed spelling mistakes + Made "Grid" serializable (C137)
  *      [02/08/2023] - Use of new singleton system (C137)
- *      [04/08/2023] - add Perlin Noise functionality (DaynerKurdi)
- *      [07/08/2023] - add Perlin Noise functionality for Resource (DaynerKurdi)
+ *      [04/08/2023] - Added Perlin Noise functionality (DaynerKurdi)
+ *      [07/08/2023] - Added Perlin Noise functionality for Resource (DaynerKurdi)
+ *      [20/08/2023] - Code Review (C137)
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -76,8 +77,6 @@ public class Grid
 
         this.cellArray = new Tile[width, height];
 
-       // string output = "";
-
         int cellCount = 0;
 
         // y first
@@ -86,19 +85,9 @@ public class Grid
             // x second
             for (int x = 0; x < this.cellArray.GetLength(0); x++)
             {
-            //    if (x == 0)
-            //    {
-            //        output = y.ToString();
-            //    }
-
-                //output = output + "  " + x.ToString();
-
-                //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x, y + 1), Color.white, 100f);
-                //Debug.DrawLine(this.GetCellBorders(x, y), this.GetCellBorders(x + 1, y), Color.white, 100f);
-
-                //For testing
                 GameObject cell = new GameObject(cellCount.ToString());
                 cell.transform.position = GetCellCenter(x,y);
+
                 //Scaling the object so the sprite match the cell size. roughly 
                 cell.transform.localScale = new Vector3(4, 4, 1);
                 cell.transform.parent = parentForCell;
@@ -112,11 +101,7 @@ public class Grid
                 cellCount++;
             }
 
-           // Debug.Log(output);
         }
-
-        //Debug.DrawLine(this.GetCellBorders(0, this.width), this.GetCellBorders(this.width, this.height), Color.white, 100f);
-        //Debug.DrawLine(this.GetCellBorders(this.width, 0), this.GetCellBorders(this.width, this.height), Color.white, 100f);
 
         this.cellCount = cellCount;
     }
@@ -141,7 +126,7 @@ public class Grid
     private void InitializeTile(Tile tile, Vector2Int cellIndex)
     {
 
-        int PerlinNoiseResult = PerlinNoiseGenerator.calculatNoise(cellIndex.x, cellIndex.y, width, height);
+        int PerlinNoiseResult = PerlinNoiseGenerator.CalculatNoise(cellIndex.x, cellIndex.y, width, height);
 
 
         switch (PerlinNoiseResult)
@@ -190,7 +175,7 @@ public class Grid
 
 public class TileGenerator : MonoBehaviour
 {
-    #region Gride & Tile
+    #region Grid & Tile
     [Header("Grid Setting")]
     /// <summary>
     /// The initial gird size
@@ -221,14 +206,14 @@ public class TileGenerator : MonoBehaviour
     public Tile[,] tileArray;
 
     /// <summary>
-    /// The List used to store the Nature Reaources
+    /// The List used to store the Nature Resources
     /// </summary>
-    public List<StationeryEnity> NatureResourceList;
+    public List<TiledObject> NatureResourceList;
     #endregion
 
+    #region Perlin Noise 
     [Header("-------------------")]
     [Header("Tile's Perlin Noise Setting")]
-    #region Perlin Noise 
 
     /// <summary>
     /// The Seed for the Perlin Noise 
@@ -266,15 +251,13 @@ public class TileGenerator : MonoBehaviour
 
     private void Initialize()
     {
-
         TitleGeneration();
-
         ResourceGeneration();
     }
 
     private void TitleGeneration()
     {
-        //setup Perlin Noise "dose not reset"
+        //Setup Perlin Noise "does not reset"
         PerlinNoiseGenerator.Seed = PerlinNoiseSeedForTile;
         PerlinNoiseGenerator.Scale = PerlinNoiseScaleForTile;
 
@@ -290,31 +273,23 @@ public class TileGenerator : MonoBehaviour
         PerlinNoiseGenerator.Seed = PerlinNoiseSeedForResource;
         PerlinNoiseGenerator.Scale = PerlinNoiseScaleForResource;
 
-        NatureResourceList = new List<StationeryEnity>();
+        NatureResourceList = new List<TiledObject>();
 
         for (int y = 0; y < grid.Height; y++)
         {
             for (int x = 0; x < grid.Width; x++)
             {
-                int noiseResult = PerlinNoiseGenerator.calculatNoise(x, y, grid.Width, grid.Height);
+                int noiseResult = PerlinNoiseGenerator.CalculatNoise(x, y, grid.Width, grid.Height);
                 switch (noiseResult)
                 {
-
                     case 1:
-                        {
                             ResourceSelector(tileArray[x, y]);
-                        }
                         break;
 
                     case 9:
-                        {
                             ResourceSelector(tileArray[x,y]);
-                        }
                         break;
                     default: 
-                        {
-                            
-                        }
                         break;
                 }
             }
@@ -328,39 +303,33 @@ public class TileGenerator : MonoBehaviour
         resource.transform.parent = tile.transform;
         resource.transform.localScale = new Vector3(1, 1, 1);
 
-        StationeryEnity resScript = resource.AddComponent<StationeryEnity>();
+        //Reference to the tiled object of the resource
+        TiledObject resourceTiledObject = resource.AddComponent<TiledObject>();
 
-        resScript.SetupStationery(tile, StationeryType.Resource);
+        resourceTiledObject.SetupStationery(tile, TiledObjectType.Resource);
 
-        switch (resScript.BiomeType)
+        switch (resourceTiledObject.BiomeType)
         {
-            case BiomeType.Unknown:
-                {
-
-                }
-                break;
             case BiomeType.Grass:
                 {
-                    resScript.gameObject.name = "Resource: Fertile Land";
-                    resScript.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[1]);
+                    resourceTiledObject.gameObject.name = "Resource: Fertile Land";
+                    resourceTiledObject.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[1]);
                 }
                 break;
             case BiomeType.Dirt:
                 {
-                    resScript.gameObject.name = "Resource: Iron Deposit";
-                    resScript.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[4]);
+                    resourceTiledObject.gameObject.name = "Resource: Iron Deposit";
+                    resourceTiledObject.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[4]);
                 }
                 break;
             case BiomeType.Water:
                 {
-                    resScript.gameObject.name = "Resource: Fish Pond";
-                    resScript.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[2]);
+                    resourceTiledObject.gameObject.name = "Resource: Fish Pond";
+                    resourceTiledObject.AssignSprite(SpriteLoader.singleton.ResourceSpriteArray[2]);
                 }
                 break;
-            default:
-                {
 
-                }
+            default:
                 break;
         }
     }

@@ -1,18 +1,21 @@
 /* StationeryEnity.cs - Highborne Universe
  * 
  * Creation Date: 07/08/2023
- * Authors: DaynerKurdi
- * Original : DaynerKurdi
+ * Authors: DaynerKurdi, C137
+ * Original: DaynerKurdi
+ * 
+ * Edited By: C137
  * 
  * Changes: 
- *      [07/08/2023] - Initial implementation (DaynerKurdi) *      
+ *      [07/08/2023] - Initial implementation (DaynerKurdi)
+ *      [18/08/2023] - Code review (C137)
  */
 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StationeryType
+public enum TiledObjectType
 {
     Unknown = 0,
     Resource = 1,
@@ -20,12 +23,12 @@ public enum StationeryType
 }
 
 [RequireComponent(typeof(SpriteRenderer))]
-public class StationeryEnity : MonoBehaviour
+public class TiledObject : MonoBehaviour
 {
     /// <summary>
-    /// What kind Stationery Object
+    /// What kind tiled object this is
     /// </summary>
-    private StationeryType type;
+    private TiledObjectType type;
 
     /// <summary>
     /// Used to store the tile info it placed upon
@@ -38,15 +41,18 @@ public class StationeryEnity : MonoBehaviour
     private Sprite sprite;
 
     /// <summary>
-    /// Getter for Stationery Object
+    /// Getter for tiled object
     /// </summary>
-    public StationeryType Type { get { return type; } }
+    public TiledObjectType Type { get { return type; } }
 
     /// <summary>
     /// Getting for which Tile Index is belong to 
     /// </summary>
     public Vector2Int CellIndex { get { return TileBelongTo.CellIndex; } }
 
+    /// <summary>
+    /// To what biome type does this tiled object belong to
+    /// </summary>
     public BiomeType BiomeType { get { return TileBelongTo.Type; } }
 
     /// <summary>
@@ -59,7 +65,7 @@ public class StationeryEnity : MonoBehaviour
     /// </summary>
     public Sprite Sprite { get { return sprite; } }
 
-    public void SetupStationery(Tile tile, StationeryType type)
+    public void SetupStationery(Tile tile, TiledObjectType type)
     {
         this.TileBelongTo = tile;
         this.type = type;   
