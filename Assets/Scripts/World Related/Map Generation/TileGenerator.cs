@@ -13,6 +13,7 @@
  *      [04/08/2023] - Added Perlin Noise functionality (DaynerKurdi)
  *      [07/08/2023] - Added Perlin Noise functionality for Resource (DaynerKurdi)
  *      [20/08/2023] - Code Review (C137)
+ *      [21/08/2023] - Made into a singleton and made cellSize public (Archetype)
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -36,7 +37,7 @@ public class Grid
     /// <summary>
     /// The size of each cell on the grid
     /// </summary>
-    private float cellSize;
+    [HideInInspector] public float cellSize;
 
     /// <summary>
     /// Total cell count in the grid
@@ -173,7 +174,7 @@ public class Grid
     }
 }
 
-public class TileGenerator : MonoBehaviour
+public class TileGenerator : Singleton<TileGenerator>
 {
     #region Grid & Tile
     [Header("Grid Setting")]

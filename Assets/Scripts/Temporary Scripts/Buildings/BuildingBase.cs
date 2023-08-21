@@ -11,6 +11,7 @@
  *      [08/08/2023] - Bug fixing (Archetype)
  *      [10/08/2023] - Added script paramaters for a neutral resource building that can be captured, also custom Editor (Archetype)
  *      [12/08/2023] - Added health to buildings, can be moved to new script if needed but currently is in its own region here for convenience (Archetype)
+ *      [21/08/2023] - Improved the ability to detect if the blueprint is overlapping with another building (Archetype)
 */
 using System.Collections;
 using System.Collections.Generic;
@@ -98,6 +99,11 @@ public class BuildingBase : MonoBehaviour
     /// </summary>
     public bool built;
 
+    /// <summary>
+    /// Collider list that helps with collision detection
+    /// </summary>
+    List<Collider2D> relevantColliders = new List<Collider2D>();
+
     #region Health
     /// <summary>
     /// Health bar slider that will be instantiated on Start via WorldCanvasManager
@@ -136,14 +142,22 @@ public class BuildingBase : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Building")) 
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Building"))
+        {
+            relevantColliders.Add(collision);
             BuildingManager.singleton.touchingAnotherBuilding = true;
+        }
     }
 
     public virtual void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Building")) 
-            BuildingManager.singleton.touchingAnotherBuilding = false;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Building"))
+        {
+            relevantColliders.Remove(collision);
+
+            if (relevantColliders.Count <= 0)
+                BuildingManager.singleton.touchingAnotherBuilding = false;
+        }
     }
 
     //Do things when the blueprint is placed

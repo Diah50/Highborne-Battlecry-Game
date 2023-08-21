@@ -4607,7 +4607,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &484106416
 Canvas:
   m_ObjectHideFlags: 0
@@ -13950,8 +13950,8 @@ MonoBehaviour:
   greenTile: {fileID: 11400000, guid: b6b5806ca261e4c4f8e04bd6a19b7f8a, type: 2}
   whiteTile: {fileID: 11400000, guid: f5b546d12a916cb459ce4d1088af7413, type: 2}
   touchingAnotherBuilding: 0
-  touchingCorrectResource: 0
   resourceBuilding: 0
+  touchingCorrectResource: 0
   resourcePoint: {fileID: 0}
 --- !u!1 &1536874335
 GameObject:
