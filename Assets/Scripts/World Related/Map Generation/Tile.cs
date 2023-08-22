@@ -7,6 +7,8 @@
  * Changes: 
  *      [30/07/2023] - Initial implementation (DaynerKurdi)
  *      [01/08/2023] - Moved BiomeType enum to this script (C137)
+ *      [04/08/2023] - Adding Getter for Cell Index (DaynerKurdi)
+ *      
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -55,6 +57,11 @@ public class Tile : MonoBehaviour
     /// Getter for sprite
     /// </summary>
     public Sprite Sprite { get { return sprite; } }
+
+    /// <summary>
+    /// Getter for cellIndex
+    /// </summary>
+    public Vector2Int CellIndex { get { return cellIndex; } }
 
     /// <summary>
     /// Getter for movmentCost

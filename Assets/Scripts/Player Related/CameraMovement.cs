@@ -13,6 +13,7 @@
  *  [30/07/2023] - Added edge scrolling + unit follow (Archetype)
  *  [01/08/2023] - Improve meta info + added documentation + code review (C137)
  *  [01/08/2023] - Removed namespace for Singleton, small script update for organization, removed debug assets (Archetype)
+ *  [21/08/2023] - Added mousewheel zoom (Archetype)
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -51,12 +52,27 @@ public class CameraMovement : Singleton<CameraMovement>
     /// </summary>
     bool pushedUp, pushedDown, pushedLeft, pushedRight;
 
+    /// <summary>
+    /// Values relevant to cam zoom
+    /// </summary>
+    public float camZoomMax, camZoomMin;
+
     void Update()
     {
         //Raw axis inputs
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
         moveInput.Normalize();
+
+        //Mouse wheel input
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f && virtualCamera.m_Lens.OrthographicSize < camZoomMax) // forward
+        {
+            virtualCamera.m_Lens.OrthographicSize++;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") > 0f && virtualCamera.m_Lens.OrthographicSize > camZoomMin) // backwards
+        {
+            virtualCamera.m_Lens.OrthographicSize--;
+        }
 
         //Edge scrolling inputs
         EdgeScrollingInput();
@@ -105,7 +121,7 @@ public class CameraMovement : Singleton<CameraMovement>
     private void OnMouseDown()
     {
         numOfClicks++;
-        if (numOfClicks >= 2) CameraCenterMovement.Instance.TakeFocus(transform);
+        if (numOfClicks >= 2) CameraMovement.singleton.TakeFocus(transform);
         Invoke("giveUpOnDoubleClick", .2f);
     }
     void giveUpOnDoubleClick()

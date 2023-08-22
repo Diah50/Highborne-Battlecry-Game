@@ -10,6 +10,7 @@
  *      [31/07/2023] - Initial implementation (DaynerKurdi)
  *      [01/08/2023] - Variables renaming (C137)
  *      [02/08/2023] - Use of new singleton system (C137)
+ *      [07/08/2023] - Adding Resource Sprites(DaynerKurdi)
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -35,6 +36,9 @@ public class SpriteLoader : Singleton<SpriteLoader>
     [SerializeField]
     public Sprite[] tileWaterSpriteArray;
 
+    [SerializeField]
+    public Sprite[] ResourceSpriteArray;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,5 +47,7 @@ public class SpriteLoader : Singleton<SpriteLoader>
         tileDritSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Dirt");
 
         tileWaterSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Tile/Water");
+
+        ResourceSpriteArray = Resources.LoadAll<Sprite>("Map Generation/Map Resources");
     }
 }
