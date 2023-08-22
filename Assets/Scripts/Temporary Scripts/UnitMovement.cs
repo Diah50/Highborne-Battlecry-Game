@@ -13,13 +13,13 @@ public class GetClickPosition : MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position = mousePosition;
-            Debug.Log("Clicked at position: " + position.ToString());
+            //Debug.Log("Clicked at position: " + position.ToString());
         }
         if (Input.GetMouseButtonUp(0))
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             position = mousePosition;
-            Debug.Log("Clicked at position: " + position.ToString());
+            //Debug.Log("Clicked at position: " + position.ToString());
         }
     }
 }

@@ -7,7 +7,8 @@
  * Changes: 
  *      [30/07/2023] - Initial implementation (C137)
  *      [01/08/2023] - Made "slots" an array rather than a list + Fixed adding of multiple items (C137)
- *      [02/08/2023] - Updated summarries (C137)
+ *      [02/08/2023] - Updated summaries (C137)
+ *      [10/08/2023] - Methods now take in "IItem" interface rather than the "Item" class (C137)
  *      
  *  TODO:
  *      Optimize Tuple<bool, int> AddItem(Item item, int amount) function
