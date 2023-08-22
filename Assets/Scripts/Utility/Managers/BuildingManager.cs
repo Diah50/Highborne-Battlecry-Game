@@ -27,7 +27,7 @@ public class BuildingManager : Singleton<BuildingManager>
     GameObject building;
 
     /// <summary>
-    /// Previous building for chain building purpuses
+    /// Previous building for chain building purposes
     /// </summary>
     GameObject lastBuild;
 
@@ -37,7 +37,7 @@ public class BuildingManager : Singleton<BuildingManager>
     public Tilemap tilemapTemp;
 
     /// <summary>
-    /// Permanant tilemap
+    /// Permanent tilemap
     /// </summary>
     public Tilemap tilemapPerm;
 
@@ -57,7 +57,7 @@ public class BuildingManager : Singleton<BuildingManager>
     BuildingBase buildingScript;
 
     /// <summary>
-    /// Whether or not the building blueprint is touching another exisiting building 
+    /// Whether or not the building blueprint is touching another existing building 
     /// </summary>
     [HideInInspector] public bool touchingAnotherBuilding;
 
@@ -207,7 +207,7 @@ public class BuildingManager : Singleton<BuildingManager>
             (int)obj.transform.position.y), script.size * tilemapTemp.size);
     }
 
-    //Hide tiles used to show if a space is avalable
+    //Hide tiles used to show if a space is available
     void EmptyOccupySprites()
     {
         foreach (SpriteRenderer spRend in occupationTiles)
