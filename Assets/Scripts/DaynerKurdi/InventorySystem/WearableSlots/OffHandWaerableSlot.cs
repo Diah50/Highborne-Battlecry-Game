@@ -1,40 +1,42 @@
 /* InventorySlotManager.cs - Highborne Universe
  * 
- * Creation Date: 08/09/2023
+ * Creation Date: 09/09/2023
  * Authors: DaynerKurdi
  * Original: DaynerKurdi
  * 
  * Changes: 
- *      [08/09/2023] - Initial implementation (DaynerKurdi)
+ *      [09/09/2023] - Initial implementation (DaynerKurdi)
  */
+
 using UnityEngine;
 using UnityEngine.UI;
-public class InventorySlotManager : MonoBehaviour
+
+public class OffHandWaerableSlot : MonoBehaviour
 {
     /// <summary>
-    /// The white outline around the box or "InventorySlot"
+    /// The black outline around the box or "Background"
     /// </summary>
     [SerializeField]
     private Image selectorImage;
 
     /// <summary>
-    /// The icon for box slot or "InventoryIcon"
+    /// The icon for box slot or "Item Icon"
     /// </summary>
     [SerializeField]
     private Image iconImage;
 
     /// <summary>
-    /// Where the equipment data is stored and lives 
+    /// Where equipment data is stored and lives 
     /// </summary>
     [SerializeField]
-    private EquipmentBaseScOb storedEquipmentScOb;
+    private OffHandScOb offHandScOb;
 
-    public void SetEquimentScOb(EquipmentBaseScOb equipment)
+    public void SetEquimentScOb(OffHandScOb equipment)
     {
         iconImage.sprite = equipment.equipmentIconSprite;
         iconImage.color = Color.white;
 
-        storedEquipmentScOb = equipment;
+        offHandScOb = equipment;
     }
 
     public void RemoveEquimentScOb()
@@ -42,7 +44,7 @@ public class InventorySlotManager : MonoBehaviour
         iconImage.sprite = null;
         iconImage.color = Color.black;
 
-        storedEquipmentScOb = null;
+        offHandScOb = null;
     }
 
     public void SetSelectorOn()
@@ -52,6 +54,7 @@ public class InventorySlotManager : MonoBehaviour
 
     public void SetSelectorOff()
     {
-        selectorImage.color= Color.white;
+        selectorImage.color = Color.white;
     }
+
 }
