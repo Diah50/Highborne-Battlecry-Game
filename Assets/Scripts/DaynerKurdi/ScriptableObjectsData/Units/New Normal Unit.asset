@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6febca15e550e347b367091e31a433c, type: 3}
+  m_Name: New Normal Unit
+  m_EditorClassIdentifier: 
+  UnitName: 
+  UnitDescription: 
+  sprites: []
+  unitClass: 0
+  unitRace: 0
+  unitAllegiance: 0
+  maxExperience: 0
+  currentExperience: 0
+  UnitTraningTime: 0
+  traningCost: 0
+  maxHealth: 0
+  currentHealth: 0
+  attackSpeed: 0
+  movmentSleed: 0
+  attackPower: 0
+  attackRange: 1
+  defencePower: 0
+  resistancePower: 0

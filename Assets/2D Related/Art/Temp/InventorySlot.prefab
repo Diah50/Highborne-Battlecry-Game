@@ -32,7 +32,6 @@ RectTransform:
   m_Children:
   - {fileID: 8409807156439872459}
   m_Father: {fileID: 6101386503751739666}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -108,7 +107,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6872744634013961482}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -165,6 +163,7 @@ GameObject:
   - component: {fileID: 7091039901226430632}
   - component: {fileID: 2091919109579501763}
   - component: {fileID: 8163827017303760003}
+  - component: {fileID: 4292128586265611688}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -186,7 +185,6 @@ RectTransform:
   m_Children:
   - {fileID: 6872744634013961482}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -276,3 +274,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 62.025154, y: 61.996696}
   m_EdgeRadius: 0
+--- !u!114 &4292128586265611688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863885608376528505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba5959281afa4d47a37ad8a2560e58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectorSprite: {fileID: 2091919109579501763}
+  iconSprite: {fileID: 1427814060987409350}
+  storedEquipmentScOb: {fileID: 0}
