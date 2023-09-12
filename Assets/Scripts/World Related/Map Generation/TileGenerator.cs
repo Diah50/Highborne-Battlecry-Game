@@ -14,12 +14,14 @@
  *      [07/08/2023] - Added Perlin Noise functionality for Resource (DaynerKurdi)
  *      [20/08/2023] - Code Review (C137)
  *      [21/08/2023] - Made into a singleton and made cellSize public (Archetype)
+ *      [11/09/2023] - Added A* graph scan on start (Archetype)
  */
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
 using Unity.VisualScripting;
 using UnityEngine;
+using Pathfinding;
 
 public class Grid
 {
@@ -188,7 +190,7 @@ public class TileGenerator : Singleton<TileGenerator>
     /// The size of each cell
     /// </summary>
     [SerializeField]
-    private float cellSize = 5f;
+    public float cellSize = 5f;
 
     /// <summary>
     /// Used to move the grid
@@ -254,6 +256,7 @@ public class TileGenerator : Singleton<TileGenerator>
     {
         TitleGeneration();
         ResourceGeneration();
+        AstarGraphScan();
     }
 
     private void TitleGeneration()
@@ -295,6 +298,11 @@ public class TileGenerator : Singleton<TileGenerator>
                 }
             }
         }
+    }
+
+    void AstarGraphScan()
+    {
+        AstarPath.active.Scan();
     }
 
     private void ResourceSelector(Tile tile)
