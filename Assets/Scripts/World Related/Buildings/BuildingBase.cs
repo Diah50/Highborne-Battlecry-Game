@@ -12,7 +12,8 @@
  *      [10/08/2023] - Added script paramaters for a neutral resource building that can be captured, also custom Editor (Archetype)
  *      [12/08/2023] - Added health to buildings, can be moved to new script if needed but currently is in its own region here for convenience (Archetype)
  *      [21/08/2023] - Improved the ability to detect if the blueprint is overlapping with another building (Archetype)
-*/
+ *      [18/09/2023] - Removed dependency to WorldCanvasManager (Archetype)
+ */
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -106,9 +107,14 @@ public class BuildingBase : MonoBehaviour
 
     #region Health
     /// <summary>
-    /// Health bar slider that will be instantiated on Start via WorldCanvasManager
+    /// Health bar canvas that can be enabled or disabled
     /// </summary>
-    Slider healthBar;
+    public GameObject healthBarCanvas;
+
+    /// <summary>
+    /// Health bar slider
+    /// </summary>
+    public Slider healthBar;
 
     /// <summary>
     /// Miximum amount of health points for the building
@@ -123,12 +129,12 @@ public class BuildingBase : MonoBehaviour
     /// <summary>
     /// Healthbar image that represents amount of health points
     /// </summary>
-    Image healthBarFillImage;
+    public Image healthBarFillImage;
 
     /// <summary>
     /// Number on health bar that displays health points
     /// </summary>
-    TextMeshProUGUI healthText;
+    public TextMeshProUGUI healthText;
     #endregion
 
     public virtual void Start()
@@ -170,17 +176,12 @@ public class BuildingBase : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Building");
 
         #region Health
-        //Instantiate health bar on canvas
-        healthBar = WorldCanvasManager.singleton.AskForHealthBar(gameObject);
-
         //Define variables
         healthBar.maxValue = maxHealth;
-        healthBarFillImage = healthBar.transform.GetChild(1).GetChild(0).GetComponent<Image>();
-        healthText = healthBar.gameObject.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         ChangeSlider();
 
         //Hide health bar
-        healthBar.gameObject.SetActive(false);
+        healthBarCanvas.SetActive(false);
         #endregion
     }
 
@@ -244,20 +245,14 @@ public class BuildingBase : MonoBehaviour
     private void OnMouseEnter()
     {
         //Display health bar
-        healthBar.gameObject.SetActive(true);
+        healthBarCanvas.SetActive(true);
         ChangeSlider();
     }
 
     private void OnMouseExit()
     {
         //Hide health bar
-        healthBar.gameObject.SetActive(false);
-    }
-
-    private void OnDestroy()
-    {
-        //When this is destroyed also destroy health bar
-        if (healthBar != null) Destroy(healthBar.gameObject);
+        healthBarCanvas.SetActive(false);
     }
     #endregion
 

@@ -29,7 +29,7 @@ public class WorldCanvasManager : Singleton<WorldCanvasManager>
     //Instantiate health bar for building
     public Slider AskForHealthBar(GameObject parent)
     {
-        var x = Instantiate(healthBar, parent.transform.GetChild(2).position, 
+        GameObject x = Instantiate(healthBar, parent.transform.GetChild(2).position, 
             parent.transform.GetChild(2).rotation, worldCanvas.transform);
 
         return x.GetComponent<Slider>();
