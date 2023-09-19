@@ -43,6 +43,9 @@ public class UnitBase : MonoBehaviour
     /// </summary>
     public float currentHealth;
 
+    public List<SpriteRenderer> colorSpritesSkin, colorSpritesOutfit;
+    public SpriteRenderer iris, sclera, pupil, aura, direction;
+
     #region Health
     /// <summary>
     /// Health bar canvas that can be enabled or disabled
@@ -58,11 +61,6 @@ public class UnitBase : MonoBehaviour
     /// Healthbar image that represents amount of health points
     /// </summary>
     public Image healthBarFillImage;
-
-    /// <summary>
-    /// Number on health bar that displays health points
-    /// </summary>
-    public TextMeshProUGUI healthText;
     #endregion
 
     public void Initiate(UnitBaseScOb scriptableObject)
@@ -104,7 +102,6 @@ public class UnitBase : MonoBehaviour
         {
             healthBar.value = currentHealth;
             healthBarFillImage.color = Color.Lerp(Color.red, Color.green, healthBar.value / 100);
-            healthText.text = currentHealth + "/" + scriptObj.maxHealth;
         }
     }
 
