@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Pathfinding;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -144,6 +145,8 @@ public class BuildingBase : MonoBehaviour
         
         if (!playerBuild) BuildingManager.singleton.TakeAreaPerm 
                 (BuildingManager.singleton.GetColliderVertexPositionsLocal(transform.GetChild(1).gameObject, this).min, size);
+        
+        BecomeSolid();
     }
 
     public virtual void OnTriggerEnter2D(Collider2D collision)
@@ -170,10 +173,13 @@ public class BuildingBase : MonoBehaviour
     public virtual void BecomeSolid()
     {
         if (!playerBuild) return;
+
+        gameObject.layer = LayerMask.NameToLayer("Building");
+        AstarPath.active.UpdateGraphs(GetComponent<BoxCollider2D>().bounds);
+
         Destroy(rb2D);
         sprite.color = new Color(1, 1, 1, 1);
         sprite.sprite = buildPhase1;
-        gameObject.layer = LayerMask.NameToLayer("Building");
 
         #region Health
         //Define variables
@@ -212,6 +218,12 @@ public class BuildingBase : MonoBehaviour
     {
         sprite.sprite = buildDone;
         built = true;
+    }
+
+    private void OnDestroy()
+    {
+        GetComponent<BoxCollider2D>().isTrigger = false;
+        AstarPath.active.UpdateGraphs(GetComponent<BoxCollider2D>().bounds);
     }
 
     #region Health

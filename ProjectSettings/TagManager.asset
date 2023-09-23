@@ -10,6 +10,7 @@ TagManager:
   - crystal
   - stone
   - gold
+  - unit
   layers:
   - Default
   - TransparentFX
@@ -23,9 +24,9 @@ TagManager:
   - Building
   - ResourceNode
   - Obstacle
-  - 
-  - 
-  - 
+  - UnitImpassable
+  - Unit
+  - Destinations
   - 
   - 
   - 

@@ -166,7 +166,7 @@ namespace Pathfinding {
 		/// See: <see cref="Teleport"/>
 		/// See: <see cref="Move"/>
 		/// </summary>
-		public Vector3 position { get { return updatePosition ? tr.position : simulatedPosition; } }
+		public Vector3 position { get { return updatePosition ? new Vector3(tr.position.x, tr.position.y - 0.33f, tr.position.z) : simulatedPosition; } }
 
 		/// <summary>
 		/// Rotation of the agent.
