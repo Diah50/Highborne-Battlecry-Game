@@ -1,14 +1,15 @@
 /* UnitBase.cs - Highborne Universe
  * 
  * Creation Date: 18/09/2023
- * Authors: Archetype
+ * Authors: Archetype, C137
  * Original: Archetype
  * 
- * Edited By: Archetype
+ * Edited By: Archetype, C137
  * 
  * Changes: 
  *      [18/09/2023] - Initial implementation (Archetype)
- *      [23/09/2023] - Finally finished implementing pathfinding + custom unit avoidance, finished adding notation to script
+ *      [23/09/2023] - Finally finished implementing pathfinding + custom unit avoidance, finished adding notation to script (Archetype)
+ *      [24/09/2023] - Code review (C137)
  */
 
 using System.Collections;
@@ -21,9 +22,9 @@ using Pathfinding;
 public class UnitBase : MonoBehaviour
 {
     /// <summary>
-    /// Unit scriptable object
+    /// The unit scriptable object containg all of its information
     /// </summary>
-    public UnitBaseScOb scriptObj;
+    public UnitInfo information;
 
     /// <summary>
     /// Unit current experience points
@@ -110,13 +111,13 @@ public class UnitBase : MonoBehaviour
 
     private void Start()
     {
-        //the unit prefab comes in with its own destination setter when its instantiated but it is unparented so it doesnt move with the unit
+        //the unit prefab comes in with its own destination setter when its instantiated but it is unparented so it doesn't move with the unit
         destination.transform.parent = null;
 
         //initiate the previous pos for velocity detection
         previosPos = transform.position;
 
-        //disable pathfinding while the unit isnt moving
+        //disable pathfinding while the unit isn't moving
         aiPath.canSearch = false;
         moving = false;
 
@@ -125,10 +126,10 @@ public class UnitBase : MonoBehaviour
         AstarPath.active.UpdateGraphs(colider.bounds);
     }
 
-    //when this is instantiated it is then ran with the Initiate function with the apropreate scriptable object
-    public void Initiate(UnitBaseScOb scriptableObject)
+    //when this is instantiated it is then ran with the Initiate function with the appropriate scriptable object
+    public void Initiate(UnitInfo scriptableObject)
     {
-        scriptObj = scriptableObject;
+        information = scriptableObject;
 
         //Define variables
         aiPath.maxSpeed = scriptableObject.movmentSpeed;
@@ -151,7 +152,7 @@ public class UnitBase : MonoBehaviour
         basicSelector.SetActive(true);
     }
 
-    //Accessed from unit selection manager to recieve new target destination
+    //Accessed from unit selection manager to receive new target destination
     public void OnSelectDestination(Vector3 position)
     {
         aiDestinationSetter.target.transform.position = new Vector3(position.x, position.y, 0);
@@ -205,7 +206,7 @@ public class UnitBase : MonoBehaviour
     public void AddToHealth(float amount)
     {
         currentHealth += amount;
-        if (currentHealth > scriptObj.maxHealth) currentHealth = scriptObj.maxHealth;
+        if (currentHealth > information.maxHealth) currentHealth = information.maxHealth;
         ChangeSlider();
     }
 

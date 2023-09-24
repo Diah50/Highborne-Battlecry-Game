@@ -9,7 +9,7 @@
  */
 using UnityEngine;
 [CreateAssetMenu(menuName = "HBBC/Units/New Normal Unit",order = 1 ,fileName = "New Normal Unit")]
-public class NormalUnitScOb : UnitBaseScOb
+public class NormalUnitScOb : UnitInfo
 {
    
 }

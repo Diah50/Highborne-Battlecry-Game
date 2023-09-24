@@ -8,7 +8,7 @@
  * 
  * Changes: 
  *      [19/09/2023] - Initial implementation (Archetype)
- *      [23/09/2023] - Finally finished implementing pathfinding + custom unit avoidance, finished adding notation to script
+ *      [23/09/2023] - Finally finished implementing pathfinding + custom unit avoidance, finished adding notation to script (Archetype)
  */
 
 using System;

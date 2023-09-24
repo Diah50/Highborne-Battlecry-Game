@@ -1,17 +1,22 @@
 /* HeroUnitScOb.cs - Highborne Universe
  * 
  * Creation Date: 06/09/2023
- * Authors: DaynerKurdi
+ * Authors: DaynerKurdi, C137<
  * Original: DaynerKurdi
+ * 
+ * Edited by: DaynerKurdi, C137
  * 
  * Changes: 
  *      [06/09/2023] - Initial implementation (DaynerKurdi)
+ *      [24/09/2023] - Code review (C137)
  */
+using System;
 using UnityEngine;
 
 /// <summary>
 /// The Unit Class List
 /// </summary>
+[Serializable]
 public enum UnitClass
 {
     Infantry,
@@ -23,6 +28,7 @@ public enum UnitClass
 /// <summary>
 /// The Unit Race List
 /// </summary>
+[Serializable]
 public enum UnitRace
 {
     Human,
@@ -35,6 +41,7 @@ public enum UnitRace
 /// <summary>
 /// The Faction list
 /// </summary>
+[Serializable]
 public enum UnitAllegiance
 {
     Natural, 
@@ -44,7 +51,7 @@ public enum UnitAllegiance
 
 
 
-public abstract class UnitBaseScOb : ScriptableObject
+public abstract class UnitInfo : ScriptableObject
 {
     /// <summary>
     /// The unit name
@@ -72,7 +79,7 @@ public abstract class UnitBaseScOb : ScriptableObject
     public UnitRace unitRace;
 
     /// <summary>
-    /// Which faction this unit swae allegiance to
+    /// Which faction this unit has allegiance to
     /// </summary>
     public UnitAllegiance unitAllegiance;
 
@@ -132,9 +139,9 @@ public abstract class UnitBaseScOb : ScriptableObject
     public int attackRange = 1;
 
     /// <summary>
-    /// The unit defence power
+    /// The unit defense power
     /// </summary>
-    public int defencePower;
+    public int defensePower;
 
     /// <summary>
     /// The unit resistance power
