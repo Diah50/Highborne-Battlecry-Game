@@ -120,7 +120,7 @@ namespace Pathfinding {
 
 		/// <summary>Used for drawing gizmos</summary>
 		[System.NonSerialized]
-		List<Vector3> lastCompletedVectorPath;
+		public List<Vector3> lastCompletedVectorPath;
 
 		/// <summary>Used for drawing gizmos</summary>
 		[System.NonSerialized]

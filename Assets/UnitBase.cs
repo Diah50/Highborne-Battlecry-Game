@@ -10,6 +10,8 @@
  *      [18/09/2023] - Initial implementation (Archetype)
  *      [23/09/2023] - Finally finished implementing pathfinding + custom unit avoidance, finished adding notation to script (Archetype)
  *      [24/09/2023] - Code review (C137)
+ *      [24/09/2023] - Added scriptable object sprite integration and render for path and destination (Archetype)
+ *      [06/10/2023] - Made it so hitbox is a trigger while moving (C137)
  */
 
 using System.Collections;
@@ -58,6 +60,11 @@ public class UnitBase : MonoBehaviour
     public AIPath aiPath;
 
     /// <summary>
+    /// A* seeker script
+    /// </summary>
+    public Seeker aiSeekerScript;
+
+    /// <summary>
     /// game object that links to aiDestinationSetter, move this to change target destination
     /// </summary>
     public GameObject destination;
@@ -92,6 +99,26 @@ public class UnitBase : MonoBehaviour
     /// </summary>
     public Rigidbody2D rb2D;
 
+    /// <summary>
+    /// the game object that will hold the weapon prefab
+    /// </summary>
+    public GameObject weaponHolder;
+
+    /// <summary>
+    /// sprite renederers for the unit
+    /// </summary>
+    public SpriteRenderer torso, outfit, colorOutfit, head, hair, face, hat;
+
+    /// <summary>
+    /// line renderer to render path in game
+    /// </summary>
+    public LineRenderer lineRend;
+
+    /// <summary>
+    /// circle showing end point of path
+    /// </summary>
+    public SpriteRenderer destinationCircle;
+
     #region Health
     /// <summary>
     /// Health bar canvas that can be enabled or disabled
@@ -111,6 +138,9 @@ public class UnitBase : MonoBehaviour
 
     private void Start()
     {
+        //as alternate to spawning with the scriptable object added into a unit base this can be used if you make a unit prefab with its scriptable object with it
+        if (information != null) Initiate(information);
+
         //the unit prefab comes in with its own destination setter when its instantiated but it is unparented so it doesn't move with the unit
         destination.transform.parent = null;
 
@@ -131,6 +161,29 @@ public class UnitBase : MonoBehaviour
     {
         information = scriptableObject;
 
+        //remove weapon if there is one and replace it with the prefab in the scriptable object
+        Destroy(weaponHolder.transform.GetChild(0).gameObject);
+        Instantiate(scriptableObject.weaponEquip, weaponHolder.transform);
+        colorSpritesSkin.Add(weaponHolder.transform.GetChild(0).GetChild(0).GetComponent<SpriteRenderer>());
+        colorSpritesSkin.Add(weaponHolder.transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>());
+
+        //select one of the possible skin colors for the unit
+        int randomNum = Random.Range(0, scriptableObject.skinColors.Count);
+        Color skinColor = scriptableObject.skinColors[randomNum];
+        foreach (SpriteRenderer rend in colorSpritesSkin)
+        {
+            rend.color = skinColor;
+        }
+
+        //set unit sprites
+        torso.sprite = scriptableObject.torso;
+        outfit.sprite = scriptableObject.outfit; 
+        colorOutfit.sprite = scriptableObject.colorOutfit; 
+        head.sprite = scriptableObject.head; 
+        hair.sprite = scriptableObject.hair; 
+        face.sprite = scriptableObject.face; 
+        hat.sprite = scriptableObject.hat;
+
         //Define variables
         aiPath.maxSpeed = scriptableObject.movmentSpeed;
 
@@ -141,14 +194,25 @@ public class UnitBase : MonoBehaviour
         healthBarCanvas.SetActive(false);
     }
 
+    //once we have a variable defining teams this can be called to tint the armor
+    public void TakeTeamColor(Color color)
+    {
+        foreach (SpriteRenderer rend in colorSpritesOutfit)
+        {
+            rend.color = color;
+        }
+    }
+
     //Accessed from unit selection manager to signal when a unit is under selection
     public void OnDeselect()
     {
+        destinationCircle.enabled = false;
         basicSelector.SetActive(false);
     }
 
     public void OnSelect()
     {
+        destinationCircle.enabled = true;
         basicSelector.SetActive(true);
     }
 
@@ -180,7 +244,19 @@ public class UnitBase : MonoBehaviour
 
     private void Update()
     {
-        //transform.GetChild(0).gameObject.layer = 2;
+        //render path and destination
+        if (aiSeekerScript.lastCompletedVectorPath != null && basicSelector.activeSelf == true)
+        {
+            colider.isTrigger = true;
+            lineRend.enabled = true;
+            lineRend.positionCount = aiSeekerScript.lastCompletedVectorPath.Count;
+            lineRend.SetPositions(aiSeekerScript.lastCompletedVectorPath.ToArray());
+        }
+        else
+        {
+            colider.isTrigger = false;
+            lineRend.enabled = false;
+        }
 
         //do something when the unit stops moving
         if (velocity > 0f) moving = true;

@@ -9,9 +9,11 @@
  * Changes: 
  *      [06/09/2023] - Initial implementation (DaynerKurdi)
  *      [24/09/2023] - Code review (C137)
+ *      [24/09/2023] - Added a few variables for sprites (Archetype)
  */
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 
 /// <summary>
 /// The Unit Class List
@@ -62,11 +64,6 @@ public abstract class UnitInfo : ScriptableObject
     /// The unit description
     /// </summary>
     public string unitDescription;
-
-    /// <summary>
-    /// The unit Sprite
-    /// </summary>
-    public Sprite sprites;
 
     /// <summary>
     /// The unit class assigned to 
@@ -147,4 +144,19 @@ public abstract class UnitInfo : ScriptableObject
     /// The unit resistance power
     /// </summary>
     public int resistancePower;
+
+    /// <summary>
+    /// Weapon setup prefab
+    /// </summary>
+    public GameObject weaponEquip;
+
+    /// <summary>
+    /// Sprites
+    /// </summary>
+    public Sprite torso, colorOutfit, outfit, head, hair, face, hat;
+
+    /// <summary>
+    /// Skin colors for this unit
+    /// </summary>
+    public List<Color> skinColors;
 }
