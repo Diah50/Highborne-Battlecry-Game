@@ -9,7 +9,7 @@
  */
 using UnityEngine;
 [CreateAssetMenu(menuName = "HBBC/Units/New Hero Unit", order = 0, fileName = "New Hero Unit")]
-public class HeroUnitScOb : UnitBaseScOb
+public class HeroUnitScOb : UnitInfo
 {
     
 }

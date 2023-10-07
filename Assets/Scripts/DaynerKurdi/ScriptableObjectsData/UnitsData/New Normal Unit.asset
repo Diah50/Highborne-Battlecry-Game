@@ -12,21 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6febca15e550e347b367091e31a433c, type: 3}
   m_Name: New Normal Unit
   m_EditorClassIdentifier: 
-  UnitName: 
-  UnitDescription: 
-  sprites: []
+  unitName: 
+  unitDescription: 
   unitClass: 0
   unitRace: 0
   unitAllegiance: 0
+  unitLevel: 0
   maxExperience: 0
   currentExperience: 0
   UnitTraningTime: 0
   traningCost: 0
-  maxHealth: 0
+  maxHealth: 10
   currentHealth: 0
   attackSpeed: 0
-  movmentSleed: 0
+  movmentSpeed: 5
   attackPower: 0
   attackRange: 1
-  defencePower: 0
+  defensePower: 0
   resistancePower: 0
+  weaponEquip: {fileID: 3838323269279675616, guid: fee7ea2a78297d14196d5ad35ed266f3, type: 3}
+  torso: {fileID: 21300000, guid: 6b641d3fc9d4e0948b3686ba9b3f1592, type: 3}
+  colorOutfit: {fileID: 21300000, guid: a35b510d38b8c93488fc0bdfb2831750, type: 3}
+  outfit: {fileID: 21300000, guid: 390cdf272b165794ea855a000bc0a17a, type: 3}
+  head: {fileID: 21300000, guid: 7a125923970bf1044bbbe7b524386dae, type: 3}
+  hair: {fileID: 21300000, guid: 1975925d36c94694ea118f6f390a2e7a, type: 3}
+  face: {fileID: 21300000, guid: 284858e4fbda9304cb7ac06cc51bbfe7, type: 3}
+  hat: {fileID: 21300000, guid: 5f096f6694faf0044bf11c1ed1fbc832, type: 3}
+  skinColors:
+  - {r: 0.69803923, g: 0.43137258, b: 0.04705883, a: 1}
+  - {r: 0.7924528, g: 0.62830573, b: 0.3917408, a: 1}

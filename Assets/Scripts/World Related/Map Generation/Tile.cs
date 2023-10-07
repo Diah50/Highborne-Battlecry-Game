@@ -8,7 +8,7 @@
  *      [30/07/2023] - Initial implementation (DaynerKurdi)
  *      [01/08/2023] - Moved BiomeType enum to this script (C137)
  *      [04/08/2023] - Adding Getter for Cell Index (DaynerKurdi)
- *      
+ *      [06/09/2023] - Made movmentCost public (Archetype)
  */
 using System.Collections;
 using System.Collections.Generic;
@@ -46,7 +46,7 @@ public class Tile : MonoBehaviour
     /// <summary>
     /// To be used with A*
     /// </summary>
-    private int movmentCost = 0;
+    public int movmentCost = 0;
 
     /// <summary>
     /// Getter for type
