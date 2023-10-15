@@ -71,6 +71,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DevConsole"",
+                    ""type"": ""Button"",
+                    ""id"": ""67d21810-9018-4b4e-9ec4-9adcfb64b03d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3e8cb629-453d-4891-8f1b-5cbdf01455b4"",
+                    ""path"": ""<Keyboard>/backquote"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DevConsole"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -185,6 +205,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Default_Move = m_Default.FindAction("Move", throwIfNotFound: true);
         m_Default_Tab = m_Default.FindAction("Tab", throwIfNotFound: true);
         m_Default_Escape = m_Default.FindAction("Escape", throwIfNotFound: true);
+        m_Default_DevConsole = m_Default.FindAction("DevConsole", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,6 +272,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Move;
     private readonly InputAction m_Default_Tab;
     private readonly InputAction m_Default_Escape;
+    private readonly InputAction m_Default_DevConsole;
     public struct DefaultActions
     {
         private @InputActions m_Wrapper;
@@ -260,6 +282,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Default_Move;
         public InputAction @Tab => m_Wrapper.m_Default_Tab;
         public InputAction @Escape => m_Wrapper.m_Default_Escape;
+        public InputAction @DevConsole => m_Wrapper.m_Default_DevConsole;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,6 +307,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Escape.started += instance.OnEscape;
             @Escape.performed += instance.OnEscape;
             @Escape.canceled += instance.OnEscape;
+            @DevConsole.started += instance.OnDevConsole;
+            @DevConsole.performed += instance.OnDevConsole;
+            @DevConsole.canceled += instance.OnDevConsole;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -303,6 +329,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
+            @DevConsole.started -= instance.OnDevConsole;
+            @DevConsole.performed -= instance.OnDevConsole;
+            @DevConsole.canceled -= instance.OnDevConsole;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -327,5 +356,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnTab(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnDevConsole(InputAction.CallbackContext context);
     }
 }

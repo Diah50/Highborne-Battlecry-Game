@@ -1,1 +1,30 @@
-VisualElement {}
+.dev-console {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    font-size: 16px;
+}
+
+.dev-console-input {
+    width: 100%;
+    height: 7%;
+    font-size: 18px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: rgba(0, 0, 0, 1);
+    border-radius: 0px;
+}
+
+.dev-console-output {
+    width: 100%;
+    flex-grow: 1;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: rgba(255, 255, 255, 1);
+    border-radius: 0px;
+}

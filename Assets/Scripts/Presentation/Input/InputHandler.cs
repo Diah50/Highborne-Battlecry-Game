@@ -28,6 +28,8 @@ namespace Highborne.Presentation.Input
             _inputs.Default.RightClick.performed += RightClickPerformed;
             _inputs.Default.RightClick.canceled += RightClickReleased;
 
+            _inputs.Default.DevConsole.performed += DevConsolePerformed;
+
             _inputs.Default.Enable();
         }
 
@@ -54,6 +56,11 @@ namespace Highborne.Presentation.Input
         private void RightClickReleased(InputAction.CallbackContext obj)
         {
             //_eventBus.Fire(new RightClickReleasedEvent());
+        }
+
+        private void DevConsolePerformed(InputAction.CallbackContext obj)
+        {
+            _eventBus.Fire(new DevConsolePerformedEvent());
         }
 
     }
