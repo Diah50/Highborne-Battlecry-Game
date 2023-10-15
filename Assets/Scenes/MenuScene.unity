@@ -2410,7 +2410,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a942399cfe64bf44889e0b4fa5b38ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenu: {fileID: 1642747584}
-  options: {fileID: 1576967864}
-  openOptions: {fileID: 0}
-  closeOptions: {fileID: 0}

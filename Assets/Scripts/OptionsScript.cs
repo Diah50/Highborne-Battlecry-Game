@@ -1,4 +1,4 @@
-// Seems like nonsense will keep for now until dutr it'd not needed
+// Seems like nonsense will keep for now until sure it'd not needed
 
 
 // using System;
