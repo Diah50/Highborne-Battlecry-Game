@@ -97,7 +97,7 @@ This layer serves as the epicenter for implementing business rules within each f
 
 This layer encapsulates all business rules within the project, encompassing not just variables but also processes and methodologies. Here’s a more comprehensive explanation:
 
-* **Business Rules Repository:** The Entities layer is often misconstrued as a container solely for variables. In reality, it houses all business rules—be it classes, variables, methods, or other entities that define the operational and decision-making aspects of the project. For instance, consider the `UpdatePosition()` function discussed earlier; within the Entities layer, this function and its associated variables are declared. However, the operational logic and methods reside solely within the Use Cases layer.
+* **Business Rules Repository:** The Entities layer is often misconstrued as a container solely for variables. In reality, it houses all business rules, be it classes, variables, methods, or other entities that define the operational and decision-making aspects of the project. For instance, consider the `UpdatePosition()` function discussed earlier; within the Entities layer, this function and its associated variables are declared. However, the operational logic and methods reside solely within the Use Cases layer.
 
 ## Conclusion
 
