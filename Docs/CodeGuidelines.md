@@ -1,3 +1,5 @@
+# Code Guidelines
+
 Readability is a crucial aspect of any project, whether it's an individual endeavor or a collaborative team effort. To maintain clarity and consistency in our codebase, we follow two key parameters: **Simple and Clean Architecture (SCA)** and **.NET C# coding conventions**.
 
 In this section, we'll provide an overview of these guidelines to ensure that our project code remains organized and understandable. For more in-depth information, you can refer to the following links: [[SCA](https://genki-sano.medium.com/simple-clean-architecture-762b90e58d91) | [C#CC](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)]. This introductory guide will help you grasp the essentials for our specific project.
