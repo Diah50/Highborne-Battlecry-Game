@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://mawnshvwgawn"]
+[gd_scene load_steps=3 format=3 uid="uid://mawnshvwgawn"]
 
 [ext_resource type="Script" path="res://scenes/new_script.cs" id="1_2y4rg"]
+[ext_resource type="Texture2D" uid="uid://ro1ptpu6qghs" path="res://Sprites/Civs/Kinhnami Humans/icons/family_handcannoneer_icon.png" id="2_pbo1b"]
 
 [node name="World" type="Node2D"]
 
 [node name="Test" type="Node" parent="."]
 script = ExtResource("1_2y4rg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Test"]
+position = Vector2(-268, -137)
+texture = ExtResource("2_pbo1b")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Test"]
+position = Vector2(168, 119)
+texture = ExtResource("2_pbo1b")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Test"]
+position = Vector2(-159, 103)
+texture = ExtResource("2_pbo1b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Camera2D"]
+remote_path = NodePath("../../Node2D")
+
+[node name="Node2D" type="Node2D" parent="."]
