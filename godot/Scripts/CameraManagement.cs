@@ -30,7 +30,7 @@ public partial class CameraManagement : Node2D
 
     public void CameraInput(Camera2D c, double delta)
     {
-        float panIncrement = (float)(PAN_SPEED * c.Zoom.X * delta);
+        float panIncrement = (float)(PAN_SPEED * delta / c.Zoom.X);
 		float zoomIncrement = (float)(ZOOM_SPEED * delta);
 
         var pan = new Godot.Vector2(
@@ -38,9 +38,10 @@ public partial class CameraManagement : Node2D
             ((Input.IsActionPressed("pan_down") ? 1 : 0) - (Input.IsActionPressed("pan_up") ? 1 : 0)) * panIncrement);
         c.Position += pan;
 
-        float zoom = 1f + 
+        float zoomChange = 1f + 
 			((Input.IsActionJustReleased("zoom_in") ? 1 : 0) - (Input.IsActionJustReleased("zoom_out") ? 1 : 0)) 
 			* zoomIncrement;
-		c.Zoom *= zoom;
+		float zoom = Mathf.Clamp(c.Zoom.X * zoomChange, MIN_ZOOM, MAX_ZOOM);
+		c.Zoom = new Godot.Vector2(zoom, zoom);
     }
 }
