@@ -17,6 +17,7 @@ public partial class CameraManager : Node
 
     public override void _Ready(){
         inputManager = this.GetNode<InputManager>("../InputManager");
+		camera = this.GetNode<Camera2D>("Camera2D");
     }
 
 	public void CameraInput(Camera2D c, double delta)

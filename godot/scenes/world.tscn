@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://mawnshvwgawn"]
 
 [ext_resource type="Texture2D" uid="uid://ro1ptpu6qghs" path="res://Sprites/Civs/Kinhnami Humans/icons/family_handcannoneer_icon.png" id="1_3jo0x"]
-[ext_resource type="Script" path="res://Scripts/Controllers/CameraController.cs" id="2_uptxp"]
-[ext_resource type="Script" path="res://Scripts/Controllers/InputController.cs" id="3_ll1so"]
+[ext_resource type="Script" path="res://Scripts/Managers/CameraManager.cs" id="2_4h2t2"]
+[ext_resource type="Script" path="res://Scripts/Managers/InputManager.cs" id="3_ixee7"]
 
 [node name="World" type="Node2D"]
 
@@ -22,12 +22,11 @@ texture = ExtResource("1_3jo0x")
 
 [node name="Controllers" type="Node" parent="."]
 
-[node name="CameraController" type="Node" parent="Controllers" node_paths=PackedStringArray("camera")]
-script = ExtResource("2_uptxp")
+[node name="CameraManager" type="Node" parent="Controllers" node_paths=PackedStringArray("camera")]
+script = ExtResource("2_4h2t2")
 camera = NodePath("Camera2D")
 
-[node name="Camera2D" type="Camera2D" parent="Controllers/CameraController"]
+[node name="Camera2D" type="Camera2D" parent="Controllers/CameraManager"]
 
-[node name="InputController" type="Node" parent="Controllers" node_paths=PackedStringArray("cameraController")]
-script = ExtResource("3_ll1so")
-cameraController = NodePath("../CameraController")
+[node name="InputManager" type="Node" parent="Controllers"]
+script = ExtResource("3_ixee7")

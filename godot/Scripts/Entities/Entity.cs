@@ -1,8 +1,8 @@
 using Godot;
 
 public  partial class Entity : Node2D{
-    public enum EntityType {Building,  Resource, Unit}
-    [Export] public  EntityType entityType { get; }
+    public enum EntityType {Building,  Resource, Unit};
+    [Export] public EntityType entityType;
     [Export] public string EntityName; // name of the entity type, not of the object which would be Node.Name
     [Export] public string ID; // unique identifier for the entity type
     [Export] public string Description; // displayed on UI
