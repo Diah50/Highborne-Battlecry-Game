@@ -20,20 +20,11 @@ public partial class CameraController : Node
 	public Camera2D camera;
 	private readonly HashSet<string> holdableActions = new() { "pan_left", "pan_right", "pan_up", "pan_down" };
 
-	private HashSet<string> heldActions = new();
+    private InputController inputController;
 
-
-	public override void _Input(InputEvent @event)
-	{
-		// reduces ghosting on held actions compared to Input.IsActionPressed()
-		// not necessary for presses, just use Input.IsActionJustPressed()
-		var newlyHeldActions = holdableActions.Except(heldActions).Where(action => @event.IsActionPressed(action));
-		heldActions = heldActions.Concat(
-				newlyHeldActions
-			)
-			.Where(action => !@event.IsActionReleased(action))
-			.ToHashSet();
-	}
+    public override void _Ready(){
+        inputController = this.GetNode<InputController>("../InputController");
+    }
 
 	public void CameraInput(Camera2D c, double delta)
 	{
@@ -41,8 +32,8 @@ public partial class CameraController : Node
 		float zoomIncrement = (float)(ZOOM_SPEED * delta);
 
 		var pan = new Godot.Vector2(
-			((heldActions.Contains("pan_right") ? 1 : 0) - (heldActions.Contains("pan_left") ? 1 : 0)) * panIncrement,
-			((heldActions.Contains("pan_down") ? 1 : 0) - (heldActions.Contains("pan_up") ? 1 : 0)) * panIncrement);
+			((inputController.heldActions.Contains("pan_right") ? 1 : 0) - (inputController.heldActions.Contains("pan_left") ? 1 : 0)) * panIncrement,
+			((inputController.heldActions.Contains("pan_down") ? 1 : 0) - (inputController.heldActions.Contains("pan_up") ? 1 : 0)) * panIncrement);
 		if (pan != Godot.Vector2.Zero)
 			c.Position += pan;
 

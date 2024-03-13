@@ -9,13 +9,12 @@ public partial class InputController : Node
     public double DOUBLETAP_MSECS = 500;
     private readonly HashSet<string> holdableActions = new() { "pan_left", "pan_right", "pan_up", "pan_down" };
 
-    private HashSet<string> heldActions = new();
+    public HashSet<string> heldActions = new();
 
-    [Export]
     private CameraController cameraController;
 
     public override void _Ready(){
-
+        cameraController = this.GetNode<CameraController>("../CameraController");
     }
 
 
