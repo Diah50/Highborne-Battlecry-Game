@@ -7,6 +7,7 @@ namespace EntityComponent
     {
         [Export] public int StartingMana = 0;
         [Export] public int Mana = 10;
+        [Export] public int ManaRegen = 1;
         public override void _Ready()
         {
             Mana = StartingMana;

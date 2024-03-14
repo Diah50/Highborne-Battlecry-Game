@@ -9,8 +9,6 @@ namespace EntityComponent
     public partial class BuilderC : Node
     {
         [Export] public int BuildPower;
-        [Export] public int RepairPower = 0;
-        [Export] public int Range = 0;
         [Export] public BuildType BuildType;
     }
 }

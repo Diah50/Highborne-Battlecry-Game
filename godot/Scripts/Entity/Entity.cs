@@ -11,7 +11,7 @@ namespace Entity
     {
         [Export] public EntitySuperType EntitySuperType; // see enum above
         [Export] public string ID; // unique identifier for the entity type
-        [Export] public string _Name;
+        [Export] public string TypeName;
         [Export] public string Description; // displayed on UI
         [Export] public Sprite2D Icon; // displayed on UI
         [Export] public String[] Tags;
