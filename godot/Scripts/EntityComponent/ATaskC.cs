@@ -19,6 +19,7 @@ namespace EntityComponent
         [Export] public string RequiresLivingEntity = null;
         [Export] public string RequiresUnlock = null;
         [Export] public bool ShowBeforeUnlocked = true;
+        [Export] public Sprite2D IconBeforeUnlocked;
         [Export] public SubmenuC Submenu = null;
     }
 }
