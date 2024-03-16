@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mdy0wxp7b3rd"
-path="res://.godot/imported/kinhnami_villager_icon.png-fc4a19fe785edcd5401127ff70912f02.ctex"
+path="res://.godot/imported/kinhnami_villager_icon.png-bb3a4697ae831f88fe05d58e7daf8647.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/units/kinhnami_villager_icon.png"
-dest_files=["res://.godot/imported/kinhnami_villager_icon.png-fc4a19fe785edcd5401127ff70912f02.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/units/kinhnami_villager_icon.png"
+dest_files=["res://.godot/imported/kinhnami_villager_icon.png-bb3a4697ae831f88fe05d58e7daf8647.ctex"]
 
 [params]
 

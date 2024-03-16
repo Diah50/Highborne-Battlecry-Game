@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bi6q2l444lc30"
-path="res://.godot/imported/azure cataphract body spritesheet.png-9a50cf34c7f017c7bc62a9de571ef822.ctex"
+path="res://.godot/imported/azure cataphract body spritesheet.png-43c3b1cf2587584d93b94d0f4bb199bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/units/azure cataphract body spritesheet.png"
-dest_files=["res://.godot/imported/azure cataphract body spritesheet.png-9a50cf34c7f017c7bc62a9de571ef822.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/units/azure cataphract body spritesheet.png"
+dest_files=["res://.godot/imported/azure cataphract body spritesheet.png-43c3b1cf2587584d93b94d0f4bb199bd.ctex"]
 
 [params]
 

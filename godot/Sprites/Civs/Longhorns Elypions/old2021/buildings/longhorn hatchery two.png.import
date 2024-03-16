@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://by58k4o00pjai"
-path="res://.godot/imported/longhorn hatchery two.png-0af40e6add4c1938b631ffc43ed96d30.ctex"
+path="res://.godot/imported/longhorn hatchery two.png-a5d94de3f0c7f8e03b801eca12805556.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/buildings/longhorn hatchery two.png"
-dest_files=["res://.godot/imported/longhorn hatchery two.png-0af40e6add4c1938b631ffc43ed96d30.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/buildings/longhorn hatchery two.png"
+dest_files=["res://.godot/imported/longhorn hatchery two.png-a5d94de3f0c7f8e03b801eca12805556.ctex"]
 
 [params]
 

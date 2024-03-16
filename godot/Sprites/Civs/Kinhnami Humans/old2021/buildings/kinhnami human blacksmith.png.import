@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://eeg00npjrbtk"
-path="res://.godot/imported/kinhnami human blacksmith.png-3ae39715dcbeb66474316ff3d6e16136.ctex"
+path="res://.godot/imported/kinhnami human blacksmith.png-7db9dd4ffe20a68f8811da0687efc228.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/buildings/kinhnami human blacksmith.png"
-dest_files=["res://.godot/imported/kinhnami human blacksmith.png-3ae39715dcbeb66474316ff3d6e16136.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/buildings/kinhnami human blacksmith.png"
+dest_files=["res://.godot/imported/kinhnami human blacksmith.png-7db9dd4ffe20a68f8811da0687efc228.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c863fn5pya2xr"
-path="res://.godot/imported/longhorn hut.png-3def7c65cbf943cde48403338d9ec74c.ctex"
+path="res://.godot/imported/longhorn hut.png-b23dba3af4e09814a4b2cc370553b1fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/buildings/longhorn hut.png"
-dest_files=["res://.godot/imported/longhorn hut.png-3def7c65cbf943cde48403338d9ec74c.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/buildings/longhorn hut.png"
+dest_files=["res://.godot/imported/longhorn hut.png-b23dba3af4e09814a4b2cc370553b1fb.ctex"]
 
 [params]
 

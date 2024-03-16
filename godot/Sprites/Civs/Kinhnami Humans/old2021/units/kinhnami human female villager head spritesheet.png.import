@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsw6ju7trsett"
-path="res://.godot/imported/kinhnami human female villager head spritesheet.png-7f53cb71a55946acad30a684efe8771d.ctex"
+path="res://.godot/imported/kinhnami human female villager head spritesheet.png-0663184c5561642d83d57afa131f6d32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/units/kinhnami human female villager head spritesheet.png"
-dest_files=["res://.godot/imported/kinhnami human female villager head spritesheet.png-7f53cb71a55946acad30a684efe8771d.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/units/kinhnami human female villager head spritesheet.png"
+dest_files=["res://.godot/imported/kinhnami human female villager head spritesheet.png-0663184c5561642d83d57afa131f6d32.ctex"]
 
 [params]
 

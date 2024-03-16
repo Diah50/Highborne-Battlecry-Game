@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cldla67jhpsni"
-path="res://.godot/imported/resource generator warehouse.png-8b1e0b8fd7d25657a14f287c942e0fe1.ctex"
+path="res://.godot/imported/resource generator warehouse.png-f286458d74c871a15448596a75d79500.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/buildings/resource generator warehouse.png"
-dest_files=["res://.godot/imported/resource generator warehouse.png-8b1e0b8fd7d25657a14f287c942e0fe1.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/buildings/resource generator warehouse.png"
+dest_files=["res://.godot/imported/resource generator warehouse.png-f286458d74c871a15448596a75d79500.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bg8ilovpbhq44"
-path="res://.godot/imported/kinhnami human archery range 2023 PC.png-ce64bb46e7a982602a8a6e6dbeda73b4.ctex"
+path="res://.godot/imported/kinhnami human archery range 2023 PC.png-c349d49b4a8dab6d84da6580282d8b62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/buildings/kinhnami human archery range 2023 PC.png"
-dest_files=["res://.godot/imported/kinhnami human archery range 2023 PC.png-ce64bb46e7a982602a8a6e6dbeda73b4.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/buildings/kinhnami human archery range 2023 PC.png"
+dest_files=["res://.godot/imported/kinhnami human archery range 2023 PC.png-c349d49b4a8dab6d84da6580282d8b62.ctex"]
 
 [params]
 

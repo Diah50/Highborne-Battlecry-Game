@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1mcgr3yvv4ed"
-path="res://.godot/imported/family_musketeer_icon.png-6e733b066ad15f0ef83321cc2d88ee2f.ctex"
+path="res://.godot/imported/family_musketeer_icon.png-8c5a835c68ffe7a1906bef6ce4b50ee8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/family_musketeer_icon.png"
-dest_files=["res://.godot/imported/family_musketeer_icon.png-6e733b066ad15f0ef83321cc2d88ee2f.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/family_musketeer_icon.png"
+dest_files=["res://.godot/imported/family_musketeer_icon.png-8c5a835c68ffe7a1906bef6ce4b50ee8.ctex"]
 
 [params]
 

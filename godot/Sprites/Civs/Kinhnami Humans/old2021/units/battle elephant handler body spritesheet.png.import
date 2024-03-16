@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqit5e5xqhwak"
-path="res://.godot/imported/battle elephant handler body spritesheet.png-4037be1bf285c1c7c36dce3d0bb72849.ctex"
+path="res://.godot/imported/battle elephant handler body spritesheet.png-0c1e8cdbe757411a46f3c1257a304ff5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/units/battle elephant handler body spritesheet.png"
-dest_files=["res://.godot/imported/battle elephant handler body spritesheet.png-4037be1bf285c1c7c36dce3d0bb72849.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/units/battle elephant handler body spritesheet.png"
+dest_files=["res://.godot/imported/battle elephant handler body spritesheet.png-0c1e8cdbe757411a46f3c1257a304ff5.ctex"]
 
 [params]
 

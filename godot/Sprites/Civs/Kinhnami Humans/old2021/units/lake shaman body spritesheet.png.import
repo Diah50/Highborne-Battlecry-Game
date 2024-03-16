@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dqat3lnhjq71k"
-path="res://.godot/imported/lake shaman body spritesheet.png-ad871c043d6f94da8186d7fca344c613.ctex"
+path="res://.godot/imported/lake shaman body spritesheet.png-4c0f18311690d6c45389cda7a36d7cf0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/units/lake shaman body spritesheet.png"
-dest_files=["res://.godot/imported/lake shaman body spritesheet.png-ad871c043d6f94da8186d7fca344c613.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/units/lake shaman body spritesheet.png"
+dest_files=["res://.godot/imported/lake shaman body spritesheet.png-4c0f18311690d6c45389cda7a36d7cf0.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8gm504h7nvgv"
-path="res://.godot/imported/male deer body spritesheet.png-3766e0e584f6d696609615298d1a8990.ctex"
+path="res://.godot/imported/male deer body spritesheet.png-c7dc9d5e6ecd52fbd1034aba3750fb8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/units/animals/male deer body spritesheet.png"
-dest_files=["res://.godot/imported/male deer body spritesheet.png-3766e0e584f6d696609615298d1a8990.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/units/animals/male deer body spritesheet.png"
+dest_files=["res://.godot/imported/male deer body spritesheet.png-c7dc9d5e6ecd52fbd1034aba3750fb8b.ctex"]
 
 [params]
 

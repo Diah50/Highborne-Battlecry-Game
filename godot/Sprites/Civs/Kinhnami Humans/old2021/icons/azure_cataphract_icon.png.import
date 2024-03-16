@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cqfp4eilv70c2"
-path="res://.godot/imported/azure_cataphract_icon.png-41fb43f317bf770643a89c6bdd1bc131.ctex"
+path="res://.godot/imported/azure_cataphract_icon.png-8959dbfdf3b86f3904837aa8bade00d2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/azure_cataphract_icon.png"
-dest_files=["res://.godot/imported/azure_cataphract_icon.png-41fb43f317bf770643a89c6bdd1bc131.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/azure_cataphract_icon.png"
+dest_files=["res://.godot/imported/azure_cataphract_icon.png-8959dbfdf3b86f3904837aa8bade00d2.ctex"]
 
 [params]
 

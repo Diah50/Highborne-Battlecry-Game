@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wbwguajfbidp"
-path="res://.godot/imported/resource generator farm.png-36a29bf4cb36c178828acc090e1ebbaa.ctex"
+path="res://.godot/imported/resource generator farm.png-fbc24d367bd560bba851d530789e64a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/buildings/resource generator farm.png"
-dest_files=["res://.godot/imported/resource generator farm.png-36a29bf4cb36c178828acc090e1ebbaa.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/buildings/resource generator farm.png"
+dest_files=["res://.godot/imported/resource generator farm.png-fbc24d367bd560bba851d530789e64a2.ctex"]
 
 [params]
 

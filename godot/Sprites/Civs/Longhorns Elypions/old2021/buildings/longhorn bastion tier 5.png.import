@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://t5lnh0u80f1l"
-path="res://.godot/imported/longhorn bastion tier 5.png-1eb22d6957ceaab4271b6478ec222687.ctex"
+path="res://.godot/imported/longhorn bastion tier 5.png-b54acb0c9a9bafbcdf6b2ae54bd4770a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/buildings/longhorn bastion tier 5.png"
-dest_files=["res://.godot/imported/longhorn bastion tier 5.png-1eb22d6957ceaab4271b6478ec222687.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/buildings/longhorn bastion tier 5.png"
+dest_files=["res://.godot/imported/longhorn bastion tier 5.png-b54acb0c9a9bafbcdf6b2ae54bd4770a.ctex"]
 
 [params]
 

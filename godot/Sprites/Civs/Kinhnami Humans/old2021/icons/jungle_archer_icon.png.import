@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://pfpvy3cboa3d"
-path="res://.godot/imported/jungle_archer_icon.png-500493bf494d319164ccadada3bf5c50.ctex"
+path="res://.godot/imported/jungle_archer_icon.png-b4dbc6424f2e502e7fb2551a1a7deb18.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/jungle_archer_icon.png"
-dest_files=["res://.godot/imported/jungle_archer_icon.png-500493bf494d319164ccadada3bf5c50.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/jungle_archer_icon.png"
+dest_files=["res://.godot/imported/jungle_archer_icon.png-b4dbc6424f2e502e7fb2551a1a7deb18.ctex"]
 
 [params]
 

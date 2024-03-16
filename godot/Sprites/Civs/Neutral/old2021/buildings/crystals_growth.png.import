@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djtnbtqe304cw"
-path="res://.godot/imported/crystals_growth.png-8f0e66c2576f6ee1cf75708d5beda2d4.ctex"
+path="res://.godot/imported/crystals_growth.png-f708011b9f47a8d1ded97b19bb29009e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/buildings/crystals_growth.png"
-dest_files=["res://.godot/imported/crystals_growth.png-8f0e66c2576f6ee1cf75708d5beda2d4.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/buildings/crystals_growth.png"
+dest_files=["res://.godot/imported/crystals_growth.png-f708011b9f47a8d1ded97b19bb29009e.ctex"]
 
 [params]
 

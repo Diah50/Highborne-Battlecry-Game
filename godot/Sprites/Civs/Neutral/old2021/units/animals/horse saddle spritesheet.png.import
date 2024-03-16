@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgqftos4dyryp"
-path="res://.godot/imported/horse saddle spritesheet.png-465f20f187fd4c9682fe0de89497092c.ctex"
+path="res://.godot/imported/horse saddle spritesheet.png-aea2b7aff00f606b47521205ef3c717b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/units/animals/horse saddle spritesheet.png"
-dest_files=["res://.godot/imported/horse saddle spritesheet.png-465f20f187fd4c9682fe0de89497092c.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/units/animals/horse saddle spritesheet.png"
+dest_files=["res://.godot/imported/horse saddle spritesheet.png-aea2b7aff00f606b47521205ef3c717b.ctex"]
 
 [params]
 

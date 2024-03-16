@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://do75huu1plnr3"
-path="res://.godot/imported/azure_commander_icon.png-f0d99323e2bbff9f84c1cfa93e05de3b.ctex"
+path="res://.godot/imported/azure_commander_icon.png-cb0a153e7d215f48f120114e9bc7e1cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/azure_commander_icon.png"
-dest_files=["res://.godot/imported/azure_commander_icon.png-f0d99323e2bbff9f84c1cfa93e05de3b.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/azure_commander_icon.png"
+dest_files=["res://.godot/imported/azure_commander_icon.png-cb0a153e7d215f48f120114e9bc7e1cd.ctex"]
 
 [params]
 

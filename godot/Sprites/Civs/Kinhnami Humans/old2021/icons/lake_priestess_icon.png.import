@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tpla3fskmffv"
-path="res://.godot/imported/lake_priestess_icon.png-aa4e88d3ec4cedf9e2886c8db3462e1c.ctex"
+path="res://.godot/imported/lake_priestess_icon.png-4b5a65f9f8c722868270119a0ef106d9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/lake_priestess_icon.png"
-dest_files=["res://.godot/imported/lake_priestess_icon.png-aa4e88d3ec4cedf9e2886c8db3462e1c.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/lake_priestess_icon.png"
+dest_files=["res://.godot/imported/lake_priestess_icon.png-4b5a65f9f8c722868270119a0ef106d9.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bid02c763xstu"
-path="res://.godot/imported/longhorn kiosk.png-eb8240979d996a12a7fbb2a2284a8364.ctex"
+path="res://.godot/imported/longhorn kiosk.png-88e7960c3a761a93064a5cae1c0fcf5d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/buildings/longhorn kiosk.png"
-dest_files=["res://.godot/imported/longhorn kiosk.png-eb8240979d996a12a7fbb2a2284a8364.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/buildings/longhorn kiosk.png"
+dest_files=["res://.godot/imported/longhorn kiosk.png-88e7960c3a761a93064a5cae1c0fcf5d.ctex"]
 
 [params]
 

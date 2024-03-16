@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://oxhrudvxlu02"
-path="res://.godot/imported/kinhnami_archery_range_icon.png-fc97e132a459bfba043306179311b26d.ctex"
+path="res://.godot/imported/kinhnami_archery_range_icon.png-6bb36bd8b62d40456f486fb099864383.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/structures-buildings/kinhnami_archery_range_icon.png"
-dest_files=["res://.godot/imported/kinhnami_archery_range_icon.png-fc97e132a459bfba043306179311b26d.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/structures-buildings/kinhnami_archery_range_icon.png"
+dest_files=["res://.godot/imported/kinhnami_archery_range_icon.png-6bb36bd8b62d40456f486fb099864383.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5iqkns2pjk1x"
-path="res://.godot/imported/azure cataphract horse body spritesheet.png-4ad794c816ae280d7f70354f5c575ff9.ctex"
+path="res://.godot/imported/azure cataphract horse body spritesheet.png-621c0caa8abea9be270eb6fd78000c9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/units/azure cataphract horse body spritesheet.png"
-dest_files=["res://.godot/imported/azure cataphract horse body spritesheet.png-4ad794c816ae280d7f70354f5c575ff9.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/units/azure cataphract horse body spritesheet.png"
+dest_files=["res://.godot/imported/azure cataphract horse body spritesheet.png-621c0caa8abea9be270eb6fd78000c9e.ctex"]
 
 [params]
 

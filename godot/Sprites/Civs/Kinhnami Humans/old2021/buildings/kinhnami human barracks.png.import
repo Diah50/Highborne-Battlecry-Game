@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dv76k8pfnqyco"
-path="res://.godot/imported/kinhnami human barracks.png-6c66ee9fcef4e350f0a2f800eabfc0b5.ctex"
+path="res://.godot/imported/kinhnami human barracks.png-419476a5de5110079cce0810c7e89c7e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/buildings/kinhnami human barracks.png"
-dest_files=["res://.godot/imported/kinhnami human barracks.png-6c66ee9fcef4e350f0a2f800eabfc0b5.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/buildings/kinhnami human barracks.png"
+dest_files=["res://.godot/imported/kinhnami human barracks.png-419476a5de5110079cce0810c7e89c7e.ctex"]
 
 [params]
 

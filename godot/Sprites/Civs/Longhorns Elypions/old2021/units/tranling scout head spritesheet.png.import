@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://msnjuw8usu2m"
-path="res://.godot/imported/tranling scout head spritesheet.png-4dc16172dcbf300c48f305613426821b.ctex"
+path="res://.godot/imported/tranling scout head spritesheet.png-02e842a1f5ef0c1d44c68d96a6c82798.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/units/tranling scout head spritesheet.png"
-dest_files=["res://.godot/imported/tranling scout head spritesheet.png-4dc16172dcbf300c48f305613426821b.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/units/tranling scout head spritesheet.png"
+dest_files=["res://.godot/imported/tranling scout head spritesheet.png-02e842a1f5ef0c1d44c68d96a6c82798.ctex"]
 
 [params]
 

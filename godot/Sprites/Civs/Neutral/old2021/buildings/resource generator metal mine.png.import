@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://boaeppmq3xk27"
-path="res://.godot/imported/resource generator metal mine.png-6c4bf8dd55ecb3daddc098338a3a2cdb.ctex"
+path="res://.godot/imported/resource generator metal mine.png-17db27c9cfc9dda45ac315b8c7350994.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/buildings/resource generator metal mine.png"
-dest_files=["res://.godot/imported/resource generator metal mine.png-6c4bf8dd55ecb3daddc098338a3a2cdb.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/buildings/resource generator metal mine.png"
+dest_files=["res://.godot/imported/resource generator metal mine.png-17db27c9cfc9dda45ac315b8c7350994.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://wjxvelf4nqff"
-path="res://.godot/imported/longhorn male peon body spritesheet.png-d4012194d9c5b50a41e14565c56fc67d.ctex"
+path="res://.godot/imported/longhorn male peon body spritesheet.png-9d41b8f9ef1f7d66fe63d264c0dfe095.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/units/longhorn male peon body spritesheet.png"
-dest_files=["res://.godot/imported/longhorn male peon body spritesheet.png-d4012194d9c5b50a41e14565c56fc67d.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/units/longhorn male peon body spritesheet.png"
+dest_files=["res://.godot/imported/longhorn male peon body spritesheet.png-9d41b8f9ef1f7d66fe63d264c0dfe095.ctex"]
 
 [params]
 

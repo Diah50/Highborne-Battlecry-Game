@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx3a4na07yh8m"
-path="res://.godot/imported/bamboo_spearman_icon.png-a2f2ec83c22f64821cba8ae9d7da8b20.ctex"
+path="res://.godot/imported/bamboo_spearman_icon.png-e3768d93e5f845f513b7fc2513454d3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/bamboo_spearman_icon.png"
-dest_files=["res://.godot/imported/bamboo_spearman_icon.png-a2f2ec83c22f64821cba8ae9d7da8b20.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/bamboo_spearman_icon.png"
+dest_files=["res://.godot/imported/bamboo_spearman_icon.png-e3768d93e5f845f513b7fc2513454d3f.ctex"]
 
 [params]
 

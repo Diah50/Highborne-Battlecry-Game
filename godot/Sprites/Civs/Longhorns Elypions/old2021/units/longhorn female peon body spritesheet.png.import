@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgallbp3y01h"
-path="res://.godot/imported/longhorn female peon body spritesheet.png-c4342a29c0dea5f6745791828e4b4255.ctex"
+path="res://.godot/imported/longhorn female peon body spritesheet.png-277d63d7f44e485da1e342769a9e3f00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/units/longhorn female peon body spritesheet.png"
-dest_files=["res://.godot/imported/longhorn female peon body spritesheet.png-c4342a29c0dea5f6745791828e4b4255.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/units/longhorn female peon body spritesheet.png"
+dest_files=["res://.godot/imported/longhorn female peon body spritesheet.png-277d63d7f44e485da1e342769a9e3f00.ctex"]
 
 [params]
 

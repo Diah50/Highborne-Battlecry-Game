@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsq63e4sk38we"
-path="res://.godot/imported/kinhnami human granary.png-66a254cba93d8baa81fb33d132e83bbe.ctex"
+path="res://.godot/imported/kinhnami human granary.png-9c0c373a20fedf1e3f8eb0bae748270c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/buildings/kinhnami human granary.png"
-dest_files=["res://.godot/imported/kinhnami human granary.png-66a254cba93d8baa81fb33d132e83bbe.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/buildings/kinhnami human granary.png"
+dest_files=["res://.godot/imported/kinhnami human granary.png-9c0c373a20fedf1e3f8eb0bae748270c.ctex"]
 
 [params]
 

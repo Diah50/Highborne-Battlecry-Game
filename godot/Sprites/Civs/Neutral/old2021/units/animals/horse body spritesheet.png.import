@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bc2x7vj6665fi"
-path="res://.godot/imported/horse body spritesheet.png-7e0e31e2adc42dc24186e57fb76b26c5.ctex"
+path="res://.godot/imported/horse body spritesheet.png-49edbfa321275510fc2f4c2af7a345e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/units/animals/horse body spritesheet.png"
-dest_files=["res://.godot/imported/horse body spritesheet.png-7e0e31e2adc42dc24186e57fb76b26c5.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/units/animals/horse body spritesheet.png"
+dest_files=["res://.godot/imported/horse body spritesheet.png-49edbfa321275510fc2f4c2af7a345e4.ctex"]
 
 [params]
 

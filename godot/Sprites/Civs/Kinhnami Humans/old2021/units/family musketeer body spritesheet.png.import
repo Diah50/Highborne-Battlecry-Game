@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b8bu3oyinheda"
-path="res://.godot/imported/family musketeer body spritesheet.png-3daa4b6237efe1e6f56367835d02e0d8.ctex"
+path="res://.godot/imported/family musketeer body spritesheet.png-46f9cdb6477c87861a72f3d9c2dc8368.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/units/family musketeer body spritesheet.png"
-dest_files=["res://.godot/imported/family musketeer body spritesheet.png-3daa4b6237efe1e6f56367835d02e0d8.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/units/family musketeer body spritesheet.png"
+dest_files=["res://.godot/imported/family musketeer body spritesheet.png-46f9cdb6477c87861a72f3d9c2dc8368.ctex"]
 
 [params]
 

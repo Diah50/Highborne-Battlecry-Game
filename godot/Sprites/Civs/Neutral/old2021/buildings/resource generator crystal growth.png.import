@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brbt8mkt64uai"
-path="res://.godot/imported/resource generator crystal growth.png-515b0fab0903204314c0f426ab746c65.ctex"
+path="res://.godot/imported/resource generator crystal growth.png-ecb3b25ccab3d83ba79ce64f35030803.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/buildings/resource generator crystal growth.png"
-dest_files=["res://.godot/imported/resource generator crystal growth.png-515b0fab0903204314c0f426ab746c65.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/buildings/resource generator crystal growth.png"
+dest_files=["res://.godot/imported/resource generator crystal growth.png-ecb3b25ccab3d83ba79ce64f35030803.ctex"]
 
 [params]
 

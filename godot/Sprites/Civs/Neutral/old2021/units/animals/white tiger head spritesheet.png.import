@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3ay82om2kej7"
-path="res://.godot/imported/white tiger head spritesheet.png-b60528a74792aced1014d968bb105056.ctex"
+path="res://.godot/imported/white tiger head spritesheet.png-3a202574fd4cbbaf24062fda4295ccd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/units/animals/white tiger head spritesheet.png"
-dest_files=["res://.godot/imported/white tiger head spritesheet.png-b60528a74792aced1014d968bb105056.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/units/animals/white tiger head spritesheet.png"
+dest_files=["res://.godot/imported/white tiger head spritesheet.png-3a202574fd4cbbaf24062fda4295ccd3.ctex"]
 
 [params]
 

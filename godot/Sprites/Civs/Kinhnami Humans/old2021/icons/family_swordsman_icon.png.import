@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://nxjaaqjgbpt"
-path="res://.godot/imported/family_swordsman_icon.png-3793a2a2b64ed9a661758aff6d461620.ctex"
+path="res://.godot/imported/family_swordsman_icon.png-52c60bf988a0deabdc475a6b0cd7f1c0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/family_swordsman_icon.png"
-dest_files=["res://.godot/imported/family_swordsman_icon.png-3793a2a2b64ed9a661758aff6d461620.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/family_swordsman_icon.png"
+dest_files=["res://.godot/imported/family_swordsman_icon.png-52c60bf988a0deabdc475a6b0cd7f1c0.ctex"]
 
 [params]
 

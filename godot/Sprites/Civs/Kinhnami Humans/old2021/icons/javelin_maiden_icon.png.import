@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bsu2ss7s6yvk7"
-path="res://.godot/imported/javelin_maiden_icon.png-27e9958ebad2003918ea58bf2c837ee4.ctex"
+path="res://.godot/imported/javelin_maiden_icon.png-6ae92bc2615bc1adf11740c1ac3c9cbe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/javelin_maiden_icon.png"
-dest_files=["res://.godot/imported/javelin_maiden_icon.png-27e9958ebad2003918ea58bf2c837ee4.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/javelin_maiden_icon.png"
+dest_files=["res://.godot/imported/javelin_maiden_icon.png-6ae92bc2615bc1adf11740c1ac3c9cbe.ctex"]
 
 [params]
 

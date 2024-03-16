@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfjsw0uf7uiju"
-path="res://.godot/imported/kinhnami human town center tier 2.png-730be26df47b2604120a2381df6017c5.ctex"
+path="res://.godot/imported/kinhnami human town center tier 2.png-7f82e4fb78317177c362ea51ab13f2e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/buildings/kinhnami human town center tier 2.png"
-dest_files=["res://.godot/imported/kinhnami human town center tier 2.png-730be26df47b2604120a2381df6017c5.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/buildings/kinhnami human town center tier 2.png"
+dest_files=["res://.godot/imported/kinhnami human town center tier 2.png-7f82e4fb78317177c362ea51ab13f2e1.ctex"]
 
 [params]
 

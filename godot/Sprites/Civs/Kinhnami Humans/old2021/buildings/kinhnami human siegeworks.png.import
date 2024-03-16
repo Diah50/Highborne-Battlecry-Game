@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bodhcat0fmad7"
-path="res://.godot/imported/kinhnami human siegeworks.png-4ade6ada33d76a7271aa578cd3768bc8.ctex"
+path="res://.godot/imported/kinhnami human siegeworks.png-363e3fe0a640a64621aee0b7cbac22e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/buildings/kinhnami human siegeworks.png"
-dest_files=["res://.godot/imported/kinhnami human siegeworks.png-4ade6ada33d76a7271aa578cd3768bc8.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/buildings/kinhnami human siegeworks.png"
+dest_files=["res://.godot/imported/kinhnami human siegeworks.png-363e3fe0a640a64621aee0b7cbac22e3.ctex"]
 
 [params]
 

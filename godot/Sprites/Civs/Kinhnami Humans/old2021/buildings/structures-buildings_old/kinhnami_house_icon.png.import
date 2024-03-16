@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dx5x8tjmyef36"
-path="res://.godot/imported/kinhnami_house_icon.png-a7d5c99ba987180b90ef14ffe56325fb.ctex"
+path="res://.godot/imported/kinhnami_house_icon.png-b9b4d4d0b13fbd593dc8d2143e82e2e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/buildings/structures-buildings_old/kinhnami_house_icon.png"
-dest_files=["res://.godot/imported/kinhnami_house_icon.png-a7d5c99ba987180b90ef14ffe56325fb.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/buildings/structures-buildings_old/kinhnami_house_icon.png"
+dest_files=["res://.godot/imported/kinhnami_house_icon.png-b9b4d4d0b13fbd593dc8d2143e82e2e3.ctex"]
 
 [params]
 

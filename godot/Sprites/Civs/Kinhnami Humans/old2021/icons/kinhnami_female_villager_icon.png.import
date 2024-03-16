@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c46viuo51beyj"
-path="res://.godot/imported/kinhnami_female_villager_icon.png-66c2c8cbfd6db852e75d5845f370ae91.ctex"
+path="res://.godot/imported/kinhnami_female_villager_icon.png-f9309b23d0195d825392a2d267d83dfb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/kinhnami_female_villager_icon.png"
-dest_files=["res://.godot/imported/kinhnami_female_villager_icon.png-66c2c8cbfd6db852e75d5845f370ae91.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/kinhnami_female_villager_icon.png"
+dest_files=["res://.godot/imported/kinhnami_female_villager_icon.png-f9309b23d0195d825392a2d267d83dfb.ctex"]
 
 [params]
 

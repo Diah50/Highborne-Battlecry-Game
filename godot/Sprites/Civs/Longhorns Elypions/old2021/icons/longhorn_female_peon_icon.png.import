@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5qpep17aqtd6"
-path="res://.godot/imported/longhorn_female_peon_icon.png-d07983fc1f624dfab98fbaef10cb0237.ctex"
+path="res://.godot/imported/longhorn_female_peon_icon.png-d9a95328cfe1e837f4dafce305ea7217.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/icons/longhorn_female_peon_icon.png"
-dest_files=["res://.godot/imported/longhorn_female_peon_icon.png-d07983fc1f624dfab98fbaef10cb0237.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/icons/longhorn_female_peon_icon.png"
+dest_files=["res://.godot/imported/longhorn_female_peon_icon.png-d9a95328cfe1e837f4dafce305ea7217.ctex"]
 
 [params]
 

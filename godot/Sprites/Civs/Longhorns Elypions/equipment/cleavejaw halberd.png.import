@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b2fmvl7box5jl"
-path="res://.godot/imported/cleavejaw halberd.png-398b18f1f33e6d0972ca47b939e251af.ctex"
+path="res://.godot/imported/cleavejaw halberd.png-80b1b44e4ef8dbcf77c24df2c124e4a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/equipment/cleavejaw halberd.png"
-dest_files=["res://.godot/imported/cleavejaw halberd.png-398b18f1f33e6d0972ca47b939e251af.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/equipment/cleavejaw halberd.png"
+dest_files=["res://.godot/imported/cleavejaw halberd.png-80b1b44e4ef8dbcf77c24df2c124e4a4.ctex"]
 
 [params]
 

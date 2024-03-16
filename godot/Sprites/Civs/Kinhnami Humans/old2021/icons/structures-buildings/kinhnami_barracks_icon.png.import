@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cp741kxi50jv3"
-path="res://.godot/imported/kinhnami_barracks_icon.png-c6d3fcb940411c41110d798cbdbb5332.ctex"
+path="res://.godot/imported/kinhnami_barracks_icon.png-814d8613567f75532ece566441bafd7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Kinhnami Humans/icons/structures-buildings/kinhnami_barracks_icon.png"
-dest_files=["res://.godot/imported/kinhnami_barracks_icon.png-c6d3fcb940411c41110d798cbdbb5332.ctex"]
+source_file="res://Sprites/Civs/Kinhnami Humans/old2021/icons/structures-buildings/kinhnami_barracks_icon.png"
+dest_files=["res://.godot/imported/kinhnami_barracks_icon.png-814d8613567f75532ece566441bafd7b.ctex"]
 
 [params]
 

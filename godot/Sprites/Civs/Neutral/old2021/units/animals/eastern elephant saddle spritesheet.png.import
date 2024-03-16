@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlkj8j2kybtn2"
-path="res://.godot/imported/eastern elephant saddle spritesheet.png-837fe23a9e57ea0a83829a972239ae0f.ctex"
+path="res://.godot/imported/eastern elephant saddle spritesheet.png-41380f4631d648bcf77eebc52cd46bca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/units/animals/eastern elephant saddle spritesheet.png"
-dest_files=["res://.godot/imported/eastern elephant saddle spritesheet.png-837fe23a9e57ea0a83829a972239ae0f.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/units/animals/eastern elephant saddle spritesheet.png"
+dest_files=["res://.godot/imported/eastern elephant saddle spritesheet.png-41380f4631d648bcf77eebc52cd46bca.ctex"]
 
 [params]
 

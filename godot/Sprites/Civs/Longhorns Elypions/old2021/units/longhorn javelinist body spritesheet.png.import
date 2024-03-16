@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce0ej75pi27eh"
-path="res://.godot/imported/longhorn javelinist body spritesheet.png-9475be9ce9082225e72e31f7a64de676.ctex"
+path="res://.godot/imported/longhorn javelinist body spritesheet.png-e9d34bd3dc2468d5df83c92ccdcd8eb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Llonghorns Elypions/units/longhorn javelinist body spritesheet.png"
-dest_files=["res://.godot/imported/longhorn javelinist body spritesheet.png-9475be9ce9082225e72e31f7a64de676.ctex"]
+source_file="res://Sprites/Civs/Longhorns Elypions/old2021/units/longhorn javelinist body spritesheet.png"
+dest_files=["res://.godot/imported/longhorn javelinist body spritesheet.png-e9d34bd3dc2468d5df83c92ccdcd8eb9.ctex"]
 
 [params]
 

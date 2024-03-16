@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cgsgirdhawqxy"
-path="res://.godot/imported/horse head spritesheet.png-b736bf93e31d565fd861cf79412e6529.ctex"
+path="res://.godot/imported/horse head spritesheet.png-2d2889e9ee4a8ea167530ad06d07da7c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Civs/Neutral/units/animals/horse head spritesheet.png"
-dest_files=["res://.godot/imported/horse head spritesheet.png-b736bf93e31d565fd861cf79412e6529.ctex"]
+source_file="res://Sprites/Civs/Neutral/old2021/units/animals/horse head spritesheet.png"
+dest_files=["res://.godot/imported/horse head spritesheet.png-2d2889e9ee4a8ea167530ad06d07da7c.ctex"]
 
 [params]
 
