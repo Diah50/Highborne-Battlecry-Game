@@ -6,18 +6,23 @@ using System.Numerics;
 
 namespace Manager
 {
-    public partial class InputM : Node
+    public partial class InputM : Node2D
     {
         [Export] public double DOUBLETAP_MSECS = 500;
-        private readonly HashSet<string> holdableActions = new() { "pan_left", "pan_right", "pan_up", "pan_down" };
+        private readonly HashSet<string> holdableActions = new() { "pan_left", "pan_right", "pan_up", "pan_down", "left_click" };
 
+        public HashSet<string> newlyHeldActions = new();
         public HashSet<string> heldActions = new();
+        public HashSet<string> justReleasedActions = new();
+
 
         private CameraM cameraM;
+        private SelectionM selectionM;
 
         public override void _Ready()
         {
-            cameraM = this.GetNode<CameraM>("../CameraManager");
+            cameraM = this.GetNode<CameraM>("../CameraM");
+            selectionM = this.GetNode<SelectionM>("../SelectionM");
         }
 
 
@@ -25,7 +30,13 @@ namespace Manager
         {
             // reduces ghosting on held actions compared to Input.IsActionPressed()
             // not necessary for presses, just use Input.IsActionJustPressed()
-            var newlyHeldActions = holdableActions.Except(heldActions).Where(action => @event.IsActionPressed(action));
+            newlyHeldActions = holdableActions
+                .Except(heldActions)
+                .Where(action => @event.IsActionPressed(action))
+                .ToHashSet();
+            justReleasedActions = heldActions
+                .Where(action => @event.IsActionReleased(action))
+                .ToHashSet();
             heldActions = heldActions.Concat(
                     newlyHeldActions
                 )
@@ -52,6 +63,8 @@ namespace Manager
         public override void _Process(double delta)
         {
             cameraM.CameraInput(cameraM.camera, delta);
+            selectionM.SelectionInput(delta);
+            newlyHeldActions.Clear();
         }
     }
 }

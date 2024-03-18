@@ -6,7 +6,7 @@ using System.Numerics;
 
 namespace Manager
 {
-    public partial class BuildingM : Node
+    public partial class BuildingM : Node2D
     {
         [Export] public Godot.Collections.Dictionary<int, int> MultibuildSpeed; // number of builders, additional speed multiplier in %
     }
