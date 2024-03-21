@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3ebyd3pqwniy"
-path="res://.godot/imported/family_swordsman_icon_plus_8px.png-d43f3dbf5b31e25eae1d43db578d7399.ctex"
+uid="uid://ccsw2wei8ulkx"
+path="res://.godot/imported/jungle_archer_icon.png-7fdd5c1fca0ef086acf1deaf142909c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bobits_Edits/family_swordsman_icon_plus_8px.png"
-dest_files=["res://.godot/imported/family_swordsman_icon_plus_8px.png-d43f3dbf5b31e25eae1d43db578d7399.ctex"]
+source_file="res://Sprites/BobitsEdits/jungle_archer_icon.png"
+dest_files=["res://.godot/imported/jungle_archer_icon.png-7fdd5c1fca0ef086acf1deaf142909c6.ctex"]
 
 [params]
 

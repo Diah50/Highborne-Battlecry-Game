@@ -1,19 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://mawnshvwgawn"]
+[gd_scene load_steps=13 format=3 uid="uid://mawnshvwgawn"]
 
 [ext_resource type="Texture2D" uid="uid://ro1ptpu6qghs" path="res://Sprites/Civs/Kinhnami Humans/old2021/icons/family_handcannoneer_icon.png" id="1_3jo0x"]
 [ext_resource type="Script" path="res://Scripts/Manager/CameraM.cs" id="2_4h2t2"]
-[ext_resource type="Shader" path="res://Scripts/Shaders/aura.gdshader" id="2_5gl3i"]
 [ext_resource type="Script" path="res://Scripts/Entity/Entity.cs" id="2_i0w0x"]
+[ext_resource type="Texture2D" uid="uid://cv40iymrxta05" path="res://Sprites/BobitsEdits/circle.png" id="3_gsgru"]
 [ext_resource type="Script" path="res://Scripts/Manager/InputM.cs" id="3_ixee7"]
-[ext_resource type="Texture2D" uid="uid://bqgtx6rgjk2oy" path="res://Sprites/Bobits_Edits/bamboo_spearman.png" id="4_adgit"]
+[ext_resource type="Texture2D" uid="uid://drkabvsbbk1im" path="res://Sprites/BobitsEdits/bamboo_spearman_icon.png" id="4_adgit"]
 [ext_resource type="Script" path="res://Scripts/Manager/SelectionM.cs" id="4_wfmip"]
+[ext_resource type="Texture2D" uid="uid://57p0xhxpf2x2" path="res://Sprites/BobitsEdits/selection_indicator.png" id="5_8hsqy"]
+[ext_resource type="Texture2D" uid="uid://cdoygb5at3g8p" path="res://Sprites/BobitsEdits/team_border.png" id="6_hqjce"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_632u3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seany"]
-shader = ExtResource("2_5gl3i")
-shader_parameter/aura_width = 0.0
-shader_parameter/aura_color = Color(0, 0.0196078, 0.941176, 1)
 
 [sub_resource type="TileSet" id="TileSet_priv4"]
 
@@ -45,9 +44,24 @@ script = ExtResource("2_i0w0x")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test/Units/CharacterBody2D"]
 shape = SubResource("CircleShape2D_632u3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Test/Units/CharacterBody2D"]
+[node name="Model" type="Node2D" parent="Test/Units/CharacterBody2D"]
+
+[node name="Background" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
+material = SubResource("ShaderMaterial_seany")
+texture = ExtResource("3_gsgru")
+
+[node name="Sprite" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
 material = SubResource("ShaderMaterial_seany")
 texture = ExtResource("4_adgit")
+
+[node name="SelectionIndicator" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
+visible = false
+material = SubResource("ShaderMaterial_seany")
+texture = ExtResource("5_8hsqy")
+
+[node name="TeamSprite" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
+material = SubResource("ShaderMaterial_seany")
+texture = ExtResource("6_hqjce")
 
 [node name="Managers" type="Node2D" parent="."]
 

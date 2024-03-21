@@ -17,15 +17,15 @@ namespace Entity
         [Export] public String[] Tags;
         [Export] public int Radius; // for collision and such, assumes circular hitbox
         public int FactionId = -1; // -1 = N/A, 0 = neutral, 0XX = player, 1XX+ = other. All with > -1 should be FactionEntity.
-        public Sprite2D Sprite;
+        public Sprite2D SelectionIndicator;
         public override void _Ready(){
-            Sprite = GetNode<Sprite2D>("Sprite2D");
+            SelectionIndicator = GetNode<Sprite2D>("Model/SelectionIndicator");
         }
 
         private bool _Selected = false;
         public bool Selected{
             get { return _Selected;}
-            set { _Selected = value; ((ShaderMaterial)Sprite.Material).SetShaderParameter("aura_width", value ? 5 : 0);}
+            set { _Selected = value; SelectionIndicator.Visible = value;}
 
         }
     }
