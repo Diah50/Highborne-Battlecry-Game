@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 
-// Each task component adds 1 custom task
+// Each task component adds one button with relatively custom behavior
 
 namespace EntityComponent
 {

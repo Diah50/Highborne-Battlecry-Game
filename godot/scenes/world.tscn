@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://mawnshvwgawn"]
+[gd_scene load_steps=12 format=3 uid="uid://mawnshvwgawn"]
 
-[ext_resource type="Texture2D" uid="uid://ro1ptpu6qghs" path="res://Sprites/Civs/Kinhnami Humans/old2021/icons/family_handcannoneer_icon.png" id="1_3jo0x"]
 [ext_resource type="Script" path="res://Scripts/Manager/CameraM.cs" id="2_4h2t2"]
 [ext_resource type="Script" path="res://Scripts/Entity/Entity.cs" id="2_i0w0x"]
 [ext_resource type="Texture2D" uid="uid://cv40iymrxta05" path="res://Sprites/BobitsEdits/circle.png" id="3_gsgru"]
@@ -11,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cdoygb5at3g8p" path="res://Sprites/BobitsEdits/team_border.png" id="6_hqjce"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_632u3"]
+radius = 84.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_seany"]
 
@@ -19,21 +19,6 @@
 [node name="World" type="Node2D"]
 
 [node name="Test" type="Node2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Test"]
-visible = false
-position = Vector2(-268, -137)
-texture = ExtResource("1_3jo0x")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Test"]
-visible = false
-position = Vector2(168, 119)
-texture = ExtResource("1_3jo0x")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Test"]
-visible = false
-position = Vector2(-159, 103)
-texture = ExtResource("1_3jo0x")
 
 [node name="Units" type="Node2D" parent="Test"]
 
