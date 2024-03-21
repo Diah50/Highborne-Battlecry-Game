@@ -26,7 +26,7 @@ namespace Manager
         }
 
 
-        public override void _Input(InputEvent @event)
+        public override void _UnhandledInput(InputEvent @event)
         {
             // reduces ghosting on held actions compared to Input.IsActionPressed()
             // not necessary for presses, just use Input.IsActionJustPressed()
@@ -43,6 +43,9 @@ namespace Manager
                 .Where(action => !@event.IsActionReleased(action))
                 .ToHashSet();
 
+            selectionM.HandleInput(@event);
+
+            newlyHeldActions.Clear();
             // if(control_group != CONTROL_GROUP_NUMBER.NONE and 
             //     event.is_action_pressed("add_to_control_group_" + str(control_group))):
             //     if(self not in G.player_selection):
@@ -62,9 +65,7 @@ namespace Manager
 
         public override void _Process(double delta)
         {
-            cameraM.CameraInput(cameraM.camera, delta);
-            selectionM.SelectionInput(delta);
-            newlyHeldActions.Clear();
+            cameraM.InputProcess(delta);
         }
     }
 }

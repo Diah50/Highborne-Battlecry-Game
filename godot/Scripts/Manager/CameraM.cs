@@ -22,24 +22,24 @@ namespace Manager
             camera = this.GetNode<Camera2D>("Camera2D");
         }
 
-        public void CameraInput(Camera2D c, double delta)
+        public void InputProcess(double delta)
         {
-            float panIncrement = (float)(PAN_SPEED * delta / c.Zoom.X);
+            float panIncrement = (float)(PAN_SPEED * delta / camera.Zoom.X);
             float zoomIncrement = (float)(ZOOM_SPEED * delta);
 
             var pan = new Godot.Vector2(
                 ((inputM.heldActions.Contains("pan_right") ? 1 : 0) - (inputM.heldActions.Contains("pan_left") ? 1 : 0)) * panIncrement,
                 ((inputM.heldActions.Contains("pan_down") ? 1 : 0) - (inputM.heldActions.Contains("pan_up") ? 1 : 0)) * panIncrement);
             if (pan != Godot.Vector2.Zero)
-                c.Position += pan;
+                camera.Position += pan;
 
             float zoomMult = 1f +
                 ((Input.IsActionJustPressed("zoom_in") ? 1 : 0) - (Input.IsActionJustPressed("zoom_out") ? 1 : 0))
                 * zoomIncrement;
             if (zoomMult != 1f)
             {
-                float zoom = Mathf.Clamp(c.Zoom.X * zoomMult, MIN_ZOOM, MAX_ZOOM);
-                c.Zoom = new Godot.Vector2(zoom, zoom);
+                float zoom = Mathf.Clamp(camera.Zoom.X * zoomMult, MIN_ZOOM, MAX_ZOOM);
+                camera.Zoom = new Godot.Vector2(zoom, zoom);
             }
         }
     }
