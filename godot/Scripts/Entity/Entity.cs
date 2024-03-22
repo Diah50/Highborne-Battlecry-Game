@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 
 
@@ -18,15 +19,17 @@ namespace Entity
         [Export] public int Radius; // for collision and such, assumes circular hitbox
         public int FactionId = -1; // -1 = N/A, 0 = neutral, 0XX = player, 1XX+ = other. All with > -1 should be FactionEntity.
         public Sprite2D SelectionIndicator;
-        public override void _Ready(){
-            SelectionIndicator = GetNode<Sprite2D>("Model/SelectionIndicator");
-        }
+        public List<Action> ActionQueue = new();
+        public List<Action> ShopActionQueue = new();
 
         private bool _Selected = false;
         public bool Selected{
             get { return _Selected;}
             set { _Selected = value; SelectionIndicator.Visible = value;}
+        }
 
+                public override void _Ready(){
+            SelectionIndicator = GetNode<Sprite2D>("Model/SelectionIndicator");
         }
     }
 }

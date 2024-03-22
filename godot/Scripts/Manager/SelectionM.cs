@@ -13,7 +13,7 @@ namespace Manager
         private InputM inputM;
         private Godot.Vector2 selectionStart = Godot.Vector2.Zero;
         private bool selecting = false;
-        private List<Entity.Entity> selected = new();
+        public List<Entity.Entity> selected = new();
 
 
         public override void _Ready()

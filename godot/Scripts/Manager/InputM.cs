@@ -9,7 +9,8 @@ namespace Manager
     public partial class InputM : Node2D
     {
         [Export] public double DOUBLETAP_MSECS = 500;
-        private readonly HashSet<string> holdableActions = new() { "pan_left", "pan_right", "pan_up", "pan_down", "left_click" };
+        private readonly HashSet<string> holdableActions = new() { 
+            "pan_left", "pan_right", "pan_up", "pan_down", "zoom_in", "zoom_out", "left_click", "shift"};
 
         public HashSet<string> newlyHeldActions = new();
         public HashSet<string> heldActions = new();
@@ -18,11 +19,13 @@ namespace Manager
 
         private CameraM cameraM;
         private SelectionM selectionM;
+        private ActionM actionM;
 
         public override void _Ready()
         {
             cameraM = this.GetNode<CameraM>("../CameraM");
             selectionM = this.GetNode<SelectionM>("../SelectionM");
+            actionM = this.GetNode<ActionM>("../ActionM");
         }
 
 
@@ -44,6 +47,7 @@ namespace Manager
                 .ToHashSet();
 
             selectionM.HandleInput(@event);
+            actionM.HandleInput(@event);
 
             newlyHeldActions.Clear();
             // if(control_group != CONTROL_GROUP_NUMBER.NONE and 

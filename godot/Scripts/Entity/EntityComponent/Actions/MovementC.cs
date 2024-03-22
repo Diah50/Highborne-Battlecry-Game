@@ -3,7 +3,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class MoveC : Node
+    public partial class MovementC : Node2D
     {
         [Export] public int Speed = 0;
         [Export] public bool CanGarrison = true;

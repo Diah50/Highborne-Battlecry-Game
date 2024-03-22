@@ -4,7 +4,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class DamageableC : Node
+    public partial class DamageableC : Node2D
     {
         [Export] public int MaxHealth = 10;
         [Export] public int HealthRegen = 0;

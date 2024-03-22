@@ -3,7 +3,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class AttackC : Node
+    public partial class AttackC : Node2D
     {
         [Export] public int Damage = 0;
         [Export] public int Time = 1000;

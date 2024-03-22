@@ -3,7 +3,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class GarrisonC : Node
+    public partial class GarrisonC : Node2D
     {
         [Export] public Godot.Collections.Array<string> GarrisonTags = new();
         [Export] public int GarrisonAmount = 5;

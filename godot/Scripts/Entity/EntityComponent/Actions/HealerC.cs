@@ -5,7 +5,7 @@ using Godot;
 namespace EntityComponent
 {
 
-    public partial class HealerC : Node
+    public partial class HealerC : Node2D
     {
         [Export] public int HealPower;
         [Export] public string[] HealClasses;

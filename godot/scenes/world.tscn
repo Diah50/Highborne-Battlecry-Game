@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mawnshvwgawn"]
+[gd_scene load_steps=15 format=3 uid="uid://mawnshvwgawn"]
 
 [ext_resource type="Script" path="res://Scripts/Manager/CameraM.cs" id="2_4h2t2"]
 [ext_resource type="Script" path="res://Scripts/Entity/Entity.cs" id="2_i0w0x"]
@@ -7,7 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://drkabvsbbk1im" path="res://Sprites/BobitsEdits/bamboo_spearman_icon.png" id="4_adgit"]
 [ext_resource type="Script" path="res://Scripts/Manager/SelectionM.cs" id="4_wfmip"]
 [ext_resource type="Texture2D" uid="uid://57p0xhxpf2x2" path="res://Sprites/BobitsEdits/selection_indicator.png" id="5_8hsqy"]
+[ext_resource type="Script" path="res://Scripts/Entity/EntityComponent/Actions/MovementC.cs" id="6_8us7l"]
 [ext_resource type="Texture2D" uid="uid://cdoygb5at3g8p" path="res://Sprites/BobitsEdits/team_border.png" id="6_hqjce"]
+[ext_resource type="Script" path="res://Scripts/Manager/ActionM.cs" id="9_e0one"]
+[ext_resource type="Script" path="res://Scripts/Manager/Actions/MovementM.cs" id="9_n2rjt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_632u3"]
 radius = 84.0
@@ -22,33 +25,42 @@ radius = 84.0
 
 [node name="Units" type="Node2D" parent="Test"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Test/Units"]
+[node name="Unit" type="CharacterBody2D" parent="Test/Units" groups=["Entity"]]
 position = Vector2(-253, -177)
 script = ExtResource("2_i0w0x")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Test/Units/CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test/Units/Unit"]
 shape = SubResource("CircleShape2D_632u3")
 
-[node name="Model" type="Node2D" parent="Test/Units/CharacterBody2D"]
+[node name="Model" type="Node2D" parent="Test/Units/Unit"]
 
-[node name="Background" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
+[node name="Background" type="Sprite2D" parent="Test/Units/Unit/Model"]
 material = SubResource("ShaderMaterial_seany")
 texture = ExtResource("3_gsgru")
 
-[node name="Sprite" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
+[node name="Sprite" type="Sprite2D" parent="Test/Units/Unit/Model"]
 material = SubResource("ShaderMaterial_seany")
 texture = ExtResource("4_adgit")
 
-[node name="SelectionIndicator" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
+[node name="SelectionIndicator" type="Sprite2D" parent="Test/Units/Unit/Model"]
 visible = false
 material = SubResource("ShaderMaterial_seany")
 texture = ExtResource("5_8hsqy")
 
-[node name="TeamSprite" type="Sprite2D" parent="Test/Units/CharacterBody2D/Model"]
+[node name="TeamSprite" type="Sprite2D" parent="Test/Units/Unit/Model"]
 material = SubResource("ShaderMaterial_seany")
 texture = ExtResource("6_hqjce")
 
+[node name="Components" type="Node2D" parent="Test/Units/Unit"]
+
+[node name="MovementC" type="Node2D" parent="Test/Units/Unit/Components"]
+script = ExtResource("6_8us7l")
+Speed = 200
+
 [node name="Managers" type="Node2D" parent="."]
+
+[node name="ActionM" type="Node2D" parent="Managers"]
+script = ExtResource("9_e0one")
 
 [node name="CameraM" type="Node2D" parent="Managers"]
 script = ExtResource("2_4h2t2")
@@ -57,6 +69,9 @@ script = ExtResource("2_4h2t2")
 
 [node name="InputM" type="Node2D" parent="Managers"]
 script = ExtResource("3_ixee7")
+
+[node name="MovementM" type="Node2D" parent="Managers"]
+script = ExtResource("9_n2rjt")
 
 [node name="SelectionM" type="Node2D" parent="Managers"]
 script = ExtResource("4_wfmip")

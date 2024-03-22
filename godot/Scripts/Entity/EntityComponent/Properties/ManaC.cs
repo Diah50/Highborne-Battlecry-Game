@@ -3,7 +3,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class ManaC : Node
+    public partial class ManaC : Node2D
     {
         [Export] public int StartingMana = 0;
         [Export] public int Mana = 10;

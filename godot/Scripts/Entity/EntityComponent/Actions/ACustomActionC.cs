@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using Godot;
 
-// Each task component adds one button with relatively custom behavior
+// Each custom action component adds one button with relatively custom behavior
 
 namespace EntityComponent
 {
-    public partial class ACustomActionC : Node
+    public partial class ACustomActionC : Node2D
     {
         [Export] public string ID; // unique identifier for the task
         [Export] public string TypeName;

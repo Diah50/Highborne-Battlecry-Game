@@ -3,7 +3,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class SubmenuC : Node
+    public partial class SubmenuC : Node2D
     {
         [Export] public string ID; // unique identifier for the task
         [Export] public string TypeName;
