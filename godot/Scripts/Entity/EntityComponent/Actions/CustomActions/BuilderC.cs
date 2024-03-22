@@ -3,7 +3,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class BuilderTC : ATaskC
+    public partial class BuilderTC : ACustomActionC
     {
         [Export] public Entity.Entity Building;
         [Export] public int StartProgress;

@@ -5,7 +5,7 @@ using Godot;
 
 namespace EntityComponent
 {
-    public partial class ATaskC : Node
+    public partial class ACustomActionC : Node
     {
         [Export] public string ID; // unique identifier for the task
         [Export] public string TypeName;
