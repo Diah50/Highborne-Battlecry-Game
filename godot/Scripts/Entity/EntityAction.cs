@@ -3,9 +3,9 @@ using Godot;
 
 public enum ActionType { Move };
 
-namespace Entity
+namespace EntityNS
 {
-    public partial class Action
+    public partial class EntityAction
     {
         public ActionType Type;
         public Godot.Vector2 VectorTarget;

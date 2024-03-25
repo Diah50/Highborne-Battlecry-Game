@@ -1,4 +1,4 @@
-using Entity;
+using EntityNS;
 using EntityComponent;
 using Godot;
 using System;
@@ -34,9 +34,11 @@ namespace Manager
                     {
                         if (!inputM.heldActions.Contains("shift"))
                             entity.ActionQueue.Clear();
-                        var moveAction = new Entity.Action();
-                        moveAction.VectorTarget = GetGlobalMousePosition();
-                        moveAction.Type = ActionType.Move;
+                        var moveAction = new EntityAction
+                        {
+                            VectorTarget = GetGlobalMousePosition(),
+                            Type = ActionType.Move
+                        };
                         entity.ActionQueue.Add(moveAction);
                     }
                 });
@@ -45,7 +47,7 @@ namespace Manager
 
         public override void _Process(double delta)
         {
-            foreach (Entity.Entity entity in GetTree().GetNodesInGroup("Entity").Select(x => (Entity.Entity)x))
+            foreach (Entity entity in GetTree().GetNodesInGroup("Entity").Select(x => (Entity)x))
             {
                 var nextAction = entity.ActionQueue.FirstOrDefault();
                 if (nextAction != null)

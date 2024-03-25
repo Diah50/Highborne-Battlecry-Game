@@ -1,4 +1,4 @@
-using Entity;
+using EntityNS;
 using Godot;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Manager
         private InputM inputM;
         private Godot.Vector2 selectionStart = Godot.Vector2.Zero;
         private bool selecting = false;
-        public List<Entity.Entity> selected = new();
+        public List<Entity> selected = new();
 
 
         public override void _Ready()
@@ -55,11 +55,11 @@ namespace Manager
                 entity.Selected = false;
             }
 
-            var newlySelected = new List<Entity.Entity>();
+            var newlySelected = new List<Entity>();
             var intersectingShapes = space.IntersectShape(query);
             foreach(var intersecting in intersectingShapes){
                 intersecting.TryGetValue("collider", out Variant collider);
-                var entity = (Entity.Entity)collider;
+                var entity = (Entity)collider;
                 newlySelected.Add(entity);
                 entity.Selected = true;
             }

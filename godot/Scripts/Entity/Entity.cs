@@ -6,7 +6,7 @@ using Godot;
 // does not affect capabilities, e.g. a building can still move (though it must make room for patrol/stop/attackmove hotkeys)
 // will affect selection though, e.g. units are drag selectable
 public enum EntitySuperType { Building, Resource, Unit };
-namespace Entity
+namespace EntityNS
 {
     public partial class Entity : Node2D
     {
@@ -19,8 +19,8 @@ namespace Entity
         [Export] public int Radius; // for collision and such, assumes circular hitbox
         public int FactionId = -1; // -1 = N/A, 0 = neutral, 0XX = player, 1XX+ = other. All with > -1 should be FactionEntity.
         public Sprite2D SelectionIndicator;
-        public List<Action> ActionQueue = new();
-        public List<Action> ShopActionQueue = new();
+        public List<EntityAction> ActionQueue = new();
+        public List<EntityAction> ShopActionQueue = new();
 
         private bool _Selected = false;
         public bool Selected{
