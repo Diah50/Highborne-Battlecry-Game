@@ -55,7 +55,7 @@ namespace Manager
                     switch (nextAction.Type)
                     {
                         case ActionType.Move:
-                            if (movementM.processMovementAction(nextAction, entity, delta))
+                            if (movementM.ProcessMovementAction(nextAction, entity, delta))
                             {
                                 entity.ActionQueue.RemoveAt(0);
                             }

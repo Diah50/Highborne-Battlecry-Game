@@ -11,7 +11,7 @@ namespace Manager
     public partial class MovementM : Node2D
     {
         // @return whether the action was completed
-        public bool processMovementAction(EntityAction action, Entity entity, double delta){
+        public bool ProcessMovementAction(EntityAction action, Entity entity, double delta){
             var target = action.VectorTarget;
             var movementC = Util.Util.TryGetComponent<MovementC>(entity);
             var moveDist = movementC.Speed * delta;
