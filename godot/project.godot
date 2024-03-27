@@ -12,8 +12,12 @@ config_version=5
 
 config/name="Highborne-Battlecry"
 run/main_scene="res://Scenes/world.tscn"
-config/features=PackedStringArray("4.2", "C#", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SaveSystem="*res://addons/save_system/save_system.gd"
 
 [display]
 
@@ -22,6 +26,10 @@ window/vsync/vsync_mode=0
 [dotnet]
 
 project/assembly_name="Highborne-Battlecry"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/save_system/plugin.cfg")
 
 [input]
 
